@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtbusqueda = new System.Windows.Forms.TextBox();
             this.lblbusqueda = new System.Windows.Forms.Label();
             this.lblfiltro = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboboxfiltro = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtbusqueda
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(429, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtbusqueda.Location = new System.Drawing.Point(73, 12);
+            this.txtbusqueda.Name = "txtbusqueda";
+            this.txtbusqueda.Size = new System.Drawing.Size(429, 20);
+            this.txtbusqueda.TabIndex = 0;
             // 
             // lblbusqueda
             // 
@@ -61,13 +61,13 @@
             this.lblfiltro.TabIndex = 2;
             this.lblfiltro.Text = "Filtrar por:";
             // 
-            // comboBox1
+            // comboboxfiltro
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(592, 11);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 21);
-            this.comboBox1.TabIndex = 3;
+            this.comboboxfiltro.FormattingEnabled = true;
+            this.comboboxfiltro.Location = new System.Drawing.Point(592, 11);
+            this.comboboxfiltro.Name = "comboboxfiltro";
+            this.comboboxfiltro.Size = new System.Drawing.Size(150, 21);
+            this.comboboxfiltro.TabIndex = 3;
             // 
             // dataGridView1
             // 
@@ -83,12 +83,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 351);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboboxfiltro);
             this.Controls.Add(this.lblfiltro);
             this.Controls.Add(this.lblbusqueda);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtbusqueda);
             this.Name = "Busqueda_avanzada";
             this.Text = "Busqueda_avanzada";
+            this.Load += new System.EventHandler(this.Busqueda_avanzada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -97,10 +98,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbusqueda;
         private System.Windows.Forms.Label lblbusqueda;
         private System.Windows.Forms.Label lblfiltro;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboboxfiltro;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

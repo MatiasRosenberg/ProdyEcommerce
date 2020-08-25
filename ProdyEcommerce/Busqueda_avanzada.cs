@@ -16,5 +16,11 @@ namespace ProdyEcommerce
         {
             InitializeComponent();
         }
+
+        private void Busqueda_avanzada_Load(object sender, EventArgs e)
+        {
+            comboboxfiltro.Items.Add("Idarticulo");
+            comboboxfiltro.Items.Add("Nombre");
+        }
     }
 }
