@@ -42,6 +42,7 @@
             this.lbltags = new System.Windows.Forms.Label();
             this.btngrabar = new System.Windows.Forms.Button();
             this.btnsalir = new System.Windows.Forms.Button();
+            this.btnlimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblarticulo
@@ -62,10 +63,11 @@
             this.txtarticulo.Name = "txtarticulo";
             this.txtarticulo.Size = new System.Drawing.Size(129, 20);
             this.txtarticulo.TabIndex = 1;
+            this.txtarticulo.Leave += new System.EventHandler(this.txtarticulo_Leave);
             // 
             // btnbuscar
             // 
-            this.btnbuscar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnbuscar.BackColor = System.Drawing.SystemColors.Control;
             this.btnbuscar.Location = new System.Drawing.Point(556, 26);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 20);
@@ -83,6 +85,7 @@
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(318, 20);
             this.txtnombre.TabIndex = 3;
+            this.txtnombre.Leave += new System.EventHandler(this.txtnombre_Leave);
             // 
             // lbldetalle
             // 
@@ -177,11 +180,22 @@
             this.btnsalir.UseVisualStyleBackColor = true;
             this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
+            // btnlimpiar
+            // 
+            this.btnlimpiar.Location = new System.Drawing.Point(842, 26);
+            this.btnlimpiar.Name = "btnlimpiar";
+            this.btnlimpiar.Size = new System.Drawing.Size(87, 25);
+            this.btnlimpiar.TabIndex = 14;
+            this.btnlimpiar.Text = "Limpiar";
+            this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 543);
+            this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.btngrabar);
             this.Controls.Add(this.lbltags);
@@ -220,6 +234,7 @@
         private System.Windows.Forms.Label lbltags;
         private System.Windows.Forms.Button btngrabar;
         private System.Windows.Forms.Button btnsalir;
+        private System.Windows.Forms.Button btnlimpiar;
     }
 }
 

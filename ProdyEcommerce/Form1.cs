@@ -31,14 +31,41 @@ namespace ProdyEcommerce
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
+            Busqueda_avanzada busqueda = new Busqueda_avanzada();
+            busqueda.Show();
+        }
+
+        private void btnlimpiar_Click(object sender, EventArgs e)
+        {
+            txtarticulo.Text = "";
+            txtdetalles.Text = "";
+            txtnombre.Text = "";
+            txttags.Text = "";
+            chbreservas.Checked = false;
+            chbpublicar.Checked = false;
+            txtarticulo.Enabled = true;
+            txtnombre.Enabled = true;
+        }
+
+        private void txtarticulo_Leave(object sender, EventArgs e)
+        {
             Funciones F = new Funciones();
-            if(txtarticulo.Text == "")
-            {
-                F.completarid(txtarticulo, txtnombre);
-            }
-            if(txtnombre.Text == "")
+            if (txtnombre.Text == "")
             {
                 F.completarnombe(txtnombre, txtarticulo);
+                txtarticulo.Enabled = false;
+                txtnombre.Enabled = false;
+            }
+        }
+
+        private void txtnombre_Leave(object sender, EventArgs e)
+        {
+            Funciones F = new Funciones();
+            if (txtarticulo.Text == "")
+            {
+                F.completarid(txtnombre, txtarticulo);
+                txtarticulo.Enabled = false;
+                txtnombre.Enabled = false;
             }
         }
     }
