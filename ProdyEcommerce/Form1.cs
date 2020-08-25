@@ -20,7 +20,8 @@ namespace ProdyEcommerce
         private void Form1_Load(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
-            F.autocompletar(txtarticulo);
+            F.autocompletarid(txtarticulo);
+            F.autocompletarnombre(txtnombre);
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -31,7 +32,14 @@ namespace ProdyEcommerce
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
-            F.completarnombe(txtnombre, txtarticulo);
+            if(txtarticulo.Text == "")
+            {
+                F.completarid(txtarticulo, txtnombre);
+            }
+            if(txtnombre.Text == "")
+            {
+                F.completarnombe(txtnombre, txtarticulo);
+            }
         }
     }
 }

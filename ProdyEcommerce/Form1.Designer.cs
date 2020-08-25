@@ -65,7 +65,7 @@
             // 
             // btnbuscar
             // 
-            this.btnbuscar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnbuscar.BackColor = System.Drawing.SystemColors.Control;
             this.btnbuscar.Location = new System.Drawing.Point(556, 26);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 20);
@@ -76,6 +76,8 @@
             // 
             // txtnombre
             // 
+            this.txtnombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtnombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtnombre.Location = new System.Drawing.Point(232, 26);
             this.txtnombre.MaxLength = 50;
             this.txtnombre.Name = "txtnombre";
