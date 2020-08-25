@@ -65,7 +65,7 @@
             // 
             // btnbuscar
             // 
-            this.btnbuscar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnbuscar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnbuscar.Location = new System.Drawing.Point(556, 26);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 20);
