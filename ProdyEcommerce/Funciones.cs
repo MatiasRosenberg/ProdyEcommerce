@@ -80,6 +80,36 @@ namespace ProdyEcommerce
                 cajaidarticulo.Text = "";
             }
         }
+
+        public void Completardetalle(TextBox cajadetalle, TextBox cajaidarticulo)
+        {
+            cmd = new SqlCommand("Select * from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.Read() == true)
+            {
+                cajadetalle.Text = read["woo_detalle"].ToString();
+            }
+            else
+            {
+                cajadetalle.Text = "";
+            }
+        }
+
+        public void Completartags(TextBox cajatags, TextBox cajaidarticulo)
+        {
+            cmd = new SqlCommand("Select * from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.Read() == true)
+            {
+                cajatags.Text = read["tags"].ToString();
+            }
+            else
+            {
+                cajatags.Text = "";
+            }
+        }
     }
 }
 

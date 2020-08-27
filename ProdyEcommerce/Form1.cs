@@ -22,6 +22,7 @@ namespace ProdyEcommerce
             Funciones F = new Funciones();
             F.autocompletarid(txtarticulo);
             F.autocompletarnombre(txtnombre);
+            
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -53,8 +54,11 @@ namespace ProdyEcommerce
             if (txtnombre.Text == "")
             {
                 F.completarnombe(txtnombre, txtarticulo);
+                F.Completardetalle(txtarticulo, txtdetalles);
+                F.Completartags(txtarticulo, txttags);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+
             }
         }
 
@@ -64,6 +68,8 @@ namespace ProdyEcommerce
             if (txtarticulo.Text == "")
             {
                 F.completarid(txtnombre, txtarticulo);
+                F.Completardetalle(txtarticulo, txtdetalles);
+                F.Completartags(txtarticulo, txttags);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
