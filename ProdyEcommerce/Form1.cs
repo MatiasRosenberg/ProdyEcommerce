@@ -20,9 +20,13 @@ namespace ProdyEcommerce
         private void Form1_Load(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
-            F.autocompletarid(txtarticulo);
-            F.autocompletarnombre(txtnombre);
-            
+            txtarticulo.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocomplete();
+            txtarticulo.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtarticulo.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            txtnombre.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocompleten();
+            txtnombre.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtnombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -54,11 +58,10 @@ namespace ProdyEcommerce
             if (txtnombre.Text == "")
             {
                 F.completarnombe(txtnombre, txtarticulo);
-                F.Completardetalle(txtarticulo, txtdetalles);
-                F.Completartags(txtarticulo, txttags);
+                F.Completardetalle(txtdetalles, txtarticulo);
+                F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
-
             }
         }
 
@@ -68,8 +71,8 @@ namespace ProdyEcommerce
             if (txtarticulo.Text == "")
             {
                 F.completarid(txtnombre, txtarticulo);
-                F.Completardetalle(txtarticulo, txtdetalles);
-                F.Completartags(txtarticulo, txttags);
+                F.Completardetalle(txtdetalles, txtarticulo);
+                F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }

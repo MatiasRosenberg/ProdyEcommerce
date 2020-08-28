@@ -14,41 +14,52 @@ namespace ProdyEcommerce
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
         SqlCommand cmd;
         SqlDataReader dr;
-
-        public void autocompletarid(TextBox cajatexto)
+        public static class AutoCompleClass
         {
-            try
-            {
-                cmd = new SqlCommand("Select * from articulos", cnn);
-                dr = cmd.ExecuteReader();
-                while(dr.Read())
-                {
-                    cajatexto.AutoCompleteCustomSource.Add(dr["idarticulo"].ToString());
-                }
-                dr.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("No se puede completar:" + ex.ToString());
-            }
-        }
 
-        public void autocompletarnombre(TextBox cajatexto)
-        {
-            try
+        
+            public static DataTable Datos()
             {
-                cmd = new SqlCommand("Select * from articulos", cnn);
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
+             DataTable dt = new DataTable();
+
+                SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
+                string sql = "select idarticulo, nombre from articulos";
+                SqlCommand cmd = new SqlCommand(sql, cnn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+                return dt;
+
+            }
+
+            public static AutoCompleteStringCollection Autocomplete()
+            {
+                DataTable dt = Datos();
+
+                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+                foreach (DataRow row in dt.Rows)
+            {
+                coleccion.Add(Convert.ToString(row["idarticulo"]));
+            }
+
+            return coleccion;
+
+            }
+
+            public static AutoCompleteStringCollection Autocompleten()
+            {
+                DataTable dt = Datos();
+
+                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+                foreach (DataRow row in dt.Rows)
                 {
-                    cajatexto.AutoCompleteCustomSource.Add(dr["nombre"].ToString());
+                    coleccion.Add(Convert.ToString(row["nombre"]));
                 }
-                dr.Close();
+
+                return coleccion;
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se puede completar:" + ex.ToString());
-            }
+
         }
 
         public void completarnombe(TextBox cajanombre, TextBox cajaidarticulo)
@@ -83,12 +94,12 @@ namespace ProdyEcommerce
 
         public void Completardetalle(TextBox cajadetalle, TextBox cajaidarticulo)
         {
-            cmd = new SqlCommand("Select * from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            cmd = new SqlCommand("Select WOO_DETALLE from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
 
             if (read.Read() == true)
             {
-                cajadetalle.Text = read["woo_detalle"].ToString();
+                cajadetalle.Text = read["WOO_DETALLE"].ToString();
             }
             else
             {
@@ -98,12 +109,12 @@ namespace ProdyEcommerce
 
         public void Completartags(TextBox cajatags, TextBox cajaidarticulo)
         {
-            cmd = new SqlCommand("Select * from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            cmd = new SqlCommand("Select TAGS from ecomm_tags where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
 
             if (read.Read() == true)
             {
-                cajatags.Text = read["tags"].ToString();
+                cajatags.Text = read["TAGS"].ToString();
             }
             else
             {
