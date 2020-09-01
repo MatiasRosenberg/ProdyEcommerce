@@ -32,8 +32,9 @@
             this.lblbusqueda = new System.Windows.Forms.Label();
             this.lblfiltro = new System.Windows.Forms.Label();
             this.comboboxfiltro = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvarticulos = new System.Windows.Forms.DataGridView();
+            this.btnbuscar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvarticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbusqueda
@@ -55,7 +56,7 @@
             // lblfiltro
             // 
             this.lblfiltro.AutoSize = true;
-            this.lblfiltro.Location = new System.Drawing.Point(532, 16);
+            this.lblfiltro.Location = new System.Drawing.Point(649, 17);
             this.lblfiltro.Name = "lblfiltro";
             this.lblfiltro.Size = new System.Drawing.Size(53, 13);
             this.lblfiltro.TabIndex = 2;
@@ -64,25 +65,42 @@
             // comboboxfiltro
             // 
             this.comboboxfiltro.FormattingEnabled = true;
-            this.comboboxfiltro.Location = new System.Drawing.Point(592, 11);
+            this.comboboxfiltro.Location = new System.Drawing.Point(709, 12);
             this.comboboxfiltro.Name = "comboboxfiltro";
             this.comboboxfiltro.Size = new System.Drawing.Size(150, 21);
             this.comboboxfiltro.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvarticulos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(961, 287);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvarticulos.AllowUserToAddRows = false;
+            this.dgvarticulos.AllowUserToDeleteRows = false;
+            this.dgvarticulos.AllowUserToOrderColumns = true;
+            this.dgvarticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvarticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvarticulos.Location = new System.Drawing.Point(12, 52);
+            this.dgvarticulos.Name = "dgvarticulos";
+            this.dgvarticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvarticulos.Size = new System.Drawing.Size(961, 287);
+            this.dgvarticulos.TabIndex = 4;
+            this.dgvarticulos.SelectionChanged += new System.EventHandler(this.dgvarticulos_SelectionChanged);
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.Location = new System.Drawing.Point(509, 12);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(90, 21);
+            this.btnbuscar.TabIndex = 5;
+            this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // Busqueda_avanzada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 351);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnbuscar);
+            this.Controls.Add(this.dgvarticulos);
             this.Controls.Add(this.comboboxfiltro);
             this.Controls.Add(this.lblfiltro);
             this.Controls.Add(this.lblbusqueda);
@@ -90,7 +108,7 @@
             this.Name = "Busqueda_avanzada";
             this.Text = "Busqueda_avanzada";
             this.Load += new System.EventHandler(this.Busqueda_avanzada_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvarticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,6 +120,7 @@
         private System.Windows.Forms.Label lblbusqueda;
         private System.Windows.Forms.Label lblfiltro;
         private System.Windows.Forms.ComboBox comboboxfiltro;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvarticulos;
+        private System.Windows.Forms.Button btnbuscar;
     }
 }

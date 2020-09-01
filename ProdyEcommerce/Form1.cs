@@ -37,7 +37,11 @@ namespace ProdyEcommerce
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             Busqueda_avanzada busqueda = new Busqueda_avanzada();
-            busqueda.Show();
+            if(string.IsNullOrEmpty(txtarticulo.Text) || string.IsNullOrEmpty(txtnombre.Text) == true)
+            {
+                busqueda.Show();
+            }
+            
         }
 
         private void btnlimpiar_Click(object sender, EventArgs e)
@@ -50,6 +54,7 @@ namespace ProdyEcommerce
             chbpublicar.Checked = false;
             txtarticulo.Enabled = true;
             txtnombre.Enabled = true;
+            btnbuscar.Enabled = true;
         }
 
         private void txtarticulo_Leave(object sender, EventArgs e)
@@ -62,6 +67,7 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+                btnbuscar.Enabled = false;
             }
         }
 
@@ -75,6 +81,7 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+                btnbuscar.Enabled = false;
             }
         }
     }

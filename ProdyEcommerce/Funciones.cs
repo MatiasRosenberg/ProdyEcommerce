@@ -13,11 +13,12 @@ namespace ProdyEcommerce
     {
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
         SqlCommand cmd;
-        SqlDataReader dr;
+        DataTable dt;
+        SqlDataAdapter da;
+
+
         public static class AutoCompleClass
         {
-
-        
             public static DataTable Datos()
             {
              DataTable dt = new DataTable();
@@ -119,6 +120,23 @@ namespace ProdyEcommerce
             else
             {
                 cajatags.Text = "";
+            }
+        }
+
+        public void llenardatagrid(DataGridView dgv)
+        {
+            try
+            {
+                da = new SqlDataAdapter("select idarticulo as codigo, nombre from articulos", cnn);
+                dt = new DataTable();
+                da.Fill(dt);
+                dgv.DataSource = dt;
+
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show("no se pudo llenar la tabla" + ex.ToString());
             }
         }
     }

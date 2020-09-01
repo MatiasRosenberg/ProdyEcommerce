@@ -36,7 +36,7 @@
             this.txtdetalles = new System.Windows.Forms.TextBox();
             this.chbpublicar = new System.Windows.Forms.CheckBox();
             this.chbreservas = new System.Windows.Forms.CheckBox();
-            this.checkboxrubros = new System.Windows.Forms.CheckedListBox();
+            this.chkrubros = new System.Windows.Forms.CheckedListBox();
             this.lblRubrosEco = new System.Windows.Forms.Label();
             this.txttags = new System.Windows.Forms.TextBox();
             this.lbltags = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.btnbuscar.Location = new System.Drawing.Point(556, 26);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 20);
-            this.btnbuscar.TabIndex = 2;
+            this.btnbuscar.TabIndex = 3;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
             this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
@@ -84,7 +84,7 @@
             this.txtnombre.MaxLength = 50;
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(318, 20);
-            this.txtnombre.TabIndex = 3;
+            this.txtnombre.TabIndex = 2;
             this.txtnombre.Leave += new System.EventHandler(this.txtnombre_Leave);
             // 
             // lbldetalle
@@ -103,7 +103,7 @@
             this.txtdetalles.Multiline = true;
             this.txtdetalles.Name = "txtdetalles";
             this.txtdetalles.Size = new System.Drawing.Size(900, 199);
-            this.txtdetalles.TabIndex = 5;
+            this.txtdetalles.TabIndex = 7;
             // 
             // chbpublicar
             // 
@@ -111,7 +111,7 @@
             this.chbpublicar.Location = new System.Drawing.Point(718, 78);
             this.chbpublicar.Name = "chbpublicar";
             this.chbpublicar.Size = new System.Drawing.Size(87, 17);
-            this.chbpublicar.TabIndex = 6;
+            this.chbpublicar.TabIndex = 5;
             this.chbpublicar.Text = "Publicar web";
             this.chbpublicar.UseVisualStyleBackColor = true;
             // 
@@ -121,17 +121,17 @@
             this.chbreservas.Location = new System.Drawing.Point(821, 78);
             this.chbreservas.Name = "chbreservas";
             this.chbreservas.Size = new System.Drawing.Size(108, 17);
-            this.chbreservas.TabIndex = 7;
+            this.chbreservas.TabIndex = 6;
             this.chbreservas.Text = "Permitir Reservas";
             this.chbreservas.UseVisualStyleBackColor = true;
             // 
-            // checkboxrubros
+            // chkrubros
             // 
-            this.checkboxrubros.FormattingEnabled = true;
-            this.checkboxrubros.Location = new System.Drawing.Point(29, 352);
-            this.checkboxrubros.Name = "checkboxrubros";
-            this.checkboxrubros.Size = new System.Drawing.Size(197, 169);
-            this.checkboxrubros.TabIndex = 8;
+            this.chkrubros.FormattingEnabled = true;
+            this.chkrubros.Location = new System.Drawing.Point(29, 352);
+            this.chkrubros.Name = "chkrubros";
+            this.chkrubros.Size = new System.Drawing.Size(197, 169);
+            this.chkrubros.TabIndex = 8;
             // 
             // lblRubrosEco
             // 
@@ -149,7 +149,7 @@
             this.txttags.Multiline = true;
             this.txttags.Name = "txttags";
             this.txttags.Size = new System.Drawing.Size(231, 109);
-            this.txttags.TabIndex = 10;
+            this.txttags.TabIndex = 9;
             // 
             // lbltags
             // 
@@ -166,7 +166,7 @@
             this.btngrabar.Location = new System.Drawing.Point(718, 499);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(87, 32);
-            this.btngrabar.TabIndex = 12;
+            this.btngrabar.TabIndex = 10;
             this.btngrabar.Text = "Grabar";
             this.btngrabar.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@
             this.btnsalir.Location = new System.Drawing.Point(842, 499);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(87, 32);
-            this.btnsalir.TabIndex = 13;
+            this.btnsalir.TabIndex = 11;
             this.btnsalir.Text = "Salir";
             this.btnsalir.UseVisualStyleBackColor = true;
             this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
@@ -185,7 +185,7 @@
             this.btnlimpiar.Location = new System.Drawing.Point(842, 26);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(87, 25);
-            this.btnlimpiar.TabIndex = 14;
+            this.btnlimpiar.TabIndex = 4;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.UseVisualStyleBackColor = true;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
@@ -201,7 +201,7 @@
             this.Controls.Add(this.lbltags);
             this.Controls.Add(this.txttags);
             this.Controls.Add(this.lblRubrosEco);
-            this.Controls.Add(this.checkboxrubros);
+            this.Controls.Add(this.chkrubros);
             this.Controls.Add(this.chbreservas);
             this.Controls.Add(this.chbpublicar);
             this.Controls.Add(this.txtdetalles);
@@ -221,20 +221,20 @@
         #endregion
 
         private System.Windows.Forms.Label lblarticulo;
-        private System.Windows.Forms.TextBox txtarticulo;
         private System.Windows.Forms.Button btnbuscar;
-        private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.Label lbldetalle;
         private System.Windows.Forms.TextBox txtdetalles;
         private System.Windows.Forms.CheckBox chbpublicar;
         private System.Windows.Forms.CheckBox chbreservas;
-        private System.Windows.Forms.CheckedListBox checkboxrubros;
+        private System.Windows.Forms.CheckedListBox chkrubros;
         private System.Windows.Forms.Label lblRubrosEco;
         private System.Windows.Forms.TextBox txttags;
         private System.Windows.Forms.Label lbltags;
         private System.Windows.Forms.Button btngrabar;
         private System.Windows.Forms.Button btnsalir;
         private System.Windows.Forms.Button btnlimpiar;
+        public System.Windows.Forms.TextBox txtarticulo;
+        public System.Windows.Forms.TextBox txtnombre;
     }
 }
 
