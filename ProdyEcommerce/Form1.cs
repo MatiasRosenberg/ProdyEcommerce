@@ -27,6 +27,10 @@ namespace ProdyEcommerce
             txtnombre.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocompleten();
             txtnombre.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtnombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            F.llenarcheckbox(chkrubros);
+
+
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -37,7 +41,8 @@ namespace ProdyEcommerce
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             Busqueda_avanzada busqueda = new Busqueda_avanzada();
-            if(string.IsNullOrEmpty(txtarticulo.Text) || string.IsNullOrEmpty(txtnombre.Text) == true)
+
+            if(string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
             {
                 busqueda.Show();
             }
@@ -67,7 +72,6 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
-                btnbuscar.Enabled = false;
             }
         }
 
@@ -81,6 +85,32 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+            }
+
+        }
+
+        private void txtarticulo_Validated(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
+            {
+                btnbuscar.Enabled = true;
+            }
+            else
+            {
+                btnbuscar.Enabled = false;
+            }
+
+        }
+
+        private void txtnombre_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
+            {
+                btnbuscar.Enabled = true;
+            }
+            else
+            {
                 btnbuscar.Enabled = false;
             }
         }

@@ -79,10 +79,11 @@
             this.dgvarticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvarticulos.Location = new System.Drawing.Point(12, 52);
             this.dgvarticulos.Name = "dgvarticulos";
+            this.dgvarticulos.ReadOnly = true;
             this.dgvarticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvarticulos.Size = new System.Drawing.Size(961, 287);
             this.dgvarticulos.TabIndex = 4;
-            this.dgvarticulos.SelectionChanged += new System.EventHandler(this.dgvarticulos_SelectionChanged);
+            this.dgvarticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellContentClick);
             // 
             // btnbuscar
             // 

@@ -64,6 +64,7 @@
             this.txtarticulo.Size = new System.Drawing.Size(129, 20);
             this.txtarticulo.TabIndex = 1;
             this.txtarticulo.Leave += new System.EventHandler(this.txtarticulo_Leave);
+            this.txtarticulo.Validated += new System.EventHandler(this.txtarticulo_Validated);
             // 
             // btnbuscar
             // 
@@ -86,6 +87,7 @@
             this.txtnombre.Size = new System.Drawing.Size(318, 20);
             this.txtnombre.TabIndex = 2;
             this.txtnombre.Leave += new System.EventHandler(this.txtnombre_Leave);
+            this.txtnombre.Validated += new System.EventHandler(this.txtnombre_Validated);
             // 
             // lbldetalle
             // 

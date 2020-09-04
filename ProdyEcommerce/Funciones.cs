@@ -33,6 +33,7 @@ namespace ProdyEcommerce
 
             }
 
+
             public static AutoCompleteStringCollection Autocomplete()
             {
                 DataTable dt = Datos();
@@ -127,7 +128,7 @@ namespace ProdyEcommerce
         {
             try
             {
-                da = new SqlDataAdapter("select idarticulo as codigo, nombre from articulos", cnn);
+                da = new SqlDataAdapter("select idarticulo as Codigo, Nombre from articulos", cnn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dgv.DataSource = dt;
@@ -138,6 +139,19 @@ namespace ProdyEcommerce
             {
                 MessageBox.Show("no se pudo llenar la tabla" + ex.ToString());
             }
+        }
+
+        public void llenarcheckbox(CheckedListBox listarubros)
+        {
+            DataTable dt = new DataTable();
+
+            string consultarubros = "select Nombre from rubros";
+            cmd = new SqlCommand(consultarubros, cnn);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            listarubros.DataSource = dt;
+            listarubros.DisplayMember = "Nombre";
         }
     }
 }

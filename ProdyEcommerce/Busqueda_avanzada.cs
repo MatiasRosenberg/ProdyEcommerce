@@ -16,38 +16,32 @@ namespace ProdyEcommerce
         public Busqueda_avanzada()
         {
             InitializeComponent();
-        }
 
+        }
+        Funciones F = new Funciones();
         private void Busqueda_avanzada_Load(object sender, EventArgs e)
         {
-            comboboxfiltro.Items.Add("codigo");
+            comboboxfiltro.Items.Add("Codigo");
             comboboxfiltro.Items.Add("Nombre");
 
-            Funciones F = new Funciones();
+            
             F.llenardatagrid(dgvarticulos);
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            //if(comboboxfiltro.SelectedIndex == 1)
-            //{
-            //    try
-            //    {
-            //        DataSet ds;
-
-            //        string cmd = "select * from articulos where nombre like ('%" + txtbusqueda.Text.Trim() + "%')";
-
-            //    }
-            //}
+            
         }
-
-        private void dgvarticulos_SelectionChanged(object sender, EventArgs e)
+        
+        private void dgvarticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Form1 F1 = new Form1();
-           
-            var row = (sender as DataGridView).CurrentRow;
-            
-            F1.txtarticulo.Text = row.Cells[0].Value.ToString();
+
+            DataGridViewRow rellenar = dgvarticulos.Rows[e.RowIndex];
+
+            F1.txtarticulo.Text = rellenar.Cells["Codigo"].Value.ToString();
+            F1.txtnombre.Text = rellenar.Cells["Nombre"].Value.ToString();
+            Hide();
         }
     }
 }
