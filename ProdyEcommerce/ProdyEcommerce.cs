@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProdyEcommerce
 {
-    public partial class Form1 : Form
+    public partial class ProdyEcommerce : Form
     {
-        public Form1()
+        public ProdyEcommerce()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace ProdyEcommerce
 
             F.llenarcheckbox(chkrubros);
 
-
+            
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -94,11 +94,11 @@ namespace ProdyEcommerce
 
             if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
             {
-                btnbuscar.Enabled = true;
+                txtarticulo.Enabled = false;
             }
             else
             {
-                btnbuscar.Enabled = false;
+                txtarticulo.Enabled = true;
             }
 
         }
@@ -107,11 +107,11 @@ namespace ProdyEcommerce
         {
             if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
             {
-                btnbuscar.Enabled = true;
+                txtnombre.Enabled = false;
             }
             else
             {
-                btnbuscar.Enabled = false;
+                txtnombre.Enabled = true;
             }
         }
     }

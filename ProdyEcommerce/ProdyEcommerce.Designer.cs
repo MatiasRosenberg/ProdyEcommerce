@@ -1,6 +1,6 @@
 ﻿namespace ProdyEcommerce
 {
-    partial class Form1
+    partial class ProdyEcommerce
     {
         /// <summary>
         /// Variable del diseñador necesaria.

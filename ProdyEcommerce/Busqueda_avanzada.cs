@@ -18,6 +18,11 @@ namespace ProdyEcommerce
             InitializeComponent();
 
         }
+        SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
+        SqlCommand cmd;
+        DataTable dt;
+        SqlDataAdapter da;
+
         Funciones F = new Funciones();
         private void Busqueda_avanzada_Load(object sender, EventArgs e)
         {
@@ -30,18 +35,34 @@ namespace ProdyEcommerce
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            
+            if (comboboxfiltro.SelectedIndex == 0)
+            {
+                cmd = new SqlCommand("Select idarticulo as Codigo, Nombre from articulos where idarticulo like('" + txtbusqueda.Text + "%')", cnn);
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                dgvarticulos.DataSource = dt;
+            }
+            if (comboboxfiltro.SelectedIndex == 1)
+            {
+                cmd = new SqlCommand("Select idarticulo as Codigo, Nombre from articulos where Nombre like('" + txtbusqueda.Text + "%')", cnn);
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                dgvarticulos.DataSource = dt;
+            }
         }
         
         private void dgvarticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Form1 F1 = new Form1();
+            ProdyEcommerce Prody = new ProdyEcommerce();
 
             DataGridViewRow rellenar = dgvarticulos.Rows[e.RowIndex];
 
-            F1.txtarticulo.Text = rellenar.Cells["Codigo"].Value.ToString();
-            F1.txtnombre.Text = rellenar.Cells["Nombre"].Value.ToString();
-            Hide();
+            Prody.txtnombre.Text = dgvarticulos.CurrentRow.Cells["nombre"].Value.ToString();
+            Prody.txtarticulo.Text = dgvarticulos.CurrentRow.Cells["Codigo"].Value.ToString();
         }
     }
 }

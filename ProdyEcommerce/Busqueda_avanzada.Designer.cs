@@ -56,7 +56,7 @@
             // lblfiltro
             // 
             this.lblfiltro.AutoSize = true;
-            this.lblfiltro.Location = new System.Drawing.Point(649, 17);
+            this.lblfiltro.Location = new System.Drawing.Point(729, 16);
             this.lblfiltro.Name = "lblfiltro";
             this.lblfiltro.Size = new System.Drawing.Size(53, 13);
             this.lblfiltro.TabIndex = 2;
@@ -64,8 +64,9 @@
             // 
             // comboboxfiltro
             // 
+            this.comboboxfiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboboxfiltro.FormattingEnabled = true;
-            this.comboboxfiltro.Location = new System.Drawing.Point(709, 12);
+            this.comboboxfiltro.Location = new System.Drawing.Point(789, 11);
             this.comboboxfiltro.Name = "comboboxfiltro";
             this.comboboxfiltro.Size = new System.Drawing.Size(150, 21);
             this.comboboxfiltro.TabIndex = 3;
@@ -116,12 +117,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtbusqueda;
         private System.Windows.Forms.Label lblbusqueda;
         private System.Windows.Forms.Label lblfiltro;
         private System.Windows.Forms.ComboBox comboboxfiltro;
         private System.Windows.Forms.DataGridView dgvarticulos;
         private System.Windows.Forms.Button btnbuscar;
+        public System.Windows.Forms.TextBox txtbusqueda;
     }
 }

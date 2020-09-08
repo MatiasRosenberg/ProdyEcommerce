@@ -145,7 +145,7 @@ namespace ProdyEcommerce
         {
             DataTable dt = new DataTable();
 
-            string consultarubros = "select Nombre from rubros";
+            string consultarubros = "select * from rubros order by nombre asc";
             cmd = new SqlCommand(consultarubros, cnn);
             da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -153,6 +153,9 @@ namespace ProdyEcommerce
             listarubros.DataSource = dt;
             listarubros.DisplayMember = "Nombre";
         }
+
+
+        
     }
 }
 
