@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace ProdyEcommerce
 {
+
     public partial class Busqueda_avanzada : Form
     {
         public Busqueda_avanzada()
@@ -20,8 +21,8 @@ namespace ProdyEcommerce
         }
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
         SqlCommand cmd;
-        DataTable dt;
-        SqlDataAdapter da;
+       
+
 
         Funciones F = new Funciones();
         private void Busqueda_avanzada_Load(object sender, EventArgs e)
@@ -32,6 +33,9 @@ namespace ProdyEcommerce
             
             F.llenardatagrid(dgvarticulos);
         }
+
+
+
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
@@ -54,15 +58,16 @@ namespace ProdyEcommerce
                 dgvarticulos.DataSource = dt;
             }
         }
-        
-        private void dgvarticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvarticulos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ProdyEcommerce Prody = new ProdyEcommerce();
+           string Codigo = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+           string Nombre = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
 
-            DataGridViewRow rellenar = dgvarticulos.Rows[e.RowIndex];
-
-            Prody.txtnombre.Text = dgvarticulos.CurrentRow.Cells["nombre"].Value.ToString();
-            Prody.txtarticulo.Text = dgvarticulos.CurrentRow.Cells["Codigo"].Value.ToString();
+            ProdyEcommerce P = new ProdyEcommerce(Codigo, Nombre);
+            this.Close();
+            P.ShowDialog();
+            
         }
     }
 }

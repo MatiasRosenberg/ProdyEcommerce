@@ -12,8 +12,14 @@ namespace ProdyEcommerce
 {
     public partial class ProdyEcommerce : Form
     {
-        public ProdyEcommerce()
+
+        static string Codigo;
+        static string Nombre;
+
+        public ProdyEcommerce(string codigo, string nombre)
         {
+            Codigo = codigo;
+            Nombre = nombre;
             InitializeComponent();
         }
 
@@ -30,21 +36,27 @@ namespace ProdyEcommerce
 
             F.llenarcheckbox(chkrubros);
 
-            
+            txtarticulo.Text = Codigo;
+            txtnombre.Text = Nombre;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            
         }
+        Busqueda_avanzada busqueda = new Busqueda_avanzada();
+        
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            Busqueda_avanzada busqueda = new Busqueda_avanzada();
+           
 
-            if(string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
+            if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
             {
                 busqueda.Show();
+                txtarticulo.Enabled = true;
+                txtnombre.Enabled = true;
             }
             
         }
@@ -113,6 +125,11 @@ namespace ProdyEcommerce
             {
                 txtnombre.Enabled = true;
             }
+        }
+
+        private void chkrubros_Validated(object sender, EventArgs e)
+        {
+            
         }
     }
 }

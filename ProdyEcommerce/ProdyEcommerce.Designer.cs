@@ -134,6 +134,7 @@
             this.chkrubros.Name = "chkrubros";
             this.chkrubros.Size = new System.Drawing.Size(197, 169);
             this.chkrubros.TabIndex = 8;
+            this.chkrubros.Validated += new System.EventHandler(this.chkrubros_Validated);
             // 
             // lblRubrosEco
             // 
@@ -192,7 +193,7 @@
             this.btnlimpiar.UseVisualStyleBackColor = true;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
             // 
-            // Form1
+            // ProdyEcommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +213,7 @@
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.txtarticulo);
             this.Controls.Add(this.lblarticulo);
-            this.Name = "Form1";
+            this.Name = "ProdyEcommerce";
             this.Text = "ProdyEcommerce";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

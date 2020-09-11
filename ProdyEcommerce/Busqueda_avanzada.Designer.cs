@@ -84,7 +84,7 @@
             this.dgvarticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvarticulos.Size = new System.Drawing.Size(961, 287);
             this.dgvarticulos.TabIndex = 4;
-            this.dgvarticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellContentClick);
+            this.dgvarticulos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellClick);
             // 
             // btnbuscar
             // 
