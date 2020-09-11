@@ -129,7 +129,10 @@ namespace ProdyEcommerce
 
         private void chkrubros_Validated(object sender, EventArgs e)
         {
-            
+            for (int i = 0; i < chkrubros.Items.Count; i++)
+            {
+               
+            }
         }
     }
 }

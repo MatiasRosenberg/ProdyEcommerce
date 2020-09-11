@@ -65,7 +65,7 @@ namespace ProdyEcommerce
            string Nombre = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
 
             ProdyEcommerce P = new ProdyEcommerce(Codigo, Nombre);
-            this.Close();
+            this.Hide();
             P.ShowDialog();
             
         }
