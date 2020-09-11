@@ -63,7 +63,7 @@ namespace ProdyEcommerce
         {
             ProdyEcommerce P = Application.OpenForms.OfType<ProdyEcommerce>().SingleOrDefault();
             P.txtarticulo.Text= dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-
+            
           //  string Codigo = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
            //string Nombre = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
            
