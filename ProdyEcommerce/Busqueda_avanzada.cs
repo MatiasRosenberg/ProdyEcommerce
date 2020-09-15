@@ -61,13 +61,10 @@ namespace ProdyEcommerce
 
         private void dgvarticulos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           string Codigo = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-           string Nombre = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
-
-            ProdyEcommerce P = new ProdyEcommerce(Codigo, Nombre);
-            this.Hide();
-            P.ShowDialog();
-            
+            ProdyEcommerce P = Application.OpenForms.OfType<ProdyEcommerce>().SingleOrDefault();
+            P.txtarticulo.Text = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+            P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+            this.Hide();          
         }
     }
 }
