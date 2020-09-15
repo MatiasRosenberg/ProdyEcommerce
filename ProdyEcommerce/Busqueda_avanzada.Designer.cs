@@ -85,6 +85,7 @@
             this.dgvarticulos.Size = new System.Drawing.Size(961, 287);
             this.dgvarticulos.TabIndex = 4;
             this.dgvarticulos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellClick);
+            this.dgvarticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellContentClick);
             // 
             // btnbuscar
             // 
@@ -100,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 351);
+            this.ClientSize = new System.Drawing.Size(985, 388);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.dgvarticulos);
             this.Controls.Add(this.comboboxfiltro);
