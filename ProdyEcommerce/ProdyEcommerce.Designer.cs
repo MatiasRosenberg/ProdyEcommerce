@@ -34,8 +34,6 @@
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.lbldetalle = new System.Windows.Forms.Label();
             this.txtdetalles = new System.Windows.Forms.TextBox();
-            this.chbpublicar = new System.Windows.Forms.CheckBox();
-            this.chbreservas = new System.Windows.Forms.CheckBox();
             this.chkrubros = new System.Windows.Forms.CheckedListBox();
             this.lblRubrosEco = new System.Windows.Forms.Label();
             this.txttags = new System.Windows.Forms.TextBox();
@@ -43,6 +41,8 @@
             this.btngrabar = new System.Windows.Forms.Button();
             this.btnsalir = new System.Windows.Forms.Button();
             this.btnlimpiar = new System.Windows.Forms.Button();
+            this.CBPulicar = new System.Windows.Forms.CheckBox();
+            this.CBReserva = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblarticulo
@@ -63,6 +63,7 @@
             this.txtarticulo.Name = "txtarticulo";
             this.txtarticulo.Size = new System.Drawing.Size(129, 20);
             this.txtarticulo.TabIndex = 1;
+            this.txtarticulo.TextChanged += new System.EventHandler(this.txtarticulo_TextChanged);
             this.txtarticulo.Leave += new System.EventHandler(this.txtarticulo_Leave);
             this.txtarticulo.Validated += new System.EventHandler(this.txtarticulo_Validated);
             // 
@@ -86,6 +87,7 @@
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(318, 20);
             this.txtnombre.TabIndex = 2;
+            this.txtnombre.TextChanged += new System.EventHandler(this.txtnombre_TextChanged);
             this.txtnombre.Leave += new System.EventHandler(this.txtnombre_Leave);
             this.txtnombre.Validated += new System.EventHandler(this.txtnombre_Validated);
             // 
@@ -107,26 +109,6 @@
             this.txtdetalles.Size = new System.Drawing.Size(900, 199);
             this.txtdetalles.TabIndex = 7;
             // 
-            // chbpublicar
-            // 
-            this.chbpublicar.AutoSize = true;
-            this.chbpublicar.Location = new System.Drawing.Point(718, 78);
-            this.chbpublicar.Name = "chbpublicar";
-            this.chbpublicar.Size = new System.Drawing.Size(87, 17);
-            this.chbpublicar.TabIndex = 5;
-            this.chbpublicar.Text = "Publicar web";
-            this.chbpublicar.UseVisualStyleBackColor = true;
-            // 
-            // chbreservas
-            // 
-            this.chbreservas.AutoSize = true;
-            this.chbreservas.Location = new System.Drawing.Point(821, 78);
-            this.chbreservas.Name = "chbreservas";
-            this.chbreservas.Size = new System.Drawing.Size(108, 17);
-            this.chbreservas.TabIndex = 6;
-            this.chbreservas.Text = "Permitir Reservas";
-            this.chbreservas.UseVisualStyleBackColor = true;
-            // 
             // chkrubros
             // 
             this.chkrubros.FormattingEnabled = true;
@@ -134,7 +116,6 @@
             this.chkrubros.Name = "chkrubros";
             this.chkrubros.Size = new System.Drawing.Size(197, 169);
             this.chkrubros.TabIndex = 8;
-            this.chkrubros.Validated += new System.EventHandler(this.chkrubros_Validated);
             // 
             // lblRubrosEco
             // 
@@ -193,11 +174,33 @@
             this.btnlimpiar.UseVisualStyleBackColor = true;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
             // 
+            // CBPulicar
+            // 
+            this.CBPulicar.AutoSize = true;
+            this.CBPulicar.Location = new System.Drawing.Point(728, 78);
+            this.CBPulicar.Name = "CBPulicar";
+            this.CBPulicar.Size = new System.Drawing.Size(87, 17);
+            this.CBPulicar.TabIndex = 12;
+            this.CBPulicar.Text = "Publicar web";
+            this.CBPulicar.UseVisualStyleBackColor = true;
+            // 
+            // CBReserva
+            // 
+            this.CBReserva.AutoSize = true;
+            this.CBReserva.Location = new System.Drawing.Point(821, 78);
+            this.CBReserva.Name = "CBReserva";
+            this.CBReserva.Size = new System.Drawing.Size(108, 17);
+            this.CBReserva.TabIndex = 13;
+            this.CBReserva.Text = "Permitir Reservas";
+            this.CBReserva.UseVisualStyleBackColor = true;
+            // 
             // ProdyEcommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 543);
+            this.Controls.Add(this.CBReserva);
+            this.Controls.Add(this.CBPulicar);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.btngrabar);
@@ -205,8 +208,6 @@
             this.Controls.Add(this.txttags);
             this.Controls.Add(this.lblRubrosEco);
             this.Controls.Add(this.chkrubros);
-            this.Controls.Add(this.chbreservas);
-            this.Controls.Add(this.chbpublicar);
             this.Controls.Add(this.txtdetalles);
             this.Controls.Add(this.lbldetalle);
             this.Controls.Add(this.txtnombre);
@@ -227,8 +228,6 @@
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Label lbldetalle;
         private System.Windows.Forms.TextBox txtdetalles;
-        private System.Windows.Forms.CheckBox chbpublicar;
-        private System.Windows.Forms.CheckBox chbreservas;
         private System.Windows.Forms.CheckedListBox chkrubros;
         private System.Windows.Forms.Label lblRubrosEco;
         private System.Windows.Forms.TextBox txttags;
@@ -238,6 +237,8 @@
         private System.Windows.Forms.Button btnlimpiar;
         public System.Windows.Forms.TextBox txtarticulo;
         public System.Windows.Forms.TextBox txtnombre;
+        private System.Windows.Forms.CheckBox CBPulicar;
+        private System.Windows.Forms.CheckBox CBReserva;
     }
 }
 

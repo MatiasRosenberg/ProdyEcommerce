@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,10 @@ namespace ProdyEcommerce
     public partial class ProdyEcommerce : Form
     {
 
-        static string Codigo;
-        static string Nombre;
+        Funciones F = new Funciones();
 
-        public ProdyEcommerce(string codigo, string nombre)
+        public ProdyEcommerce()
         {
-            Codigo = codigo;
-            Nombre = nombre;
             InitializeComponent();
         }
 
@@ -35,9 +33,6 @@ namespace ProdyEcommerce
             txtnombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             F.llenarcheckbox(chkrubros);
-
-            txtarticulo.Text = Codigo;
-            txtnombre.Text = Nombre;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -67,8 +62,8 @@ namespace ProdyEcommerce
             txtdetalles.Text = "";
             txtnombre.Text = "";
             txttags.Text = "";
-            chbreservas.Checked = false;
-            chbpublicar.Checked = false;
+            CBReserva.Checked = false;
+            CBPulicar.Checked = false;
             txtarticulo.Enabled = true;
             txtnombre.Enabled = true;
             btnbuscar.Enabled = true;
@@ -76,7 +71,7 @@ namespace ProdyEcommerce
 
         private void txtarticulo_Leave(object sender, EventArgs e)
         {
-            Funciones F = new Funciones();
+            
             if (txtnombre.Text == "")
             {
                 F.completarnombe(txtnombre, txtarticulo);
@@ -86,10 +81,10 @@ namespace ProdyEcommerce
                 txtnombre.Enabled = false;
             }
         }
-
+        
         private void txtnombre_Leave(object sender, EventArgs e)
         {
-            Funciones F = new Funciones();
+            
             if (txtarticulo.Text == "")
             {
                 F.completarid(txtnombre, txtarticulo);
@@ -127,12 +122,25 @@ namespace ProdyEcommerce
             }
         }
 
-        private void chkrubros_Validated(object sender, EventArgs e)
-        {
-            for (int i = 0; i < chkrubros.Items.Count; i++)
+        private void txtarticulo_TextChanged(object sender, EventArgs e)
+        {  
+            if(txtarticulo.Text == "")
             {
-               
-            }
+                F.completarnombe(txtnombre, txtarticulo);
+                F.Completardetalle(txtdetalles, txtarticulo);
+                F.Completartags(txttags, txtarticulo);
+                txtarticulo.Enabled = false;
+                txtnombre.Enabled = false;
+            }                
         }
+
+        private void txtnombre_TextChanged(object sender, EventArgs e)
+        {
+                F.completarid(txtnombre, txtarticulo);
+                F.Completardetalle(txtdetalles, txtarticulo);
+                F.Completartags(txttags, txtarticulo);
+                txtarticulo.Enabled = false;
+                txtnombre.Enabled = false;  
+        } 
     }
 }

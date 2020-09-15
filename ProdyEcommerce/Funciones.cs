@@ -21,7 +21,7 @@ namespace ProdyEcommerce
         {
             public static DataTable Datos()
             {
-             DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
 
                 SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
                 string sql = "select idarticulo, nombre from articulos";
@@ -155,7 +155,6 @@ namespace ProdyEcommerce
         }
 
 
-        
     }
 }
 

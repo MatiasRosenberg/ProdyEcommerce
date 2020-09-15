@@ -17,9 +17,7 @@ namespace ProdyEcommerce
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string codigo = null;
-            string nombre = null;
-            Application.Run(new ProdyEcommerce(codigo, nombre));
+            Application.Run(new ProdyEcommerce());
         }
     }
 }
