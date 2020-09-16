@@ -1,4 +1,7 @@
-﻿namespace ProdyEcommerce
+﻿using System;
+using System.Windows.Forms;
+
+namespace ProdyEcommerce
 {
     partial class Busqueda_avanzada
     {
@@ -85,7 +88,6 @@
             this.dgvarticulos.Size = new System.Drawing.Size(961, 287);
             this.dgvarticulos.TabIndex = 4;
             this.dgvarticulos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellClick);
-            this.dgvarticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvarticulos_CellContentClick);
             // 
             // btnbuscar
             // 
@@ -114,6 +116,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvarticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
+        }
+
+        private void dgvarticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
 

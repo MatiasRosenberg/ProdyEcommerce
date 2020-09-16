@@ -33,6 +33,8 @@ namespace ProdyEcommerce
             txtnombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             F.llenarcheckbox(chkrubros);
+
+
         }
 
         private void btnsalir_Click(object sender, EventArgs e)

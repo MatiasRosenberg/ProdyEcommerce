@@ -153,8 +153,6 @@ namespace ProdyEcommerce
             listarubros.DataSource = dt;
             listarubros.DisplayMember = "Nombre";
         }
-
-
     }
 }
 
