@@ -184,43 +184,181 @@ namespace ProdyEcommerce
             }
         }
 
-        public string grabartags(TextBox idarticulo, TextBox txttags)
+        public void Checkearvariable(CheckBox Checkvariable)
         {
-            string salida = "Se actualizo correctamente";
-            SqlCommand cmd1;
+            cmd = new SqlCommand("select woo_Variable from articulos where woo_Variable = '1'", cnn);
+            SqlDataReader read = cmd.ExecuteReader();
 
+            if (read.Read() == true)
+            {
+                Checkvariable.Checked = true;
+            }
+            else
+            {
+                Checkvariable.Checked = false;
+            }
+        }
+
+        public void grabartags(TextBox idarticulo, TextBox txttags)
+        {
+           
+            string salida = "";
+            string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlinsert = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand("delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'", cnn);
+                cmd = new SqlCommand(cSqldelete, cnn);
                 cmd.ExecuteNonQuery();
-                cmd1 = new SqlCommand("insert into ecomm_tags values(" + txttags.Text + ") where idarticulo ='" + idarticulo.Text + "'", cnn);
-                cmd1.ExecuteNonQuery();
+                cmd = new SqlCommand(cSqlinsert, cnn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Los tags se guardaron correctamente");
 
             }
             catch (Exception ex)
             {
-                salida = "No se conecto: " + ex.ToString();
+                salida = "No se pudo ejecutar: " + ex.ToString();
             }
-            return salida;
+            
         }
 
-        public string Actualizar(int idpais, string nombre)
+        public void grabardetalles(TextBox idarticulo, TextBox txtdetalle)
         {
-            string salida = "Se actualizo correctamente";
 
+            string salida = "";
+            string cSqlinsert = "update Articulos set WOO_DETALLE = " + "'"+txtdetalle.Text+"'"+ " from articulos where idarticulo ='" + idarticulo.Text + "'";
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand("update Paises set idpais = " + idpais + ", nombre = '" + nombre + "' where idpais = " + idpais + " ", cnn);
+                cmd = new SqlCommand(cSqlinsert, cnn);
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Los detalles se guardaron correctamente");
+
             }
             catch (Exception ex)
             {
-                salida = "No se conecto: " + ex.ToString();
+                salida = "No se pudo ejecutar: " + ex.ToString();
             }
-            return salida;
         }
+
+        public void grabarpweb(CheckBox CB, TextBox idarticulo)
+        {
+            string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string salida = "";
+
+            if (CB.Checked == true)
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlweb1, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La publicacion web se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+
+            }
+            else
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlweb0, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La publicacion web se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+            }
+        }
+
+        public void grabarpreserva(CheckBox CB)
+        {
+            string cSqlreserva0 = "update configuracion set woo_backorder = 0 from configuracion";
+            string cSqlreserva1 = "update configuracion set woo_backorder = 1 from configuracion";
+            string salida = "";
+
+            if (CB.Checked == true)
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlreserva1, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La reserva se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+
+            }
+            else
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlreserva0, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La reserva se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+            }
+        }
+
+        public void grabarpvariable(CheckBox CB, TextBox idarticulo)
+        {
+            string cSqlvariable0 = "update articulos set woo_variable = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlvariable1 = "update articulos set woo_variable = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string salida = "";
+
+            if (CB.Checked == true)
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlvariable1, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La variable se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+
+            }
+            else
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlvariable0, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La variable se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+            }
+        }
+
+
     }
 }
 

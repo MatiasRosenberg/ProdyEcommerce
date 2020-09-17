@@ -43,6 +43,8 @@
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.CBPulicar = new System.Windows.Forms.CheckBox();
             this.CBReserva = new System.Windows.Forms.CheckBox();
+            this.Cbpagrupado = new System.Windows.Forms.CheckBox();
+            this.Cbpvariable = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblarticulo
@@ -104,6 +106,7 @@
             // txtdetalles
             // 
             this.txtdetalles.Location = new System.Drawing.Point(29, 110);
+            this.txtdetalles.MaxLength = 4000;
             this.txtdetalles.Multiline = true;
             this.txtdetalles.Name = "txtdetalles";
             this.txtdetalles.Size = new System.Drawing.Size(900, 199);
@@ -167,7 +170,7 @@
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Location = new System.Drawing.Point(842, 26);
+            this.btnlimpiar.Location = new System.Drawing.Point(842, 21);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(87, 25);
             this.btnlimpiar.TabIndex = 4;
@@ -195,11 +198,33 @@
             this.CBReserva.Text = "Permitir Reservas";
             this.CBReserva.UseVisualStyleBackColor = true;
             // 
+            // Cbpagrupado
+            // 
+            this.Cbpagrupado.AutoSize = true;
+            this.Cbpagrupado.Location = new System.Drawing.Point(491, 78);
+            this.Cbpagrupado.Name = "Cbpagrupado";
+            this.Cbpagrupado.Size = new System.Drawing.Size(117, 17);
+            this.Cbpagrupado.TabIndex = 14;
+            this.Cbpagrupado.Text = "Producto agrupado";
+            this.Cbpagrupado.UseVisualStyleBackColor = true;
+            // 
+            // Cbpvariable
+            // 
+            this.Cbpvariable.AutoSize = true;
+            this.Cbpvariable.Location = new System.Drawing.Point(613, 78);
+            this.Cbpvariable.Name = "Cbpvariable";
+            this.Cbpvariable.Size = new System.Drawing.Size(109, 17);
+            this.Cbpvariable.TabIndex = 15;
+            this.Cbpvariable.Text = "Producto variable";
+            this.Cbpvariable.UseVisualStyleBackColor = true;
+            // 
             // ProdyEcommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 543);
+            this.Controls.Add(this.Cbpvariable);
+            this.Controls.Add(this.Cbpagrupado);
             this.Controls.Add(this.CBReserva);
             this.Controls.Add(this.CBPulicar);
             this.Controls.Add(this.btnlimpiar);
@@ -240,6 +265,8 @@
         public System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.CheckBox CBPulicar;
         private System.Windows.Forms.CheckBox CBReserva;
+        private System.Windows.Forms.CheckBox Cbpagrupado;
+        private System.Windows.Forms.CheckBox Cbpvariable;
     }
 }
 

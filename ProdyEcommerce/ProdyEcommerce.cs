@@ -83,6 +83,7 @@ namespace ProdyEcommerce
                 txtnombre.Enabled = false;
                 F.Checkearweb(CBPulicar, txtarticulo);
                 F.Checkearreserva(CBReserva);
+                F.Checkearvariable(Cbpvariable);
             }
         }
         
@@ -98,6 +99,7 @@ namespace ProdyEcommerce
                 txtnombre.Enabled = false;
                 F.Checkearweb(CBPulicar, txtarticulo);
                 F.Checkearreserva(CBReserva);
+                F.Checkearvariable(Cbpvariable);
             }
 
         }
@@ -139,6 +141,7 @@ namespace ProdyEcommerce
                 txtnombre.Enabled = false;
                 F.Checkearweb(CBPulicar, txtarticulo);
                 F.Checkearreserva(CBReserva);
+                F.Checkearvariable(Cbpvariable);
             }                
         }
 
@@ -151,11 +154,17 @@ namespace ProdyEcommerce
             txtnombre.Enabled = false;
             F.Checkearweb(CBPulicar, txtarticulo);
             F.Checkearreserva(CBReserva);
+            F.Checkearvariable(Cbpvariable);
         }
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
             F.grabartags(txtarticulo, txttags);
+            F.grabardetalles(txtarticulo, txtdetalles);
+            F.grabarpweb(CBPulicar, txtarticulo);
+            F.grabarpreserva(CBReserva);
+            F.grabarpvariable(Cbpvariable, txtarticulo);
+            btnlimpiar_Click(null, null);
         }
     }
 }
