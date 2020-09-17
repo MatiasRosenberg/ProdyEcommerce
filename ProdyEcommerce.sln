@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.1169
+VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProdyEcommerce", "ProdyEcommerce\ProdyEcommerce.csproj", "{9F318A53-B98E-4926-B139-502961857E24}"
 EndProject
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F2936313-5E07-4933-8834-B686A01F72D3}
+		SolutionGuid = {EA87B59C-EB05-42E8-8C1C-47BA3A3C4B13}
 	EndGlobalSection
 EndGlobal

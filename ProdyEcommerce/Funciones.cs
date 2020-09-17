@@ -153,6 +153,74 @@ namespace ProdyEcommerce
             listarubros.DataSource = dt;
             listarubros.DisplayMember = "Nombre";
         }
+
+        public void Checkearweb(CheckBox checkweb, TextBox cajaid)
+        {
+            cmd = new SqlCommand("select * from articulos where publicarweb = 1 and idarticulo ='" + cajaid.Text + "'", cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.Read() == true)
+            {
+                checkweb.Checked = true;
+            }
+            else
+            {
+                checkweb.Checked = false;
+            }
+        }
+
+        public void Checkearreserva(CheckBox Checkreserva)
+        {
+            cmd = new SqlCommand("select woo_backorder from configuracion where woo_backorder = '1'", cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.Read() == true)
+            {
+                Checkreserva.Checked = true;
+            }
+            else
+            {
+                Checkreserva.Checked = false;
+            }
+        }
+
+        public string grabartags(TextBox idarticulo, TextBox txttags)
+        {
+            string salida = "Se actualizo correctamente";
+            SqlCommand cmd1;
+
+            try
+            {
+                //comando para hacer sentencias en sql
+                cmd = new SqlCommand("delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'", cnn);
+                cmd.ExecuteNonQuery();
+                cmd1 = new SqlCommand("insert into ecomm_tags values(" + txttags.Text + ") where idarticulo ='" + idarticulo.Text + "'", cnn);
+                cmd1.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                salida = "No se conecto: " + ex.ToString();
+            }
+            return salida;
+        }
+
+        public string Actualizar(int idpais, string nombre)
+        {
+            string salida = "Se actualizo correctamente";
+
+            try
+            {
+                //comando para hacer sentencias en sql
+                cmd = new SqlCommand("update Paises set idpais = " + idpais + ", nombre = '" + nombre + "' where idpais = " + idpais + " ", cnn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                salida = "No se conecto: " + ex.ToString();
+            }
+            return salida;
+        }
     }
 }
 

@@ -153,6 +153,7 @@
             this.btngrabar.TabIndex = 10;
             this.btngrabar.Text = "Grabar";
             this.btngrabar.UseVisualStyleBackColor = true;
+            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
             // 
             // btnsalir
             // 

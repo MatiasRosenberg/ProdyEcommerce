@@ -34,7 +34,7 @@ namespace ProdyEcommerce
 
             F.llenarcheckbox(chkrubros);
 
-
+            
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -81,6 +81,8 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+                F.Checkearweb(CBPulicar, txtarticulo);
+                F.Checkearreserva(CBReserva);
             }
         }
         
@@ -94,6 +96,8 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+                F.Checkearweb(CBPulicar, txtarticulo);
+                F.Checkearreserva(CBReserva);
             }
 
         }
@@ -133,16 +137,25 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
+                F.Checkearweb(CBPulicar, txtarticulo);
+                F.Checkearreserva(CBReserva);
             }                
         }
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-                F.completarid(txtnombre, txtarticulo);
-                F.Completardetalle(txtdetalles, txtarticulo);
-                F.Completartags(txttags, txtarticulo);
-                txtarticulo.Enabled = false;
-                txtnombre.Enabled = false;  
-        } 
+            F.completarid(txtnombre, txtarticulo);
+            F.Completardetalle(txtdetalles, txtarticulo);
+            F.Completartags(txttags, txtarticulo);
+            txtarticulo.Enabled = false;
+            txtnombre.Enabled = false;
+            F.Checkearweb(CBPulicar, txtarticulo);
+            F.Checkearreserva(CBReserva);
+        }
+
+        private void btngrabar_Click(object sender, EventArgs e)
+        {
+            F.grabartags(txtarticulo, txttags);
+        }
     }
 }
