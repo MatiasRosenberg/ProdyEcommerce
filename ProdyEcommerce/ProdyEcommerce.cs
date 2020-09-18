@@ -81,9 +81,7 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
-                F.Checkearweb(CBPulicar, txtarticulo);
-                F.Checkearreserva(CBReserva);
-                F.Checkearvariable(Cbpvariable);
+                F.Check(CBPulicar, Cbpvariable, Cbpagrupado, CBReserva, txtarticulo);
             }
         }
         
@@ -97,9 +95,7 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
-                F.Checkearweb(CBPulicar, txtarticulo);
-                F.Checkearreserva(CBReserva);
-                F.Checkearvariable(Cbpvariable);
+                F.Check(CBPulicar, Cbpvariable, Cbpagrupado, CBReserva, txtarticulo);
             }
 
         }
@@ -139,9 +135,7 @@ namespace ProdyEcommerce
                 F.Completartags(txttags, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
-                F.Checkearweb(CBPulicar, txtarticulo);
-                F.Checkearreserva(CBReserva);
-                F.Checkearvariable(Cbpvariable);
+                F.Check(CBPulicar, Cbpvariable, Cbpagrupado, CBReserva, txtarticulo);
             }                
         }
 
@@ -152,9 +146,7 @@ namespace ProdyEcommerce
             F.Completartags(txttags, txtarticulo);
             txtarticulo.Enabled = false;
             txtnombre.Enabled = false;
-            F.Checkearweb(CBPulicar, txtarticulo);
-            F.Checkearreserva(CBReserva);
-            F.Checkearvariable(Cbpvariable);
+            F.Check(CBPulicar, Cbpvariable, Cbpagrupado, CBReserva, txtarticulo);
         }
 
         private void btngrabar_Click(object sender, EventArgs e)

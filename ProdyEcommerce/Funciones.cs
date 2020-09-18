@@ -154,27 +154,18 @@ namespace ProdyEcommerce
             listarubros.DisplayMember = "Nombre";
         }
 
-        public void Checkearweb(CheckBox checkweb, TextBox cajaid)
+        public void Check(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, CheckBox Checkreserva, TextBox cajaid)
         {
-            cmd = new SqlCommand("select * from articulos where publicarweb = 1 and idarticulo ='" + cajaid.Text + "'", cnn);
+            cmd = new SqlCommand("select * from articulos where idarticulo ='" + cajaid.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
-
-            if (read.Read() == true)
-            {
-                checkweb.Checked = true;
-            }
-            else
-            {
-                checkweb.Checked = false;
-            }
-        }
-
-        public void Checkearreserva(CheckBox Checkreserva)
-        {
+            cmd = new SqlCommand("select isnull(woo_agrupado, 0) from articulos where idarticulo ='" + cajaid.Text + "'", cnn);
+            SqlDataReader read1 = cmd.ExecuteReader();
             cmd = new SqlCommand("select woo_backorder from configuracion where woo_backorder = '1'", cnn);
-            SqlDataReader read = cmd.ExecuteReader();
+            SqlDataReader read2 = cmd.ExecuteReader();
 
-            if (read.Read() == true)
+
+            //checkear configuracion
+            if (read2.Read() == true)
             {
                 Checkreserva.Checked = true;
             }
@@ -182,19 +173,26 @@ namespace ProdyEcommerce
             {
                 Checkreserva.Checked = false;
             }
-        }
 
-        public void Checkearvariable(CheckBox Checkvariable)
-        {
-            cmd = new SqlCommand("select woo_Variable from articulos where woo_Variable = '1'", cnn);
-            SqlDataReader read = cmd.ExecuteReader();
-
-            if (read.Read() == true)
+            //checkear agrupado
+            if (read1.Read() == true)
             {
-                Checkvariable.Checked = true;
+                agrupar.Checked = false;
             }
             else
             {
+                agrupar.Checked = true;
+            }
+
+            //checkear variable y puvlicar
+            if (read.Read() == true)
+            {
+                checkweb.Checked = Convert.ToBoolean(read["publicarweb"]);
+                Checkvariable.Checked = Convert.ToBoolean(read["woo_Variable"]);
+            }
+            else
+            {
+                checkweb.Checked = false;
                 Checkvariable.Checked = false;
             }
         }
@@ -242,6 +240,45 @@ namespace ProdyEcommerce
         }
 
         public void grabarpweb(CheckBox CB, TextBox idarticulo)
+        {
+            string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string salida = "";
+
+            if (CB.Checked == true)
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlweb1, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La publicacion web se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+
+            }
+            else
+            {
+                try
+                {
+                    //comando para hacer sentencias en sql
+                    cmd = new SqlCommand(cSqlweb0, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("La publicacion web se guardo correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    salida = "No se pudo ejecutar: " + ex.ToString();
+                }
+            }
+        }
+
+        public void grabaragrupado(CheckBox CB, TextBox idarticulo)
         {
             string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
             string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
