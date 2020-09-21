@@ -15,7 +15,7 @@ namespace ProdyEcommerce
     {
 
         Funciones F = new Funciones();
-
+        SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
         public ProdyEcommerce()
         {
             InitializeComponent();
@@ -152,8 +152,23 @@ namespace ProdyEcommerce
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            F.grabar(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, CBReserva, Cbpvariable);
-            btnlimpiar_Click(null, null);
+            using (var traseccion = cnn.BeginTransaction())
+            {
+                try
+                {
+                    F.grabar(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, CBReserva, Cbpvariable);
+                    btnlimpiar_Click(null, null);
+                    
+                    traseccion.Commit();
+                    throw new Exception();
+                }
+                catch
+                {
+                    traseccion.Rollback();
+                }
+            }
+
+           
         }
     }
 }

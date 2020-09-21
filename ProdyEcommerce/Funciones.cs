@@ -158,7 +158,7 @@ namespace ProdyEcommerce
         {
             cmd = new SqlCommand("select * from articulos where idarticulo ='" + cajaid.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
-            cmd = new SqlCommand("select isnull(woo_agrupado, 0) from articulos where woo_agrupado = 1 and idarticulo ='" + cajaid.Text + "'", cnn);
+            cmd = new SqlCommand("select isnull(woo_agrupado, 0) from articulos where woo_agrupado = 0 and idarticulo ='" + cajaid.Text + "'", cnn);
             SqlDataReader read1 = cmd.ExecuteReader();
             cmd = new SqlCommand("select woo_backorder from configuracion where woo_backorder = '1'", cnn);
             SqlDataReader read2 = cmd.ExecuteReader();
@@ -199,12 +199,12 @@ namespace ProdyEcommerce
 
         public void grabar(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBreserva, CheckBox CBvariable)
         {
-           
+
             string salida = "";
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
             string cSqldetalle = "update Articulos set WOO_DETALLE = " + "'" + txtdetalle.Text + "'" + " from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlweb0 = "update Articulos set publicarweb = 0  from articulos where idarticulo ='" + idarticulo.Text + "'";
             string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
             string cSqlgroup0 = "update Articulos set woo_agrupado = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
             string cSqlgroup1 = "update Articulos set woo_agrupado = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
@@ -250,6 +250,7 @@ namespace ProdyEcommerce
                 {
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlweb1, cnn);
+                    
                     cmd.ExecuteNonQuery();
 
                 }
