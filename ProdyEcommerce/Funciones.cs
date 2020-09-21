@@ -158,7 +158,7 @@ namespace ProdyEcommerce
         {
             cmd = new SqlCommand("select * from articulos where idarticulo ='" + cajaid.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
-            cmd = new SqlCommand("select isnull(woo_agrupado, 0) from articulos where idarticulo ='" + cajaid.Text + "'", cnn);
+            cmd = new SqlCommand("select isnull(woo_agrupado, 0) from articulos where woo_agrupado = 1 and idarticulo ='" + cajaid.Text + "'", cnn);
             SqlDataReader read1 = cmd.ExecuteReader();
             cmd = new SqlCommand("select woo_backorder from configuracion where woo_backorder = '1'", cnn);
             SqlDataReader read2 = cmd.ExecuteReader();
@@ -177,11 +177,11 @@ namespace ProdyEcommerce
             //checkear agrupado
             if (read1.Read() == true)
             {
-                agrupar.Checked = false;
+                agrupar.Checked = true;
             }
             else
             {
-                agrupar.Checked = true;
+                agrupar.Checked = false;
             }
 
             //checkear variable y puvlicar
@@ -197,62 +197,60 @@ namespace ProdyEcommerce
             }
         }
 
-        public void grabartags(TextBox idarticulo, TextBox txttags)
+        public void grabar(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBreserva, CheckBox CBvariable)
         {
            
             string salida = "";
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlinsert = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
+            string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
+            string cSqldetalle = "update Articulos set WOO_DETALLE = " + "'" + txtdetalle.Text + "'" + " from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlgroup0 = "update Articulos set woo_agrupado = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlgroup1 = "update Articulos set woo_agrupado = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlreserva0 = "update configuracion set woo_backorder = 0 from configuracion";
+            string cSqlreserva1 = "update configuracion set woo_backorder = 1 from configuracion";
+            string cSqlvariable0 = "update articulos set woo_variable = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlvariable1 = "update articulos set woo_variable = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+
+
+
+            //tags
             try
             {
                 //comando para hacer sentencias en sql
                 cmd = new SqlCommand(cSqldelete, cnn);
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(cSqlinsert, cnn);
+                cmd = new SqlCommand(cSqlinserttags, cnn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Los tags se guardaron correctamente");
 
             }
             catch (Exception ex)
             {
                 salida = "No se pudo ejecutar: " + ex.ToString();
             }
-            
-        }
 
-        public void grabardetalles(TextBox idarticulo, TextBox txtdetalle)
-        {
-
-            string salida = "";
-            string cSqlinsert = "update Articulos set WOO_DETALLE = " + "'"+txtdetalle.Text+"'"+ " from articulos where idarticulo ='" + idarticulo.Text + "'";
+            //detalles
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(cSqlinsert, cnn);
+                cmd = new SqlCommand(cSqldetalle, cnn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Los detalles se guardaron correctamente");
 
             }
             catch (Exception ex)
             {
                 salida = "No se pudo ejecutar: " + ex.ToString();
             }
-        }
 
-        public void grabarpweb(CheckBox CB, TextBox idarticulo)
-        {
-            string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string salida = "";
-
-            if (CB.Checked == true)
+            //web
+            if (CBweb.Checked == true)
             {
                 try
                 {
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlweb1, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La publicacion web se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -268,7 +266,6 @@ namespace ProdyEcommerce
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlweb0, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La publicacion web se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -276,22 +273,15 @@ namespace ProdyEcommerce
                     salida = "No se pudo ejecutar: " + ex.ToString();
                 }
             }
-        }
 
-        public void grabaragrupado(CheckBox CB, TextBox idarticulo)
-        {
-            string cSqlweb0 = "update Articulos set publicarweb = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string salida = "";
-
-            if (CB.Checked == true)
+            //agrupar
+            if (CBgroup.Checked == true)
             {
                 try
                 {
                     //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlweb1, cnn);
+                    cmd = new SqlCommand(cSqlgroup1, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La publicacion web se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -305,9 +295,8 @@ namespace ProdyEcommerce
                 try
                 {
                     //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlweb0, cnn);
+                    cmd = new SqlCommand(cSqlgroup0, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La publicacion web se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -315,22 +304,15 @@ namespace ProdyEcommerce
                     salida = "No se pudo ejecutar: " + ex.ToString();
                 }
             }
-        }
 
-        public void grabarpreserva(CheckBox CB)
-        {
-            string cSqlreserva0 = "update configuracion set woo_backorder = 0 from configuracion";
-            string cSqlreserva1 = "update configuracion set woo_backorder = 1 from configuracion";
-            string salida = "";
-
-            if (CB.Checked == true)
+            //reserva
+            if (CBreserva.Checked == true)
             {
                 try
                 {
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlreserva1, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La reserva se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -346,7 +328,6 @@ namespace ProdyEcommerce
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlreserva0, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La reserva se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -354,22 +335,15 @@ namespace ProdyEcommerce
                     salida = "No se pudo ejecutar: " + ex.ToString();
                 }
             }
-        }
 
-        public void grabarpvariable(CheckBox CB, TextBox idarticulo)
-        {
-            string cSqlvariable0 = "update articulos set woo_variable = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlvariable1 = "update articulos set woo_variable = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string salida = "";
-
-            if (CB.Checked == true)
+            //variable
+            if (CBvariable.Checked == true)
             {
                 try
                 {
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlvariable1, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La variable se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -385,7 +359,6 @@ namespace ProdyEcommerce
                     //comando para hacer sentencias en sql
                     cmd = new SqlCommand(cSqlvariable0, cnn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("La variable se guardo correctamente");
 
                 }
                 catch (Exception ex)
@@ -393,9 +366,10 @@ namespace ProdyEcommerce
                     salida = "No se pudo ejecutar: " + ex.ToString();
                 }
             }
+
+            MessageBox.Show("Se grabo correctamente");
+
         }
-
-
     }
 }
 

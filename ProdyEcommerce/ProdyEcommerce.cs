@@ -64,6 +64,7 @@ namespace ProdyEcommerce
             txtdetalles.Text = "";
             txtnombre.Text = "";
             txttags.Text = "";
+            Cbpagrupado.Checked = false;
             CBReserva.Checked = false;
             CBPulicar.Checked = false;
             txtarticulo.Enabled = true;
@@ -151,11 +152,7 @@ namespace ProdyEcommerce
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            F.grabartags(txtarticulo, txttags);
-            F.grabardetalles(txtarticulo, txtdetalles);
-            F.grabarpweb(CBPulicar, txtarticulo);
-            F.grabarpreserva(CBReserva);
-            F.grabarpvariable(Cbpvariable, txtarticulo);
+            F.grabar(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, CBReserva, Cbpvariable);
             btnlimpiar_Click(null, null);
         }
     }
