@@ -152,39 +152,8 @@ namespace ProdyEcommerce
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            //using (SqlConnection cnn = BaseDatos.DbConnection.getDBConnection())
-            //{
-            //    SqlCommand cmd = cnn.CreateCommand();
-            //    SqlTransaction transaction;
-            //    transaction = cnn.BeginTransaction("SampleTransaction");
-            //    cmd.Transaction = transaction;
-
-            //    try
-            //    {
-                    F.grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable);
-                    btnlimpiar_Click(null, null);
-            //        transaction.Commit();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Commit Exception Type: {0}" + ex.ToString());
-            //        MessageBox.Show("  Message: {0}", ex.Message);
-
-            //        try
-            //        {
-            //            transaction.Rollback();
-            //        }
-            //        catch (Exception ex2)
-            //        {
-            //            // This catch block will handle any errors that may have occurred
-            //            // on the server that would cause the rollback to fail, such as
-            //            // a closed connection.
-            //            MessageBox.Show("Rollback Exception Type: {0}", ex2.ToString());
-            //            MessageBox.Show("  Message: {0}", ex2.Message);
-            //        }
-            //    }
-            //}
-
+            F.grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable);
+            btnlimpiar_Click(null, null);
 
         }
     }

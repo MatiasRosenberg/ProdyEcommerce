@@ -66,7 +66,7 @@ namespace ProdyEcommerce
 
         public void completarnombe(TextBox cajanombre, TextBox cajaidarticulo)
         {
-            cmd = new SqlCommand("Select * from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            cmd = new SqlCommand("Select nombre from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
             
             if(read.Read() == true)
@@ -81,7 +81,7 @@ namespace ProdyEcommerce
 
         public void completarid(TextBox cajanombre, TextBox cajaidarticulo)
         {
-            cmd = new SqlCommand("Select * from articulos where nombre='" + cajanombre.Text + "'", cnn);
+            cmd = new SqlCommand("Select idarticulo from articulos where nombre='" + cajanombre.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
 
             if (read.Read() == true)
@@ -178,32 +178,30 @@ namespace ProdyEcommerce
 
         public void grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable)
         {
-
-            string salida = "";
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
             string Csql = "update articulos set woo_detalle=" + "'" + txtdetalle.Text + "'" + ",";
             Csql = Csql + "publicarweb=" + Convert.ToInt16(CBweb.Checked) + ",";
             Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
             Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";
-
-
+            
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(cSqldelete, cnn);
+                cmd = new SqlCommand(cSqldelete, cnn, cnn.BeginTransaction());
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(cSqlinserttags, cnn);
+                cmd = new SqlCommand(cSqlinserttags, cnn, cnn.BeginTransaction());
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(Csql, cnn);
+                cmd = new SqlCommand(Csql, cnn, cnn.BeginTransaction());
                 cmd.ExecuteNonQuery();
-
+                cmd.Transaction.Commit();
 
 
             }
             catch (Exception ex)
             {
-                salida = "No se pudo ejecutar: " + ex.ToString();
+                cmd.Transaction.Rollback();
+                throw ex;
             }
 
 
