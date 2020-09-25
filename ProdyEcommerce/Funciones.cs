@@ -154,68 +154,40 @@ namespace ProdyEcommerce
             listarubros.DisplayMember = "Nombre";
         }
 
-        public void Check(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, CheckBox Checkreserva, TextBox cajaid)
+        public void Checkarticulos(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, TextBox cajaid)
         {
-            cmd = new SqlCommand("select * from articulos where idarticulo ='" + cajaid.Text + "'", cnn);
+            string Csql = "select isnull(woo_agrupado, 0) agrupado , publicarweb, woo_variable from articulos where idarticulo ='" + cajaid.Text + "'";
+            cmd = new SqlCommand(Csql, cnn);
             SqlDataReader read = cmd.ExecuteReader();
-            cmd = new SqlCommand("select isnull(woo_agrupado, 0) from articulos where woo_agrupado = 0 and idarticulo ='" + cajaid.Text + "'", cnn);
-            SqlDataReader read1 = cmd.ExecuteReader();
-            cmd = new SqlCommand("select woo_backorder from configuracion where woo_backorder = '1'", cnn);
-            SqlDataReader read2 = cmd.ExecuteReader();
 
-
-            //checkear configuracion
-            if (read2.Read() == true)
-            {
-                Checkreserva.Checked = true;
-            }
-            else
-            {
-                Checkreserva.Checked = false;
-            }
-
-            //checkear agrupado
-            if (read1.Read() == true)
-            {
-                agrupar.Checked = true;
-            }
-            else
-            {
-                agrupar.Checked = false;
-            }
 
             //checkear variable y puvlicar
             if (read.Read() == true)
             {
                 checkweb.Checked = Convert.ToBoolean(read["publicarweb"]);
                 Checkvariable.Checked = Convert.ToBoolean(read["woo_Variable"]);
+                agrupar.Checked = Convert.ToBoolean(read["agrupado"]);
             }
             else
             {
                 checkweb.Checked = false;
                 Checkvariable.Checked = false;
+                agrupar.Checked = false;
             }
         }
 
-        public void grabar(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBreserva, CheckBox CBvariable)
+        public void grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable)
         {
 
             string salida = "";
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
-            string cSqldetalle = "update Articulos set WOO_DETALLE = " + "'" + txtdetalle.Text + "'" + " from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlweb0 = "update Articulos set publicarweb = 0  from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlweb1 = "update Articulos set publicarweb = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlgroup0 = "update Articulos set woo_agrupado = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlgroup1 = "update Articulos set woo_agrupado = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlreserva0 = "update configuracion set woo_backorder = 0 from configuracion";
-            string cSqlreserva1 = "update configuracion set woo_backorder = 1 from configuracion";
-            string cSqlvariable0 = "update articulos set woo_variable = 0 from articulos where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlvariable1 = "update articulos set woo_variable = 1 from articulos where idarticulo ='" + idarticulo.Text + "'";
+            string Csql = "update articulos set woo_detalle=" + "'" + txtdetalle.Text + "'" + ",";
+            Csql = Csql + "publicarweb=" + Convert.ToInt16(CBweb.Checked) + ",";
+            Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
+            Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";
 
 
-
-            //tags
             try
             {
                 //comando para hacer sentencias en sql
@@ -223,150 +195,17 @@ namespace ProdyEcommerce
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(cSqlinserttags, cnn);
                 cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                salida = "No se pudo ejecutar: " + ex.ToString();
-            }
-
-            //detalles
-            try
-            {
-                //comando para hacer sentencias en sql
-                cmd = new SqlCommand(cSqldetalle, cnn);
+                cmd = new SqlCommand(Csql, cnn);
                 cmd.ExecuteNonQuery();
 
+
+
             }
             catch (Exception ex)
             {
                 salida = "No se pudo ejecutar: " + ex.ToString();
             }
 
-            //web
-            if (CBweb.Checked == true)
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlweb1, cnn);
-                    
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-
-            }
-            else
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlweb0, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-            }
-
-            //agrupar
-            if (CBgroup.Checked == true)
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlgroup1, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-
-            }
-            else
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlgroup0, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-            }
-
-            //reserva
-            if (CBreserva.Checked == true)
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlreserva1, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-
-            }
-            else
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlreserva0, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-            }
-
-            //variable
-            if (CBvariable.Checked == true)
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlvariable1, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-
-            }
-            else
-            {
-                try
-                {
-                    //comando para hacer sentencias en sql
-                    cmd = new SqlCommand(cSqlvariable0, cnn);
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    salida = "No se pudo ejecutar: " + ex.ToString();
-                }
-            }
 
             MessageBox.Show("Se grabo correctamente");
 

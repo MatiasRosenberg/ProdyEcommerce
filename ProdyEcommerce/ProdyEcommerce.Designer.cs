@@ -42,7 +42,6 @@
             this.btnsalir = new System.Windows.Forms.Button();
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.CBPulicar = new System.Windows.Forms.CheckBox();
-            this.CBReserva = new System.Windows.Forms.CheckBox();
             this.Cbpagrupado = new System.Windows.Forms.CheckBox();
             this.Cbpvariable = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -181,27 +180,17 @@
             // CBPulicar
             // 
             this.CBPulicar.AutoSize = true;
-            this.CBPulicar.Location = new System.Drawing.Point(728, 78);
+            this.CBPulicar.Location = new System.Drawing.Point(842, 78);
             this.CBPulicar.Name = "CBPulicar";
             this.CBPulicar.Size = new System.Drawing.Size(87, 17);
             this.CBPulicar.TabIndex = 12;
             this.CBPulicar.Text = "Publicar web";
             this.CBPulicar.UseVisualStyleBackColor = true;
             // 
-            // CBReserva
-            // 
-            this.CBReserva.AutoSize = true;
-            this.CBReserva.Location = new System.Drawing.Point(821, 78);
-            this.CBReserva.Name = "CBReserva";
-            this.CBReserva.Size = new System.Drawing.Size(108, 17);
-            this.CBReserva.TabIndex = 13;
-            this.CBReserva.Text = "Permitir Reservas";
-            this.CBReserva.UseVisualStyleBackColor = true;
-            // 
             // Cbpagrupado
             // 
             this.Cbpagrupado.AutoSize = true;
-            this.Cbpagrupado.Location = new System.Drawing.Point(491, 78);
+            this.Cbpagrupado.Location = new System.Drawing.Point(605, 78);
             this.Cbpagrupado.Name = "Cbpagrupado";
             this.Cbpagrupado.Size = new System.Drawing.Size(117, 17);
             this.Cbpagrupado.TabIndex = 14;
@@ -211,7 +200,7 @@
             // Cbpvariable
             // 
             this.Cbpvariable.AutoSize = true;
-            this.Cbpvariable.Location = new System.Drawing.Point(613, 78);
+            this.Cbpvariable.Location = new System.Drawing.Point(727, 78);
             this.Cbpvariable.Name = "Cbpvariable";
             this.Cbpvariable.Size = new System.Drawing.Size(109, 17);
             this.Cbpvariable.TabIndex = 15;
@@ -225,7 +214,6 @@
             this.ClientSize = new System.Drawing.Size(976, 543);
             this.Controls.Add(this.Cbpvariable);
             this.Controls.Add(this.Cbpagrupado);
-            this.Controls.Add(this.CBReserva);
             this.Controls.Add(this.CBPulicar);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btnsalir);
@@ -264,7 +252,6 @@
         public System.Windows.Forms.TextBox txtarticulo;
         public System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.CheckBox CBPulicar;
-        private System.Windows.Forms.CheckBox CBReserva;
         private System.Windows.Forms.CheckBox Cbpagrupado;
         private System.Windows.Forms.CheckBox Cbpvariable;
     }
