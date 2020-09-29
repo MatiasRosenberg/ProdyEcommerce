@@ -64,7 +64,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void completarnombe(TextBox cajanombre, TextBox cajaidarticulo)
+        public void Completarnombe(TextBox cajanombre, TextBox cajaidarticulo)
         {
             cmd = new SqlCommand("Select nombre from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -79,7 +79,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void completarid(TextBox cajanombre, TextBox cajaidarticulo)
+        public void Completarid(TextBox cajanombre, TextBox cajaidarticulo)
         {
             cmd = new SqlCommand("Select idarticulo from articulos where nombre='" + cajanombre.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -124,7 +124,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void llenardatagrid(DataGridView dgv)
+        public void Llenardatagrid(DataGridView dgv)
         {
             try
             {
@@ -141,17 +141,18 @@ namespace ProdyEcommerce
             }
         }
 
-        public void llenarcheckbox(CheckedListBox listarubros)
+        public void Llenarcheckbox(CheckedListBox listarubros)
         {
             DataTable dt = new DataTable();
 
-            string consultarubros = "select * from rubros order by nombre asc";
+            string consultarubros = "select idRubro, Nombre from rubros order by nombre asc";
             cmd = new SqlCommand(consultarubros, cnn);
             da = new SqlDataAdapter(cmd);
             da.Fill(dt);
 
             listarubros.DataSource = dt;
             listarubros.DisplayMember = "Nombre";
+            listarubros.ValueMember = "idRubro";
         }
 
         public void Checkarticulos(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, TextBox cajaid)
@@ -176,7 +177,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable)
         {
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
@@ -200,8 +201,17 @@ namespace ProdyEcommerce
             }
             catch (Exception ex)
             {
-                cmd.Transaction.Rollback();
-                throw ex;
+                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                Console.WriteLine("  Message: {0}", ex.Message);
+                try
+                {
+                    cmd.Transaction.Rollback();
+                }
+                catch(Exception ex2)
+                {
+                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                    Console.WriteLine("  Message: {0}", ex2.Message);
+                }
             }
 
 
