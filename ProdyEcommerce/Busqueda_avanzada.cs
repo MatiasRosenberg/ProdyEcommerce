@@ -31,7 +31,7 @@ namespace ProdyEcommerce
             comboboxfiltro.Items.Add("Nombre");
 
             
-            F.llenardatagrid(dgvarticulos);
+            F.Llenardatagrid(dgvarticulos);
         }
 
 
@@ -61,10 +61,17 @@ namespace ProdyEcommerce
 
         private void dgvarticulos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ProdyEcommerce P = Application.OpenForms.OfType<ProdyEcommerce>().SingleOrDefault();
-            P.txtarticulo.Text = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-            P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
-            this.Hide();          
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                ProdyEcommerce P = Application.OpenForms.OfType<ProdyEcommerce>().SingleOrDefault();
+                P.txtarticulo.Text = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                this.Hide();
+            } 
         }
     }
 }

@@ -28,13 +28,7 @@ namespace ProdyEcommerce
             txtarticulo.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtarticulo.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            txtnombre.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocompleten();
-            txtnombre.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtnombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-            F.Llenarcheckbox(chkrubros);
-
-            
+            F.Llenarcheckbox(chkrubros);           
         }
 
         private void btnsalir_Click(object sender, EventArgs e)

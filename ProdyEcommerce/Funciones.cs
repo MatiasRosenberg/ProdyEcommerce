@@ -40,25 +40,12 @@ namespace ProdyEcommerce
 
                 AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
                 foreach (DataRow row in dt.Rows)
-            {
-                coleccion.Add(Convert.ToString(row["idarticulo"]));
-            }
-
-            return coleccion;
-
-            }
-
-            public static AutoCompleteStringCollection Autocompleten()
-            {
-                DataTable dt = Datos();
-
-                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
-                foreach (DataRow row in dt.Rows)
                 {
+                    coleccion.Add(Convert.ToString(row["idarticulo"]));
                     coleccion.Add(Convert.ToString(row["nombre"]));
                 }
 
-                return coleccion;
+            return coleccion;
 
             }
 
@@ -189,12 +176,13 @@ namespace ProdyEcommerce
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(cSqldelete, cnn, cnn.BeginTransaction());
+                cmd = new SqlCommand(cSqldelete, cnn);
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(cSqlinserttags, cnn, cnn.BeginTransaction());
+                cmd = new SqlCommand(cSqlinserttags, cnn);
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(Csql, cnn, cnn.BeginTransaction());
+                cmd = new SqlCommand(Csql, cnn);
                 cmd.ExecuteNonQuery();
+                cnn.BeginTransaction();
                 cmd.Transaction.Commit();
 
 
