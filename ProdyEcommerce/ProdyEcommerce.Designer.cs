@@ -36,6 +36,9 @@
             // Btnproductos
             // 
             this.Btnproductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Btnproductos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btnproductos.FlatAppearance.BorderSize = 2;
+            this.Btnproductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnproductos.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnproductos.Location = new System.Drawing.Point(100, 128);
             this.Btnproductos.Name = "Btnproductos";
@@ -48,6 +51,9 @@
             // btnconfiguracion
             // 
             this.btnconfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnconfiguracion.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+            this.btnconfiguracion.FlatAppearance.BorderSize = 2;
+            this.btnconfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnconfiguracion.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnconfiguracion.Location = new System.Drawing.Point(354, 128);
             this.btnconfiguracion.Name = "btnconfiguracion";
@@ -59,6 +65,9 @@
             // Btnsalir
             // 
             this.Btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Btnsalir.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.Btnsalir.FlatAppearance.BorderSize = 2;
+            this.Btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnsalir.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnsalir.Location = new System.Drawing.Point(596, 128);
             this.Btnsalir.Name = "Btnsalir";
