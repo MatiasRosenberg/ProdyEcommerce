@@ -141,6 +141,18 @@ namespace ProdyEcommerce
             listarubros.DisplayMember = "Nombre";
             listarubros.ValueMember = "idRubro";
 
+            string Csql = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + cajaid.Text + "'";
+            cmd = new SqlCommand(Csql, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            foreach (int indexChecked in listarubros.CheckedIndices)
+            {
+              
+                MessageBox.Show("Index#: " + indexChecked.ToString() + ", is checked. Checked state is:" +
+                                listarubros.GetItemCheckState(indexChecked).ToString() + ".");
+            }
+
+
         }
 
         public void Checkarticulos(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, TextBox cajaid)
