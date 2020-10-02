@@ -15,7 +15,7 @@ namespace ProdyEcommerce
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
-
+        private bool insideCheckEveryOther;
 
         public static class AutoCompleClass
         {
@@ -128,7 +128,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void Llenarcheckbox(CheckedListBox listarubros)
+        public void Llenarcheckbox(CheckedListBox listarubros, TextBox cajaid)
         {
             DataTable dt = new DataTable();
 
@@ -140,6 +140,7 @@ namespace ProdyEcommerce
             listarubros.DataSource = dt;
             listarubros.DisplayMember = "Nombre";
             listarubros.ValueMember = "idRubro";
+
         }
 
         public void Checkarticulos(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, TextBox cajaid)

@@ -94,20 +94,29 @@
     <Compile Include="Busqueda_avanzada.Designer.cs">
       <DependentUpon>Busqueda_avanzada.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProdyEcommerce.cs">
+    <Compile Include="Productos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProdyEcommerce.Designer.cs">
-      <DependentUpon>ProdyEcommerce.cs</DependentUpon>
+    <Compile Include="Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
     <Compile Include="Funciones.cs" />
+    <Compile Include="Prodyecommerce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prodyecommerce.Designer.cs">
+      <DependentUpon>Prodyecommerce.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Busqueda_avanzada.resx">
       <DependentUpon>Busqueda_avanzada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProdyEcommerce.resx">
-      <DependentUpon>ProdyEcommerce.cs</DependentUpon>
+    <EmbeddedResource Include="Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prodyecommerce.resx">
+      <DependentUpon>Prodyecommerce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
