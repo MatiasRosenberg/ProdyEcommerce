@@ -28,7 +28,7 @@ namespace ProdyEcommerce
             txtarticulo.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtarticulo.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            F.Llenarcheckbox(chkrubros, txtarticulo);           
+
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -71,9 +71,7 @@ namespace ProdyEcommerce
             
             if (txtnombre.Text == "")
             {
-                F.Completarnombe(txtnombre, txtarticulo);
-                F.Completardetalle(txtdetalles, txtarticulo);
-                F.Completartags(txttags, txtarticulo);
+                F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
                 F.Checkarticulos(CBPulicar, Cbpvariable, Cbpagrupado, txtarticulo);
@@ -85,9 +83,7 @@ namespace ProdyEcommerce
             
             if (txtarticulo.Text == "")
             {
-                F.Completarid(txtnombre, txtarticulo);
-                F.Completardetalle(txtdetalles, txtarticulo);
-                F.Completartags(txttags, txtarticulo);
+                F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
                 F.Checkarticulos(CBPulicar, Cbpvariable, Cbpagrupado, txtarticulo);
@@ -125,9 +121,7 @@ namespace ProdyEcommerce
         {  
             if(txtarticulo.Text == "")
             {
-                F.Completarnombe(txtnombre, txtarticulo);
-                F.Completardetalle(txtdetalles, txtarticulo);
-                F.Completartags(txttags, txtarticulo);
+                F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
                 F.Checkarticulos(CBPulicar, Cbpvariable, Cbpagrupado, txtarticulo);
@@ -136,9 +130,7 @@ namespace ProdyEcommerce
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Completarid(txtnombre, txtarticulo);
-            F.Completardetalle(txtdetalles, txtarticulo);
-            F.Completartags(txttags, txtarticulo);
+            F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo);
             txtarticulo.Enabled = false;
             txtnombre.Enabled = false;
             F.Checkarticulos(CBPulicar, Cbpvariable, Cbpagrupado, txtarticulo);
