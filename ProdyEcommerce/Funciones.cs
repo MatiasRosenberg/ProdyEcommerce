@@ -15,7 +15,7 @@ namespace ProdyEcommerce
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
-        private bool insideCheckEveryOther;
+
 
         public static class AutoCompleClass
         {
@@ -45,19 +45,20 @@ namespace ProdyEcommerce
                     coleccion.Add(Convert.ToString(row["nombre"]));
                 }
 
-            return coleccion;
+                return coleccion;
 
             }
 
         }
-        
-        public void Llenar(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo)
+
+        public void Llenar(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, WOO_DETALLE  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
             cmd = new SqlCommand("Select TAGS from ecomm_tags where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read1 = cmd.ExecuteReader();
 
+            //dtrubros
             DataTable dt = new DataTable();
 
             string consultarubros = "select idRubro, Nombre from rubros order by nombre asc";
@@ -72,23 +73,34 @@ namespace ProdyEcommerce
 
             string Csql = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(Csql, cnn);
-            SqlDataReader read2= cmd.ExecuteReader();
+            SqlDataReader read2 = cmd.ExecuteReader();
 
+            string CsqlCheck = "select isnull(woo_agrupado, 0) agrupado , publicarweb, woo_variable from articulos where idarticulo ='" + cajaidarticulo.Text + "'";
+            cmd = new SqlCommand(CsqlCheck, cnn);
+            SqlDataReader read3 = cmd.ExecuteReader();
 
-
-
+            //recorrer checklistbox
             if (read2.HasRows)
             {
                 while (read2.Read())
                 {
-                    for (int i = 0; i < listarubros.Items.Count -1; i++)
+
+                    /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
+                    for (int i = 0; i < listarubros.Items.Count; i++)
                     {
-                        if (read2.GetString(i) == read2["idRubro"].ToString())
+
+                        DataRowView r = (DataRowView)listarubros.Items[i];
+                        string val = (r[listarubros.ValueMember]).ToString();
+                        string dis = (r[listarubros.DisplayMember]).ToString();
+                        r = null;
+                        if (read2["Idrubro"].ToString() == val)
                         {
                             listarubros.SetItemChecked(i, true);
                         }
-                        
+
                     }
+
+
                 }
             }
             else
@@ -98,27 +110,15 @@ namespace ProdyEcommerce
             read2.Close();
 
 
-
-
-            //articulo, nombre
+            //Nombre, woo_detalle
             if (read.Read() == true)
             {
                 cajanombre.Text = read["nombre"].ToString();
-            }
-            else
-            {
-                cajanombre.Text = "";
-            }
-
-            
-
-            //woo_dedtalle
-            if (read.Read() == true)
-            {
                 cajadetalle.Text = read["WOO_DETALLE"].ToString();
             }
             else
             {
+                cajanombre.Text = "";
                 cajadetalle.Text = "";
             }
 
@@ -132,7 +132,21 @@ namespace ProdyEcommerce
                 cajatags.Text = "";
             }
 
-            
+            //checkboxs
+            if (read3.Read() == true)
+            {
+                checkweb.Checked = Convert.ToBoolean(read3["publicarweb"]);
+                Checkvariable.Checked = Convert.ToBoolean(read3["woo_Variable"]);
+                agrupar.Checked = Convert.ToBoolean(read3["agrupado"]);
+            }
+            else
+            {
+                checkweb.Checked = false;
+                Checkvariable.Checked = false;
+                agrupar.Checked = false;
+            }
+
+
         }
 
         public void Llenardatagrid(DataGridView dgv)
@@ -146,45 +160,61 @@ namespace ProdyEcommerce
 
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("no se pudo llenar la tabla" + ex.ToString());
             }
         }
 
-
-
-        public void Checkarticulos(CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, TextBox cajaid)
-        {
-            string Csql = "select isnull(woo_agrupado, 0) agrupado , publicarweb, woo_variable from articulos where idarticulo ='" + cajaid.Text + "'";
-            cmd = new SqlCommand(Csql, cnn);
-            SqlDataReader read = cmd.ExecuteReader();
-
-
-            //checkear variable y puvlicar
-            if (read.Read() == true)
-            {
-                checkweb.Checked = Convert.ToBoolean(read["publicarweb"]);
-                Checkvariable.Checked = Convert.ToBoolean(read["woo_Variable"]);
-                agrupar.Checked = Convert.ToBoolean(read["agrupado"]);
-            }
-            else
-            {
-                checkweb.Checked = false;
-                Checkvariable.Checked = false;
-                agrupar.Checked = false;
-            }
-        }
-
-        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros)
         {
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
-            string Csql = "update articulos set WOO_DETALLE='" + "'" + txtdetalle.Text + "'" + ",";
+            string Csql = "update articulos set WOO_DETALLE='" + txtdetalle.Text + "'" + ",";
             Csql = Csql + "publicarweb=" + Convert.ToInt16(CBweb.Checked) + ",";
             Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
-            Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";
-            
+            Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";                  
+            string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
+            cmd = new SqlCommand(Csqlrubros, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+
+                    /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
+                    for (int i = 0; i < listarubros.Items.Count; i++)
+                    {
+                        
+                        DataRowView r = (DataRowView)listarubros.Items[i];
+                        string val = (r[listarubros.ValueMember]).ToString();
+                        string dis = (r[listarubros.DisplayMember]).ToString();
+                        r = null;
+                        string Csqldrubros = "delete from rubrosarticulos where idarticulo='" + idarticulo.Text + "'" + "and idrubro='" + val + "'";
+                        if (listarubros.GetItemCheckState(i) == CheckState.Checked)
+                        {
+                            
+                            cmd = new SqlCommand(Csqldrubros, cnn);
+                            cmd.ExecuteNonQuery();
+                            string Csqlirubros = "insert into rubrosarticulos (idarticulo, idrubro) values(" + "'" + idarticulo.Text + "'" + "," + "'" + val + "'" + ")";
+                            cmd = new SqlCommand(Csqlirubros, cnn);
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd = new SqlCommand(Csqldrubros, cnn);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            read.Close();
+
             try
             {
                 //comando para hacer sentencias en sql
@@ -194,6 +224,7 @@ namespace ProdyEcommerce
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csql, cnn);
                 cmd.ExecuteNonQuery();
+
                 cnn.BeginTransaction();
                 cmd.Transaction.Commit();
 
