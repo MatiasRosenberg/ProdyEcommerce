@@ -89,6 +89,7 @@
             this.Controls.Add(this.btnconfiguracion);
             this.Controls.Add(this.Btnproductos);
             this.Name = "Prodyecommerce";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prodyecommerce";
             this.ResumeLayout(false);
 

@@ -230,6 +230,7 @@
             this.Controls.Add(this.lblarticulo);
             this.Name = "Productos";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
