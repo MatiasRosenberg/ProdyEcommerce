@@ -33,7 +33,6 @@ namespace ProdyEcommerce
 
             }
 
-
             public static AutoCompleteStringCollection Autocomplete()
             {
                 DataTable dt = Datos();
@@ -42,6 +41,34 @@ namespace ProdyEcommerce
                 foreach (DataRow row in dt.Rows)
                 {
                     coleccion.Add(Convert.ToString(row["idarticulo"]));
+                    coleccion.Add(Convert.ToString(row["nombre"]));
+                }
+
+                return coleccion;
+
+            }
+
+            public static AutoCompleteStringCollection Autocompleteidarticulo()
+            {
+                DataTable dt = Datos();
+
+                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+                foreach (DataRow row in dt.Rows)
+                {
+                    coleccion.Add(Convert.ToString(row["idarticulo"]));
+                }
+
+                return coleccion;
+
+            }
+
+            public static AutoCompleteStringCollection Autocompletenombre()
+            {
+                DataTable dt = Datos();
+
+                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+                foreach (DataRow row in dt.Rows)
+                {
                     coleccion.Add(Convert.ToString(row["nombre"]));
                 }
 

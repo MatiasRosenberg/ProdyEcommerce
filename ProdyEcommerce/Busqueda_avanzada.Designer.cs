@@ -42,6 +42,8 @@ namespace ProdyEcommerce
             // 
             // txtbusqueda
             // 
+            this.txtbusqueda.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtbusqueda.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtbusqueda.Location = new System.Drawing.Point(73, 12);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(429, 20);

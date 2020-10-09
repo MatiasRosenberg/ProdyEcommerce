@@ -21,7 +21,7 @@ namespace ProdyEcommerce
         }
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
         SqlCommand cmd;
-       
+
 
 
         Funciones F = new Funciones();
@@ -30,10 +30,10 @@ namespace ProdyEcommerce
             comboboxfiltro.Items.Add("Codigo");
             comboboxfiltro.Items.Add("Nombre");
 
-            
+
+
             F.Llenardatagrid(dgvarticulos);
         }
-
 
 
 
@@ -47,6 +47,12 @@ namespace ProdyEcommerce
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 dgvarticulos.DataSource = dt;
+
+
+                txtbusqueda.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocompleteidarticulo();
+                txtbusqueda.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtbusqueda.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
             }
             if (comboboxfiltro.SelectedIndex == 1)
             {
@@ -56,6 +62,10 @@ namespace ProdyEcommerce
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 dgvarticulos.DataSource = dt;
+
+                txtbusqueda.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocompletenombre();
+                txtbusqueda.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtbusqueda.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
         }
 
@@ -71,7 +81,7 @@ namespace ProdyEcommerce
                 P.txtarticulo.Text = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                 P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
                 this.Hide();
-            } 
+            }
         }
     }
 }

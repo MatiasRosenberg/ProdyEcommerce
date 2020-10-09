@@ -63,6 +63,8 @@ namespace ProdyEcommerce
             txtarticulo.Enabled = true;
             txtnombre.Enabled = true;
             btnbuscar.Enabled = true;
+            chkrubros.DataSource = null;
+            chkrubros.Items.Clear();
             txtarticulo.Focus();
         }
 

@@ -54,6 +54,7 @@
             this.btnconfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnconfiguracion.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
             this.btnconfiguracion.FlatAppearance.BorderSize = 2;
+            this.btnconfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnconfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnconfiguracion.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnconfiguracion.Location = new System.Drawing.Point(354, 128);
@@ -68,6 +69,7 @@
             this.Btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Btnsalir.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
             this.Btnsalir.FlatAppearance.BorderSize = 2;
+            this.Btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnsalir.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnsalir.Location = new System.Drawing.Point(596, 128);
