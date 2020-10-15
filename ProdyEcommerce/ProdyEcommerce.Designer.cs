@@ -63,6 +63,7 @@
             this.btnconfiguracion.TabIndex = 1;
             this.btnconfiguracion.Text = "Configuracion";
             this.btnconfiguracion.UseVisualStyleBackColor = false;
+            this.btnconfiguracion.Click += new System.EventHandler(this.btnconfiguracion_Click);
             // 
             // Btnsalir
             // 

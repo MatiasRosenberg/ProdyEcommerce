@@ -28,5 +28,12 @@ namespace ProdyEcommerce
         {
             this.Close();
         }
+
+        private void btnconfiguracion_Click(object sender, EventArgs e)
+        {
+            Configuracion C = new Configuracion();
+
+            C.Show();
+        }
     }
 }
