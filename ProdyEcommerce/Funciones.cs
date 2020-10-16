@@ -276,6 +276,57 @@ namespace ProdyEcommerce
             MessageBox.Show("Se grabo correctamente");
 
         }
+
+        public void llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox)
+        {
+            string Csqllista = "select * from listas";
+            string Csqlvendedor = "select * from vendedores";
+            string Csqldeposito = "select * from depositos";
+            string Csqlmoneda = "select * from monedas";
+            string Csqlconfiguracion = "select * from configuracion";
+
+            cmd = new SqlCommand(Csqllista, cnn);
+            SqlDataReader Rlista = cmd.ExecuteReader();
+            cmd = new SqlCommand(Csqlvendedor, cnn);
+            SqlDataReader RVendedor = cmd.ExecuteReader();
+            cmd = new SqlCommand(Csqldeposito, cnn);
+            SqlDataReader Rdeposito = cmd.ExecuteReader();
+            cmd = new SqlCommand(Csqlmoneda, cnn);
+            SqlDataReader Rmoneda = cmd.ExecuteReader();
+            cmd = new SqlCommand(Csqlconfiguracion, cnn);
+            SqlDataReader Rconfiguracion = cmd.ExecuteReader();
+
+            //rellenar combobox
+            while (Rlista.Read())
+            {
+                cblista.Items.Add(Rlista["Nombre"]);
+            }
+
+            while (RVendedor.Read())
+            {
+                cbvendedor.Items.Add(RVendedor["Nombre"]);
+            }
+            while (Rdeposito.Read())
+            {
+                cbstock.Items.Add(Rdeposito["Nombre"]);
+            }
+            while (Rmoneda.Read())
+            {
+                cbmoneda.Items.Add(Rmoneda["Nombre"]);
+            }
+
+
+
+            //Reserva
+            if (Rconfiguracion.Read() == true)
+            {
+                Chbox.Checked = Convert.ToBoolean(Rconfiguracion["WOO_BACKORDER"]);
+            }
+            else
+            {
+                Chbox.Checked = false;
+            }
+        }
     }
 }
 

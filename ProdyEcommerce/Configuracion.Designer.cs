@@ -29,152 +29,158 @@
         private void InitializeComponent()
         {
             this.lbllista = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.lblvendedor = new System.Windows.Forms.Label();
+            this.lblstock = new System.Windows.Forms.Label();
+            this.lblmoneda = new System.Windows.Forms.Label();
+            this.lblftp = new System.Windows.Forms.Label();
+            this.cbpublicar = new System.Windows.Forms.ComboBox();
+            this.cbvendedor = new System.Windows.Forms.ComboBox();
+            this.cbstock = new System.Windows.Forms.ComboBox();
+            this.cbmoneda = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btngrabar = new System.Windows.Forms.Button();
+            this.btnsalir = new System.Windows.Forms.Button();
+            this.txtimagen = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbllista
             // 
             this.lbllista.AutoSize = true;
-            this.lbllista.Location = new System.Drawing.Point(34, 41);
+            this.lbllista.Location = new System.Drawing.Point(22, 41);
             this.lbllista.Name = "lbllista";
             this.lbllista.Size = new System.Drawing.Size(133, 13);
             this.lbllista.TabIndex = 0;
             this.lbllista.Text = "Lista de precios a publicar:";
             // 
-            // label1
+            // lblvendedor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Lista de precios a publicar:";
+            this.lblvendedor.AutoSize = true;
+            this.lblvendedor.Location = new System.Drawing.Point(22, 71);
+            this.lblvendedor.Name = "lblvendedor";
+            this.lblvendedor.Size = new System.Drawing.Size(130, 13);
+            this.lblvendedor.TabIndex = 1;
+            this.lblvendedor.Text = "Vendedor de Ecommerce:";
             // 
-            // label2
+            // lblstock
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Lista de precios a publicar:";
+            this.lblstock.AutoSize = true;
+            this.lblstock.Location = new System.Drawing.Point(22, 98);
+            this.lblstock.Name = "lblstock";
+            this.lblstock.Size = new System.Drawing.Size(145, 13);
+            this.lblstock.TabIndex = 2;
+            this.lblstock.Text = "Deposito de stock a publicar:";
             // 
-            // label3
+            // lblmoneda
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 130);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Lista de precios a publicar:";
+            this.lblmoneda.AutoSize = true;
+            this.lblmoneda.Location = new System.Drawing.Point(22, 130);
+            this.lblmoneda.Name = "lblmoneda";
+            this.lblmoneda.Size = new System.Drawing.Size(145, 13);
+            this.lblmoneda.TabIndex = 3;
+            this.lblmoneda.Text = "Moneda de precio a publicar:";
             // 
-            // label4
+            // lblftp
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 163);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Lista de precios a publicar:";
+            this.lblftp.AutoSize = true;
+            this.lblftp.Location = new System.Drawing.Point(22, 162);
+            this.lblftp.Name = "lblftp";
+            this.lblftp.Size = new System.Drawing.Size(77, 13);
+            this.lblftp.TabIndex = 4;
+            this.lblftp.Text = "Ftp de imagen:";
             // 
-            // comboBox1
+            // cbpublicar
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(173, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.cbpublicar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbpublicar.FormattingEnabled = true;
+            this.cbpublicar.Location = new System.Drawing.Point(173, 33);
+            this.cbpublicar.Name = "cbpublicar";
+            this.cbpublicar.Size = new System.Drawing.Size(121, 21);
+            this.cbpublicar.TabIndex = 5;
             // 
-            // comboBox2
+            // cbvendedor
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(173, 63);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 6;
+            this.cbvendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbvendedor.FormattingEnabled = true;
+            this.cbvendedor.Location = new System.Drawing.Point(173, 60);
+            this.cbvendedor.Name = "cbvendedor";
+            this.cbvendedor.Size = new System.Drawing.Size(121, 21);
+            this.cbvendedor.TabIndex = 6;
             // 
-            // comboBox3
+            // cbstock
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(173, 95);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 7;
+            this.cbstock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbstock.FormattingEnabled = true;
+            this.cbstock.Location = new System.Drawing.Point(173, 90);
+            this.cbstock.Name = "cbstock";
+            this.cbstock.Size = new System.Drawing.Size(121, 21);
+            this.cbstock.TabIndex = 7;
             // 
-            // comboBox4
+            // cbmoneda
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(173, 122);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 8;
+            this.cbmoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbmoneda.FormattingEnabled = true;
+            this.cbmoneda.Location = new System.Drawing.Point(173, 122);
+            this.cbmoneda.Name = "cbmoneda";
+            this.cbmoneda.Size = new System.Drawing.Size(121, 21);
+            this.cbmoneda.TabIndex = 8;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(351, 37);
+            this.checkBox1.Location = new System.Drawing.Point(183, 207);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(101, 17);
             this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "Admitir reserva?";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btngrabar
             // 
-            this.button1.Location = new System.Drawing.Point(37, 239);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btngrabar.Location = new System.Drawing.Point(25, 239);
+            this.btngrabar.Name = "btngrabar";
+            this.btngrabar.Size = new System.Drawing.Size(75, 23);
+            this.btngrabar.TabIndex = 10;
+            this.btngrabar.Text = "Grabar";
+            this.btngrabar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnsalir
             // 
-            this.button2.Location = new System.Drawing.Point(356, 239);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnsalir.Location = new System.Drawing.Point(375, 239);
+            this.btnsalir.Name = "btnsalir";
+            this.btnsalir.Size = new System.Drawing.Size(75, 23);
+            this.btnsalir.TabIndex = 11;
+            this.btnsalir.Text = "Salir";
+            this.btnsalir.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtimagen
             // 
-            this.textBox1.Location = new System.Drawing.Point(174, 155);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtimagen.Location = new System.Drawing.Point(105, 155);
+            this.txtimagen.MaxLength = 200;
+            this.txtimagen.Name = "txtimagen";
+            this.txtimagen.Size = new System.Drawing.Size(226, 20);
+            this.txtimagen.TabIndex = 12;
             // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 277);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtimagen);
+            this.Controls.Add(this.btnsalir);
+            this.Controls.Add(this.btngrabar);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbmoneda);
+            this.Controls.Add(this.cbstock);
+            this.Controls.Add(this.cbvendedor);
+            this.Controls.Add(this.cbpublicar);
+            this.Controls.Add(this.lblftp);
+            this.Controls.Add(this.lblmoneda);
+            this.Controls.Add(this.lblstock);
+            this.Controls.Add(this.lblvendedor);
             this.Controls.Add(this.lbllista);
             this.Name = "Configuracion";
             this.Text = "Configuracion";
+            this.Load += new System.EventHandler(this.Configuracion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,17 +189,17 @@
         #endregion
 
         private System.Windows.Forms.Label lbllista;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label lblvendedor;
+        private System.Windows.Forms.Label lblstock;
+        private System.Windows.Forms.Label lblmoneda;
+        private System.Windows.Forms.Label lblftp;
+        private System.Windows.Forms.ComboBox cbpublicar;
+        private System.Windows.Forms.ComboBox cbvendedor;
+        private System.Windows.Forms.ComboBox cbstock;
+        private System.Windows.Forms.ComboBox cbmoneda;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btngrabar;
+        private System.Windows.Forms.Button btnsalir;
+        private System.Windows.Forms.TextBox txtimagen;
     }
 }

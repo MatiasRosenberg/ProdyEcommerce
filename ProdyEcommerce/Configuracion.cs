@@ -16,5 +16,11 @@ namespace ProdyEcommerce
         {
             InitializeComponent();
         }
+
+        Funciones F = new Funciones();
+        private void Configuracion_Load(object sender, EventArgs e)
+        {
+            F.llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, checkBox1);
+        }
     }
 }
