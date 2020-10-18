@@ -37,7 +37,7 @@
             this.cbvendedor = new System.Windows.Forms.ComboBox();
             this.cbstock = new System.Windows.Forms.ComboBox();
             this.cbmoneda = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chbreserva = new System.Windows.Forms.CheckBox();
             this.btngrabar = new System.Windows.Forms.Button();
             this.btnsalir = new System.Windows.Forms.Button();
             this.txtimagen = new System.Windows.Forms.TextBox();
@@ -124,33 +124,48 @@
             this.cbmoneda.Size = new System.Drawing.Size(121, 21);
             this.cbmoneda.TabIndex = 8;
             // 
-            // checkBox1
+            // chbreserva
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(183, 207);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(101, 17);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Admitir reserva?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chbreserva.AutoSize = true;
+            this.chbreserva.Location = new System.Drawing.Point(183, 207);
+            this.chbreserva.Name = "chbreserva";
+            this.chbreserva.Size = new System.Drawing.Size(101, 17);
+            this.chbreserva.TabIndex = 9;
+            this.chbreserva.Text = "Admitir reserva?";
+            this.chbreserva.UseVisualStyleBackColor = true;
             // 
             // btngrabar
             // 
-            this.btngrabar.Location = new System.Drawing.Point(25, 239);
+            this.btngrabar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btngrabar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btngrabar.FlatAppearance.BorderSize = 2;
+            this.btngrabar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btngrabar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
+            this.btngrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btngrabar.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btngrabar.Location = new System.Drawing.Point(25, 235);
             this.btngrabar.Name = "btngrabar";
-            this.btngrabar.Size = new System.Drawing.Size(75, 23);
+            this.btngrabar.Size = new System.Drawing.Size(75, 30);
             this.btngrabar.TabIndex = 10;
             this.btngrabar.Text = "Grabar";
-            this.btngrabar.UseVisualStyleBackColor = true;
+            this.btngrabar.UseVisualStyleBackColor = false;
+            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
             // 
             // btnsalir
             // 
-            this.btnsalir.Location = new System.Drawing.Point(375, 239);
+            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnsalir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnsalir.FlatAppearance.BorderSize = 2;
+            this.btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
+            this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsalir.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsalir.Location = new System.Drawing.Point(375, 235);
             this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(75, 23);
+            this.btnsalir.Size = new System.Drawing.Size(75, 30);
             this.btnsalir.TabIndex = 11;
             this.btnsalir.Text = "Salir";
-            this.btnsalir.UseVisualStyleBackColor = true;
+            this.btnsalir.UseVisualStyleBackColor = false;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // txtimagen
             // 
@@ -168,7 +183,7 @@
             this.Controls.Add(this.txtimagen);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.btngrabar);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chbreserva);
             this.Controls.Add(this.cbmoneda);
             this.Controls.Add(this.cbstock);
             this.Controls.Add(this.cbvendedor);
@@ -179,6 +194,7 @@
             this.Controls.Add(this.lblvendedor);
             this.Controls.Add(this.lbllista);
             this.Name = "Configuracion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuracion";
             this.Load += new System.EventHandler(this.Configuracion_Load);
             this.ResumeLayout(false);
@@ -197,7 +213,7 @@
         private System.Windows.Forms.ComboBox cbvendedor;
         private System.Windows.Forms.ComboBox cbstock;
         private System.Windows.Forms.ComboBox cbmoneda;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chbreserva;
         private System.Windows.Forms.Button btngrabar;
         private System.Windows.Forms.Button btnsalir;
         private System.Windows.Forms.TextBox txtimagen;

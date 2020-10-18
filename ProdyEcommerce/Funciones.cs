@@ -78,7 +78,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenar(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, WOO_DETALLE  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -277,55 +277,99 @@ namespace ProdyEcommerce
 
         }
 
-        public void llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox)
+        public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
         {
             string Csqllista = "select * from listas";
             string Csqlvendedor = "select * from vendedores";
             string Csqldeposito = "select * from depositos";
             string Csqlmoneda = "select * from monedas";
             string Csqlconfiguracion = "select * from configuracion";
-
-            cmd = new SqlCommand(Csqllista, cnn);
-            SqlDataReader Rlista = cmd.ExecuteReader();
-            cmd = new SqlCommand(Csqlvendedor, cnn);
-            SqlDataReader RVendedor = cmd.ExecuteReader();
-            cmd = new SqlCommand(Csqldeposito, cnn);
-            SqlDataReader Rdeposito = cmd.ExecuteReader();
-            cmd = new SqlCommand(Csqlmoneda, cnn);
-            SqlDataReader Rmoneda = cmd.ExecuteReader();
+            
             cmd = new SqlCommand(Csqlconfiguracion, cnn);
             SqlDataReader Rconfiguracion = cmd.ExecuteReader();
+            //lista
+            da = new SqlDataAdapter(Csqllista, cnn);
+            dt = new DataTable();
+            da.Fill(dt);
+            //vendedor
+            da = new SqlDataAdapter(Csqlvendedor, cnn);
+            DataTable vendedor = new DataTable();
+            da.Fill(vendedor);
+            //stock
+            da = new SqlDataAdapter(Csqldeposito, cnn);
+            DataTable stock = new DataTable();
+            da.Fill(stock);
+            //moneda
+            da = new SqlDataAdapter(Csqlmoneda, cnn);
+            DataTable moneda = new DataTable();
+            da.Fill(moneda);
 
-            //rellenar combobox
-            while (Rlista.Read())
+            try
             {
-                cblista.Items.Add(Rlista["Nombre"]);
+                
+                //Llenar listas
+                cblista.DisplayMember = "Nombre";
+                cblista.ValueMember = "idLista";
+                cblista.DataSource = dt;
+                //Llenar vendedor
+                cbvendedor.DisplayMember = "Nombre";
+                cbvendedor.ValueMember = "idVendedor";
+                cbvendedor.DataSource = vendedor;
+                //Llenar deposito
+                cbstock.DisplayMember = "Nombre";
+                cbstock.ValueMember = "idDeposito";
+                cbstock.DataSource = stock;
+                //Llenar moneda
+                cbmoneda.DisplayMember = "Nombre";
+                cbmoneda.ValueMember = "idMoneda";
+                cbmoneda.DataSource = moneda;
+                //Llenar checkbox y tomar value config
+                if (Rconfiguracion.Read() == true)
+                {
+                    Chbox.Checked = Convert.ToBoolean(Rconfiguracion["WOO_BACKORDER"]);
+                    imagen.Text = Rconfiguracion["WOO_IMAGES"].ToString();
+                    cblista.SelectedValue = (string)Rconfiguracion["SHOPPRICELIST"];
+                    cbvendedor.SelectedValue = (string)Rconfiguracion["SHOPSELLER"];
+                    cbstock.SelectedValue = (string)Rconfiguracion["SHOPSTOCKID"];
+                    cbmoneda.SelectedValue = (string)Rconfiguracion["SHOPIDMONEDA"];
+                }
+                else
+                {
+                    Chbox.Checked = false;
+                    imagen.Text = Rconfiguracion["WOO_IMAGES"].ToString();
+                    cblista.SelectedValue = (string)Rconfiguracion["SHOPPRICELIST"];
+                    cbvendedor.SelectedValue = (string)Rconfiguracion["SHOPSELLER"];
+                    cbstock.SelectedValue = (string)Rconfiguracion["SHOPSTOCKID"];
+                    cbmoneda.SelectedValue = (string)Rconfiguracion["SHOPIDMONEDA"];
+                }
+                Rconfiguracion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }     
+        }
+
+        public void Grabarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
+        {
+            string Csqlcombobox = "update configuracion set SHOPPRICELIST ='" + cblista.SelectedValue.ToString() + "'" + "," ;
+            Csqlcombobox = Csqlcombobox + "SHOPSELLER='" + cbvendedor.SelectedValue.ToString() + "'" + "," ;
+            Csqlcombobox = Csqlcombobox + "SHOPSTOCKID='" + cbstock.SelectedValue.ToString() + "'" + "," ;
+            Csqlcombobox = Csqlcombobox + "SHOPIDMONEDA='" + cbmoneda.SelectedValue.ToString()+ "'" + "," ;
+            Csqlcombobox = Csqlcombobox + "WOO_BACKORDER=" + Convert.ToInt16(Chbox.Checked) + "," ;
+            Csqlcombobox = Csqlcombobox + "WOO_IMAGES='" + imagen.Text + "'" + "from configuracion";
+
+            try
+            {
+                cmd = new SqlCommand(Csqlcombobox, cnn);
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
 
-            while (RVendedor.Read())
-            {
-                cbvendedor.Items.Add(RVendedor["Nombre"]);
-            }
-            while (Rdeposito.Read())
-            {
-                cbstock.Items.Add(Rdeposito["Nombre"]);
-            }
-            while (Rmoneda.Read())
-            {
-                cbmoneda.Items.Add(Rmoneda["Nombre"]);
-            }
-
-
-
-            //Reserva
-            if (Rconfiguracion.Read() == true)
-            {
-                Chbox.Checked = Convert.ToBoolean(Rconfiguracion["WOO_BACKORDER"]);
-            }
-            else
-            {
-                Chbox.Checked = false;
-            }
+            MessageBox.Show("Se grabo con exito");
         }
     }
 }

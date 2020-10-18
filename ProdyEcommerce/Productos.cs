@@ -73,7 +73,7 @@ namespace ProdyEcommerce
             
             if (txtnombre.Text == "")
             {
-                F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -84,7 +84,7 @@ namespace ProdyEcommerce
             
             if (txtarticulo.Text == "")
             {
-                F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -121,7 +121,7 @@ namespace ProdyEcommerce
         {  
             if(txtarticulo.Text == "")
             {
-                F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }                
@@ -129,7 +129,7 @@ namespace ProdyEcommerce
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Llenar(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
             txtarticulo.Enabled = false;
             txtnombre.Enabled = false;
         }

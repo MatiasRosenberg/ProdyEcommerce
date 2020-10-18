@@ -20,7 +20,17 @@ namespace ProdyEcommerce
         Funciones F = new Funciones();
         private void Configuracion_Load(object sender, EventArgs e)
         {
-            F.llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, checkBox1);
+            F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
+        }
+
+        private void btnsalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btngrabar_Click(object sender, EventArgs e)
+        {
+            F.Grabarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
         }
     }
 }
