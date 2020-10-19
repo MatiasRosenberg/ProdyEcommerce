@@ -31,6 +31,7 @@ namespace ProdyEcommerce
         private void btngrabar_Click(object sender, EventArgs e)
         {
             F.Grabarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
+            this.Close();
         }
     }
 }

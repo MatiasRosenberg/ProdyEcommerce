@@ -136,14 +136,14 @@
             // 
             // btngrabar
             // 
-            this.btngrabar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btngrabar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btngrabar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btngrabar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btngrabar.FlatAppearance.BorderSize = 2;
             this.btngrabar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btngrabar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
+            this.btngrabar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btngrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btngrabar.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btngrabar.Location = new System.Drawing.Point(25, 235);
+            this.btngrabar.Location = new System.Drawing.Point(294, 235);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(75, 30);
             this.btngrabar.TabIndex = 10;
@@ -153,10 +153,10 @@
             // 
             // btnsalir
             // 
-            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnsalir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnsalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnsalir.FlatAppearance.BorderSize = 2;
-            this.btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
+            this.btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsalir.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalir.Location = new System.Drawing.Point(375, 235);
