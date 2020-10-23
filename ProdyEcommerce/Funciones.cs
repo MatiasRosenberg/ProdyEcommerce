@@ -78,7 +78,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox listaart)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, WOO_DETALLE  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -105,6 +105,21 @@ namespace ProdyEcommerce
             string CsqlCheck = "select isnull(woo_agrupado, 0) agrupado , publicarweb, woo_variable from articulos where idarticulo ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(CsqlCheck, cnn);
             SqlDataReader read3 = cmd.ExecuteReader();
+
+            string Csqllist = "select idarticulo, nombre from articulos order by Nombre asc";
+            cmd = new SqlCommand(Csqllist, cnn);
+            SqlDataReader read4 = cmd.ExecuteReader();
+
+            //Llenar listbox
+            if (read4.HasRows)
+            {
+                while (read4.Read())
+                {
+                    listaart.Items.Add(read4["nombre"].ToString());
+                }
+            }
+
+
 
             //recorrer checklistbox
             if (read2.HasRows)
@@ -193,7 +208,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2)
         {
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
@@ -202,9 +217,12 @@ namespace ProdyEcommerce
             Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
             Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";                  
             string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
+            string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where idarticulo='" + idarticulo.Text + "'";
+            string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + lista2.SelectedItems.ToString() + "'" + "," + "'" + idarticulo.Text + "'" + ")";
+
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
-
+            
             if (read.HasRows)
             {
                 while (read.Read())
@@ -242,9 +260,17 @@ namespace ProdyEcommerce
             }
             read.Close();
 
+
+
+
+
             try
             {
                 //comando para hacer sentencias en sql
+                cmd = new SqlCommand(Csqllistaarti, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqllistaartd, cnn);
+                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(cSqldelete, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(cSqlinserttags, cnn);
@@ -370,6 +396,23 @@ namespace ProdyEcommerce
             }
 
             MessageBox.Show("Se grabo con exito");
+        }
+
+
+        public void Cambiolista(ListBox Lista1, ListBox Lista2)
+        {
+            try
+            {
+                for (int i = 0; i < Lista1.SelectedItems.Count; i++)
+                {
+                    Lista2.Items.Add(Lista1.SelectedItems[i]);
+                    Lista1.Items.Remove(Lista1.SelectedItems[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

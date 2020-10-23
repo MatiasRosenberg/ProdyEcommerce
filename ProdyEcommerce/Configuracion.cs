@@ -23,14 +23,14 @@ namespace ProdyEcommerce
             F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
         }
 
-        private void btnsalir_Click(object sender, EventArgs e)
+        private void Btngrabar_Click_1(object sender, EventArgs e)
         {
+            F.Grabarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
             this.Close();
         }
 
-        private void btngrabar_Click(object sender, EventArgs e)
+        private void Btnsalir_Click_1(object sender, EventArgs e)
         {
-            F.Grabarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
             this.Close();
         }
     }

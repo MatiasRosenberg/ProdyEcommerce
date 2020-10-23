@@ -27,8 +27,6 @@ namespace ProdyEcommerce
             txtarticulo.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocomplete();
             txtarticulo.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtarticulo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -65,6 +63,8 @@ namespace ProdyEcommerce
             btnbuscar.Enabled = true;
             chkrubros.DataSource = null;
             chkrubros.Items.Clear();
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
             txtarticulo.Focus();
         }
 
@@ -73,7 +73,7 @@ namespace ProdyEcommerce
             
             if (txtnombre.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -84,7 +84,7 @@ namespace ProdyEcommerce
             
             if (txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -121,7 +121,7 @@ namespace ProdyEcommerce
         {  
             if(txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }                
@@ -129,15 +129,43 @@ namespace ProdyEcommerce
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
             txtarticulo.Enabled = false;
             txtnombre.Enabled = false;
         }
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros);
+            F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2);
             btnlimpiar_Click(null, null);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            F.Cambiolista(listBox1, listBox2);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            F.Cambiolista(listBox2, listBox1);
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            F.Cambiolista(listBox1, listBox2);
+        }
+
+        private void listBox2_Click(object sender, EventArgs e)
+        {
+            F.Cambiolista(listBox2, listBox1);
+        }
+
+
+        private void txtlistart_TextChanged(object sender, EventArgs e)
+        {
+            
+
 
         }
     }

@@ -38,9 +38,9 @@
             this.cbstock = new System.Windows.Forms.ComboBox();
             this.cbmoneda = new System.Windows.Forms.ComboBox();
             this.chbreserva = new System.Windows.Forms.CheckBox();
-            this.btngrabar = new System.Windows.Forms.Button();
-            this.btnsalir = new System.Windows.Forms.Button();
             this.txtimagen = new System.Windows.Forms.TextBox();
+            this.Btngrabar = new System.Windows.Forms.Button();
+            this.Btnsalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbllista
@@ -134,39 +134,6 @@
             this.chbreserva.Text = "Admitir reserva?";
             this.chbreserva.UseVisualStyleBackColor = true;
             // 
-            // btngrabar
-            // 
-            this.btngrabar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btngrabar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btngrabar.FlatAppearance.BorderSize = 2;
-            this.btngrabar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btngrabar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btngrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btngrabar.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btngrabar.Location = new System.Drawing.Point(294, 235);
-            this.btngrabar.Name = "btngrabar";
-            this.btngrabar.Size = new System.Drawing.Size(75, 30);
-            this.btngrabar.TabIndex = 10;
-            this.btngrabar.Text = "Grabar";
-            this.btngrabar.UseVisualStyleBackColor = false;
-            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
-            // 
-            // btnsalir
-            // 
-            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnsalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnsalir.FlatAppearance.BorderSize = 2;
-            this.btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnsalir.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsalir.Location = new System.Drawing.Point(375, 235);
-            this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(75, 30);
-            this.btnsalir.TabIndex = 11;
-            this.btnsalir.Text = "Salir";
-            this.btnsalir.UseVisualStyleBackColor = false;
-            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
-            // 
             // txtimagen
             // 
             this.txtimagen.Location = new System.Drawing.Point(105, 155);
@@ -175,14 +142,34 @@
             this.txtimagen.Size = new System.Drawing.Size(226, 20);
             this.txtimagen.TabIndex = 12;
             // 
+            // Btngrabar
+            // 
+            this.Btngrabar.Location = new System.Drawing.Point(282, 243);
+            this.Btngrabar.Name = "Btngrabar";
+            this.Btngrabar.Size = new System.Drawing.Size(81, 24);
+            this.Btngrabar.TabIndex = 13;
+            this.Btngrabar.Text = "Grabar";
+            this.Btngrabar.UseVisualStyleBackColor = true;
+            this.Btngrabar.Click += new System.EventHandler(this.Btngrabar_Click_1);
+            // 
+            // Btnsalir
+            // 
+            this.Btnsalir.Location = new System.Drawing.Point(369, 243);
+            this.Btnsalir.Name = "Btnsalir";
+            this.Btnsalir.Size = new System.Drawing.Size(81, 24);
+            this.Btnsalir.TabIndex = 14;
+            this.Btnsalir.Text = "Salir";
+            this.Btnsalir.UseVisualStyleBackColor = true;
+            this.Btnsalir.Click += new System.EventHandler(this.Btnsalir_Click_1);
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 277);
+            this.Controls.Add(this.Btnsalir);
+            this.Controls.Add(this.Btngrabar);
             this.Controls.Add(this.txtimagen);
-            this.Controls.Add(this.btnsalir);
-            this.Controls.Add(this.btngrabar);
             this.Controls.Add(this.chbreserva);
             this.Controls.Add(this.cbmoneda);
             this.Controls.Add(this.cbstock);
@@ -214,8 +201,8 @@
         private System.Windows.Forms.ComboBox cbstock;
         private System.Windows.Forms.ComboBox cbmoneda;
         private System.Windows.Forms.CheckBox chbreserva;
-        private System.Windows.Forms.Button btngrabar;
-        private System.Windows.Forms.Button btnsalir;
         private System.Windows.Forms.TextBox txtimagen;
+        private System.Windows.Forms.Button Btngrabar;
+        private System.Windows.Forms.Button Btnsalir;
     }
 }
