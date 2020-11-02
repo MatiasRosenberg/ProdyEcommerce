@@ -21,6 +21,7 @@ namespace ProdyEcommerce
             InitializeComponent();
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
@@ -63,7 +64,9 @@ namespace ProdyEcommerce
             btnbuscar.Enabled = true;
             chkrubros.DataSource = null;
             chkrubros.Items.Clear();
+            listBox1.DataSource = null;
             listBox1.Items.Clear();
+            listBox2.DataSource = null;
             listBox2.Items.Clear();
             txtarticulo.Focus();
         }
@@ -148,24 +151,21 @@ namespace ProdyEcommerce
 
         private void button2_Click(object sender, EventArgs e)
         {
-            F.Cambiolista(listBox2, listBox1);
+            listBox2.Items.Remove(listBox2.SelectedItem);
         }
 
-        private void listBox1_Click(object sender, EventArgs e)
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             F.Cambiolista(listBox1, listBox2);
         }
 
-        private void listBox2_Click(object sender, EventArgs e)
+        private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            F.Cambiolista(listBox2, listBox1);
+            listBox2.Items.Remove(listBox2.SelectedItem);
         }
 
-
-        private void txtlistart_TextChanged(object sender, EventArgs e)
-        {
-            
-
+        private void txtlistart_KeyUp(object sender, KeyEventArgs e)
+        { 
 
         }
     }

@@ -78,7 +78,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox listaart)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, WOO_DETALLE  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -106,18 +106,16 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(CsqlCheck, cnn);
             SqlDataReader read3 = cmd.ExecuteReader();
 
-            string Csqllist = "select idarticulo, nombre from articulos order by Nombre asc";
+            DataTable dtlista = new DataTable();
+            string Csqllist = "select idarticulo, Nombre from articulos order by Nombre asc";
             cmd = new SqlCommand(Csqllist, cnn);
-            SqlDataReader read4 = cmd.ExecuteReader();
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+            da1.Fill(dtlista);
 
             //Llenar listbox
-            if (read4.HasRows)
-            {
-                while (read4.Read())
-                {
-                    listaart.Items.Add(read4["nombre"].ToString());
-                }
-            }
+            lista1.DataSource = dtlista;
+            lista1.DisplayMember = "Nombre";
+            lista1.ValueMember = "idarticulo";
 
 
 
@@ -217,8 +215,10 @@ namespace ProdyEcommerce
             Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
             Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";                  
             string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
-            string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where idarticulo='" + idarticulo.Text + "'";
-            string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + lista2.SelectedItems.ToString() + "'" + "," + "'" + idarticulo.Text + "'" + ")";
+            string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
+
+            
+
 
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -260,17 +260,20 @@ namespace ProdyEcommerce
             }
             read.Close();
 
-
-
-
+            
 
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(Csqllistaarti, cnn);
-                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
+                for (int i = 0; i < lista2.Items.Count; i++)
+                {
+                    string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + lista2.ValueMember.ToString() + "'" + "," + "'" + idarticulo.Text + "'" + ")";
+                    cmd = new SqlCommand(Csqllistaarti, cnn);
+                    cmd.ExecuteNonQuery();
+                }
+
                 cmd = new SqlCommand(cSqldelete, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(cSqlinserttags, cnn);
@@ -401,19 +404,35 @@ namespace ProdyEcommerce
 
         public void Cambiolista(ListBox Lista1, ListBox Lista2)
         {
+            bool sihay = false;
+
+
             try
             {
-                for (int i = 0; i < Lista1.SelectedItems.Count; i++)
+                foreach(var item in Lista2.Items)
                 {
-                    Lista2.Items.Add(Lista1.SelectedItems[i]);
-                    Lista1.Items.Remove(Lista1.SelectedItems[i]);
+                    if(item.ToString().Contains(Lista1.Text))
+                    {
+                        sihay = true;
+                    }
                 }
+                if(sihay)
+                {
+                    MessageBox.Show("Este articulo ya fue ingresado");
+                }
+                else
+                {
+                    Lista2.Items.Add(Lista1.Text);
+                    Lista2.ValueMember = Lista1.SelectedValue.ToString();
+                }
+                
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
     }
 }
 

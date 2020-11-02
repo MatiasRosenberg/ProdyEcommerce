@@ -218,8 +218,9 @@
             this.listBox1.Location = new System.Drawing.Point(253, 374);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(168, 147);
+            this.listBox1.Sorted = true;
             this.listBox1.TabIndex = 16;
-            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // listBox2
             // 
@@ -227,8 +228,9 @@
             this.listBox2.Location = new System.Drawing.Point(508, 374);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(168, 147);
+            this.listBox2.Sorted = true;
             this.listBox2.TabIndex = 17;
-            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
+            this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDoubleClick);
             // 
             // button1
             // 
@@ -256,7 +258,7 @@
             this.txtlistart.Name = "txtlistart";
             this.txtlistart.Size = new System.Drawing.Size(168, 20);
             this.txtlistart.TabIndex = 20;
-            this.txtlistart.TextChanged += new System.EventHandler(this.txtlistart_TextChanged);
+            this.txtlistart.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtlistart_KeyUp);
             // 
             // Productos
             // 
