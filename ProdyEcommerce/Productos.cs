@@ -19,6 +19,7 @@ namespace ProdyEcommerce
         public Productos()
         {
             InitializeComponent();
+            
         }
 
 
@@ -164,9 +165,14 @@ namespace ProdyEcommerce
             listBox2.Items.Remove(listBox2.SelectedItem);
         }
 
-        private void txtlistart_KeyUp(object sender, KeyEventArgs e)
-        { 
-
+        List<string> listcollection = new List<string>();
+        private void txtlistart_TextChanged(object sender, EventArgs e)
+        {
+            int index = listBox1.FindString(this.txtlistart.Text);
+            if (0 <= index)
+            {
+                listBox1.SelectedIndex = index;
+            }
         }
     }
 }
