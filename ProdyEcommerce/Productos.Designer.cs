@@ -137,17 +137,17 @@
             // 
             // txttags
             // 
-            this.txttags.Location = new System.Drawing.Point(698, 352);
+            this.txttags.Location = new System.Drawing.Point(759, 352);
             this.txttags.Multiline = true;
             this.txttags.Name = "txttags";
-            this.txttags.Size = new System.Drawing.Size(231, 109);
+            this.txttags.Size = new System.Drawing.Size(170, 109);
             this.txttags.TabIndex = 9;
             // 
             // lbltags
             // 
             this.lbltags.AutoSize = true;
             this.lbltags.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltags.Location = new System.Drawing.Point(695, 322);
+            this.lbltags.Location = new System.Drawing.Point(756, 322);
             this.lbltags.Name = "lbltags";
             this.lbltags.Size = new System.Drawing.Size(45, 18);
             this.lbltags.TabIndex = 11;
@@ -155,7 +155,7 @@
             // 
             // btngrabar
             // 
-            this.btngrabar.Location = new System.Drawing.Point(718, 499);
+            this.btngrabar.Location = new System.Drawing.Point(749, 499);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(87, 32);
             this.btngrabar.TabIndex = 10;
@@ -215,29 +215,33 @@
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(253, 374);
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(232, 374);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(168, 147);
+            this.listBox1.Size = new System.Drawing.Size(236, 148);
             this.listBox1.Sorted = true;
             this.listBox1.TabIndex = 16;
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // listBox2
             // 
+            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 12;
             this.listBox2.Location = new System.Drawing.Point(508, 374);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(168, 147);
+            this.listBox2.Size = new System.Drawing.Size(235, 148);
             this.listBox2.Sorted = true;
             this.listBox2.TabIndex = 17;
             this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDoubleClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(444, 411);
+            this.button1.Location = new System.Drawing.Point(474, 395);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 24);
+            this.button1.Size = new System.Drawing.Size(28, 24);
             this.button1.TabIndex = 18;
             this.button1.Text = ">";
             this.button1.UseVisualStyleBackColor = true;
@@ -245,9 +249,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(444, 464);
+            this.button2.Location = new System.Drawing.Point(474, 448);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(39, 24);
+            this.button2.Size = new System.Drawing.Size(28, 24);
             this.button2.TabIndex = 19;
             this.button2.Text = "<";
             this.button2.UseVisualStyleBackColor = true;
@@ -255,9 +259,9 @@
             // 
             // txtlistart
             // 
-            this.txtlistart.Location = new System.Drawing.Point(253, 352);
+            this.txtlistart.Location = new System.Drawing.Point(232, 352);
             this.txtlistart.Name = "txtlistart";
-            this.txtlistart.Size = new System.Drawing.Size(168, 20);
+            this.txtlistart.Size = new System.Drawing.Size(236, 20);
             this.txtlistart.TabIndex = 20;
             this.txtlistart.TextChanged += new System.EventHandler(this.txtlistart_TextChanged);
             // 
@@ -265,7 +269,7 @@
             // 
             this.lblagrupacion.AutoSize = true;
             this.lblagrupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblagrupacion.Location = new System.Drawing.Point(250, 322);
+            this.lblagrupacion.Location = new System.Drawing.Point(375, 322);
             this.lblagrupacion.Name = "lblagrupacion";
             this.lblagrupacion.Size = new System.Drawing.Size(196, 18);
             this.lblagrupacion.TabIndex = 21;

@@ -77,7 +77,7 @@ namespace ProdyEcommerce
             
             if (txtnombre.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -88,7 +88,7 @@ namespace ProdyEcommerce
             
             if (txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -125,7 +125,7 @@ namespace ProdyEcommerce
         {  
             if(txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }                
@@ -133,14 +133,14 @@ namespace ProdyEcommerce
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
             txtarticulo.Enabled = false;
             txtnombre.Enabled = false;
         }
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2);
+            F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1);
             btnlimpiar_Click(null, null);
 
         }

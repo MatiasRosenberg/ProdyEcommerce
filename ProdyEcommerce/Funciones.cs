@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Reflection;
+using System.Data.OleDb;
 
 namespace ProdyEcommerce
 {
@@ -78,7 +80,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, WOO_DETALLE  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -106,16 +108,28 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(CsqlCheck, cnn);
             SqlDataReader read3 = cmd.ExecuteReader();
 
-            DataTable dtlista = new DataTable();
+            DataTable dtlista2 = new DataTable();
+            string Csqllista = "select ARTICULOSJERARQUIAS.IDARTICULO as idarticulo, Articulos.Nombre as nombre from ARTICULOSJERARQUIAS left join articulos on ARTICULOSJERARQUIAS.IDARTICULO = Articulos.IdArticulo where ARTICULOSJERARQUIAS.IDARTICULOFATHER ='" + cajaidarticulo.Text + "'";
+            cmd = new SqlCommand(Csqllista, cnn);
+            SqlDataAdapter da2 = new SqlDataAdapter(cmd);
+            da2.Fill(dtlista2);
+
+            DataTable dtlista1 = new DataTable();
             string Csqllist = "select idarticulo, Nombre from articulos order by Nombre asc";
             cmd = new SqlCommand(Csqllist, cnn);
             SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            da1.Fill(dtlista);
+            da1.Fill(dtlista1);
 
-            //Llenar listbox
-            lista1.DataSource = dtlista;
+            //Llenar listbox1 y listbox2
+            lista1.DataSource = dtlista1;
             lista1.DisplayMember = "Nombre";
-            lista1.ValueMember = "idarticulo";
+            lista1.ValueMember = dtlista1.Columns[0].ColumnName;
+
+            
+            lista2.DataSource = dtlista2;
+            lista2.DisplayMember = "nombre";
+            lista2.ValueMember = "idarticulo";
+
 
 
 
@@ -206,7 +220,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1)
         {
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
@@ -216,13 +230,12 @@ namespace ProdyEcommerce
             Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";                  
             string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
             string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
-
             
 
 
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
-            
+
             if (read.HasRows)
             {
                 while (read.Read())
@@ -260,18 +273,27 @@ namespace ProdyEcommerce
             }
             read.Close();
 
-            
+
+
 
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(Csqllistaartd, cnn);
+               cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
+
                 for (int i = 0; i < lista2.Items.Count; i++)
                 {
-                    string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + lista2.ValueMember.ToString() + "'" + "," + "'" + idarticulo.Text + "'" + ")";
-                    cmd = new SqlCommand(Csqllistaarti, cnn);
-                    cmd.ExecuteNonQuery();
+                    string Cadena = lista2.Items[i].ToString();
+                    int Cantidad = Cadena.Length;
+                    int Valor = Cadena.IndexOf('?');
+                    MessageBox.Show(Cantidad.ToString());
+                    
+                    
+
+                    //string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" +  + "'" + "," + "'" + idarticulo.Text + "'" + ")";
+                    //cmd = new SqlCommand(Csqllistaarti, cnn);
+                    //cmd.ExecuteNonQuery();
                 }
 
                 cmd = new SqlCommand(cSqldelete, cnn);
@@ -422,8 +444,19 @@ namespace ProdyEcommerce
                 }
                 else
                 {
-                    Lista2.Items.Add(Lista1.Text);
-                    Lista2.ValueMember = Lista1.SelectedValue.ToString();
+                    Lista2.DataSource = null;
+                    for (int i = 0; i < Lista1.Items.Count; i++)
+                    {
+
+                        DataRowView r = (DataRowView)Lista1.Items[i];
+                        string val = (r[Lista1.ValueMember]).ToString();
+                        string dis = (r[Lista1.DisplayMember]).ToString();
+                        if(Lista1.SelectedValue.ToString() == val)
+                        {
+                            Lista2.Items.Add(Lista1.Text +""+"?"+""+ Lista1.SelectedValue.ToString());
+                        }
+                    }
+                    
                 }
                 
             }
