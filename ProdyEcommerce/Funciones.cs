@@ -279,21 +279,18 @@ namespace ProdyEcommerce
             try
             {
                 //comando para hacer sentencias en sql
-               cmd = new SqlCommand(Csqllistaartd, cnn);
+                cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
-
                 for (int i = 0; i < lista2.Items.Count; i++)
                 {
                     string Cadena = lista2.Items[i].ToString();
-                    int Cantidad = Cadena.Length;
-                    int Valor = Cadena.IndexOf('?');
-                    MessageBox.Show(Cantidad.ToString());
-                    
-                    
+                    int nLargo = Cadena.Length;
+                    int cValor = Cadena.IndexOf('?') + 1;
+                    string id = Cadena.Substring(cValor, nLargo - cValor);
 
-                    //string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" +  + "'" + "," + "'" + idarticulo.Text + "'" + ")";
-                    //cmd = new SqlCommand(Csqllistaarti, cnn);
-                    //cmd.ExecuteNonQuery();
+                    string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + id +"'" + "," + "'" + idarticulo.Text + "'" + ")";
+                    cmd = new SqlCommand(Csqllistaarti, cnn);
+                    cmd.ExecuteNonQuery();
                 }
 
                 cmd = new SqlCommand(cSqldelete, cnn);
@@ -453,7 +450,7 @@ namespace ProdyEcommerce
                         string dis = (r[Lista1.DisplayMember]).ToString();
                         if(Lista1.SelectedValue.ToString() == val)
                         {
-                            Lista2.Items.Add(Lista1.Text +""+"?"+""+ Lista1.SelectedValue.ToString());
+                            Lista2.Items.Add(Lista1.Text +""+"?"+""+ Lista1.SelectedValue.ToString().Trim());
                         }
                     }
                     
