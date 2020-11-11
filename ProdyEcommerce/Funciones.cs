@@ -108,11 +108,10 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(CsqlCheck, cnn);
             SqlDataReader read3 = cmd.ExecuteReader();
 
-            DataTable dtlista2 = new DataTable();
+
             string Csqllista = "select ARTICULOSJERARQUIAS.IDARTICULO as idarticulo, Articulos.Nombre as nombre from ARTICULOSJERARQUIAS left join articulos on ARTICULOSJERARQUIAS.IDARTICULO = Articulos.IdArticulo where ARTICULOSJERARQUIAS.IDARTICULOFATHER ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(Csqllista, cnn);
-            SqlDataAdapter da2 = new SqlDataAdapter(cmd);
-            da2.Fill(dtlista2);
+            SqlDataReader read4 = cmd.ExecuteReader();
 
             DataTable dtlista1 = new DataTable();
             string Csqllist = "select idarticulo, Nombre from articulos order by Nombre asc";
@@ -123,12 +122,23 @@ namespace ProdyEcommerce
             //Llenar listbox1 y listbox2
             lista1.DataSource = dtlista1;
             lista1.DisplayMember = "Nombre";
-            lista1.ValueMember = dtlista1.Columns[0].ColumnName;
+            lista1.ValueMember = "idarticulo";
+
+            if(read4.HasRows)
+            {
+                while(read4.Read())
+                {
+                    lista2.Items.Add(read4.GetString(1)+ "?" + read4.GetString(0));
+                    var _items = lista2.Items.Cast<string>().Distinct().ToArray();
+                    lista2.Items.Clear();
+                    foreach (var item in _items)
+                    {
+                        lista2.Items.Add(item);
+                    }   
+                }
+            }
 
             
-            lista2.DataSource = dtlista2;
-            lista2.DisplayMember = "nombre";
-            lista2.ValueMember = "idarticulo";
 
 
 
@@ -441,7 +451,6 @@ namespace ProdyEcommerce
                 }
                 else
                 {
-                    Lista2.DataSource = null;
                     for (int i = 0; i < Lista1.Items.Count; i++)
                     {
 
@@ -463,6 +472,8 @@ namespace ProdyEcommerce
             }
         }
 
+
+        
     }
 }
 

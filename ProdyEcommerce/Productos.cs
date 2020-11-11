@@ -16,6 +16,7 @@ namespace ProdyEcommerce
 
         Funciones F = new Funciones();
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
+
         public Productos()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace ProdyEcommerce
 
             if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
             {
-                busqueda.Show();
+                busqueda.ShowDialog();
                 txtarticulo.Enabled = true;
                 txtnombre.Enabled = true;
             }
@@ -163,6 +164,7 @@ namespace ProdyEcommerce
         private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             listBox2.Items.Remove(listBox2.SelectedItem);
+
         }
 
         List<string> listcollection = new List<string>();

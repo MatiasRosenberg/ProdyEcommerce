@@ -21,7 +21,7 @@ namespace ProdyEcommerce
         {
             Productos p = new Productos();
 
-            p.Show();
+            p.ShowDialog();
         }
 
         private void Btnsalir_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace ProdyEcommerce
         {
             Configuracion C = new Configuracion();
 
-            C.Show();
+            C.ShowDialog();
         }
     }
 }
