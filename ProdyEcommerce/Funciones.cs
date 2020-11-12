@@ -337,10 +337,10 @@ namespace ProdyEcommerce
 
         public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
         {
-            string Csqllista = "select * from listas";
-            string Csqlvendedor = "select * from vendedores";
-            string Csqldeposito = "select * from depositos";
-            string Csqlmoneda = "select * from monedas";
+            string Csqllista = "select Nombre from listas order by Nombre";
+            string Csqlvendedor = "select Nombre from vendedores order by Nombre";
+            string Csqldeposito = "select Nombre from depositos order by Nombre";
+            string Csqlmoneda = "select Nombre from monedas order by Nombre";
             string Csqlconfiguracion = "select * from configuracion";
             
             cmd = new SqlCommand(Csqlconfiguracion, cnn);
