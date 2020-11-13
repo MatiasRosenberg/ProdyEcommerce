@@ -385,9 +385,6 @@ namespace ProdyEcommerce
                 cbmoneda.ValueMember = "idMoneda";
                 cbmoneda.DataSource = moneda;
                 //Llenar checkbox y tomar value config
-
-                
-
                 if (Rconfiguracion.Read() == true)
                 {
                     Chbox.Checked = Convert.ToBoolean(Rconfiguracion["WOO_BACKORDER"]);
