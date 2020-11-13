@@ -389,7 +389,7 @@ namespace ProdyEcommerce
                 {
                     Chbox.Checked = Convert.ToBoolean(Rconfiguracion["WOO_BACKORDER"]);
                     imagen.Text = Rconfiguracion["WOO_IMAGES"].ToString();
-                    cblista.SelectedItem = Rconfiguracion["SHOPPRICELIST"];
+                    cblista.SelectedValue = Rconfiguracion["SHOPPRICELIST"];
                     cbvendedor.SelectedValue = Rconfiguracion["SHOPSELLER"];
                     cbstock.SelectedValue = Rconfiguracion["SHOPSTOCKID"];
                     cbmoneda.SelectedValue = Rconfiguracion["SHOPIDMONEDA"];
