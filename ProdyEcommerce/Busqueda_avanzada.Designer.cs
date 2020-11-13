@@ -115,6 +115,7 @@ namespace ProdyEcommerce
             this.Name = "Busqueda_avanzada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda_avanzada";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Busqueda_avanzada_FormClosed);
             this.Load += new System.EventHandler(this.Busqueda_avanzada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvarticulos)).EndInit();
             this.ResumeLayout(false);

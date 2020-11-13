@@ -337,18 +337,18 @@ namespace ProdyEcommerce
 
         public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
         {
-            string Csqllista = "select Nombre from listas order by Nombre";
-            string Csqlvendedor = "select Nombre from vendedores order by Nombre";
-            string Csqldeposito = "select Nombre from depositos order by Nombre";
-            string Csqlmoneda = "select Nombre from monedas order by Nombre";
-            string Csqlconfiguracion = "select * from configuracion";
-            
+            string Csqllista = "select Nombre, idLista from listas order by Nombre";
+            string Csqlvendedor = "select Nombre, idVendedor from vendedores order by Nombre";
+            string Csqldeposito = "select Nombre, idDeposito from depositos order by Nombre";
+            string Csqlmoneda = "select Nombre, idMoneda from monedas order by Nombre";
+            string Csqlconfiguracion = "select isnull(WOO_BACKORDER,0) as WOO_BACKORDER, WOO_IMAGES, SHOPPRICELIST, SHOPSELLER, SHOPSTOCKID, SHOPIDMONEDA from configuracion";
+
             cmd = new SqlCommand(Csqlconfiguracion, cnn);
             SqlDataReader Rconfiguracion = cmd.ExecuteReader();
             //lista
             da = new SqlDataAdapter(Csqllista, cnn);
-            dt = new DataTable();
-            da.Fill(dt);
+            DataTable lista = new DataTable();
+            da.Fill(lista);
             //vendedor
             da = new SqlDataAdapter(Csqlvendedor, cnn);
             DataTable vendedor = new DataTable();
@@ -362,13 +362,16 @@ namespace ProdyEcommerce
             DataTable moneda = new DataTable();
             da.Fill(moneda);
 
+
             try
             {
+
                 
+
                 //Llenar listas
                 cblista.DisplayMember = "Nombre";
                 cblista.ValueMember = "idLista";
-                cblista.DataSource = dt;
+                cblista.DataSource = lista;
                 //Llenar vendedor
                 cbvendedor.DisplayMember = "Nombre";
                 cbvendedor.ValueMember = "idVendedor";
@@ -382,39 +385,39 @@ namespace ProdyEcommerce
                 cbmoneda.ValueMember = "idMoneda";
                 cbmoneda.DataSource = moneda;
                 //Llenar checkbox y tomar value config
+
+                
+
                 if (Rconfiguracion.Read() == true)
                 {
                     Chbox.Checked = Convert.ToBoolean(Rconfiguracion["WOO_BACKORDER"]);
                     imagen.Text = Rconfiguracion["WOO_IMAGES"].ToString();
-                    cblista.SelectedValue = (string)Rconfiguracion["SHOPPRICELIST"];
-                    cbvendedor.SelectedValue = (string)Rconfiguracion["SHOPSELLER"];
-                    cbstock.SelectedValue = (string)Rconfiguracion["SHOPSTOCKID"];
-                    cbmoneda.SelectedValue = (string)Rconfiguracion["SHOPIDMONEDA"];
+                    cblista.SelectedItem = Rconfiguracion["SHOPPRICELIST"];
+                    cbvendedor.SelectedValue = Rconfiguracion["SHOPSELLER"];
+                    cbstock.SelectedValue = Rconfiguracion["SHOPSTOCKID"];
+                    cbmoneda.SelectedValue = Rconfiguracion["SHOPIDMONEDA"];
                 }
                 else
                 {
                     Chbox.Checked = false;
-                    imagen.Text = Rconfiguracion["WOO_IMAGES"].ToString();
-                    cblista.SelectedValue = (string)Rconfiguracion["SHOPPRICELIST"];
-                    cbvendedor.SelectedValue = (string)Rconfiguracion["SHOPSELLER"];
-                    cbstock.SelectedValue = (string)Rconfiguracion["SHOPSTOCKID"];
-                    cbmoneda.SelectedValue = (string)Rconfiguracion["SHOPIDMONEDA"];
                 }
                 Rconfiguracion.Close();
+
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }     
+            }
         }
 
         public void Grabarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
         {
-            string Csqlcombobox = "update configuracion set SHOPPRICELIST ='" + cblista.SelectedValue.ToString() + "'" + "," ;
-            Csqlcombobox = Csqlcombobox + "SHOPSELLER='" + cbvendedor.SelectedValue.ToString() + "'" + "," ;
-            Csqlcombobox = Csqlcombobox + "SHOPSTOCKID='" + cbstock.SelectedValue.ToString() + "'" + "," ;
-            Csqlcombobox = Csqlcombobox + "SHOPIDMONEDA='" + cbmoneda.SelectedValue.ToString()+ "'" + "," ;
-            Csqlcombobox = Csqlcombobox + "WOO_BACKORDER=" + Convert.ToInt16(Chbox.Checked) + "," ;
+            string Csqlcombobox = "update configuracion set SHOPPRICELIST ='" + cblista.SelectedValue.ToString() + "'" + ",";
+            Csqlcombobox = Csqlcombobox + "SHOPSELLER='" + cbvendedor.SelectedValue.ToString() + "'" + ",";
+            Csqlcombobox = Csqlcombobox + "SHOPSTOCKID='" + cbstock.SelectedValue.ToString() + "'" + ",";
+            Csqlcombobox = Csqlcombobox + "SHOPIDMONEDA='" + cbmoneda.SelectedValue.ToString() + "'" + ",";
+            Csqlcombobox = Csqlcombobox + "WOO_BACKORDER='" + Convert.ToInt16(Chbox.Checked) + "'" + ",";
             Csqlcombobox = Csqlcombobox + "WOO_IMAGES='" + imagen.Text + "'" + "from configuracion";
 
             try
