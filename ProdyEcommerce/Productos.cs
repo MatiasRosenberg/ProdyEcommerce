@@ -87,7 +87,7 @@ namespace ProdyEcommerce
         private void txtnombre_Leave(object sender, EventArgs e)
         {
             
-            if (txtarticulo.Text == "")
+            if (string.IsNullOrEmpty(txtarticulo.Text) == true)
             {
                 F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
                 txtarticulo.Enabled = false;

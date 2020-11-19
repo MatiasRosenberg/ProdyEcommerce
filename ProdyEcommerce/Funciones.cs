@@ -365,9 +365,6 @@ namespace ProdyEcommerce
 
             try
             {
-
-                
-
                 //Llenar listas
                 cblista.DisplayMember = "Nombre";
                 cblista.ValueMember = "idLista";
@@ -400,7 +397,6 @@ namespace ProdyEcommerce
                 }
                 Rconfiguracion.Close();
 
-                
             }
             catch (Exception ex)
             {
@@ -470,10 +466,7 @@ namespace ProdyEcommerce
             {
                 throw ex;
             }
-        }
-
-
-        
+        }        
     }
 }
 

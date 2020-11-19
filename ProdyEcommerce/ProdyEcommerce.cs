@@ -35,5 +35,12 @@ namespace ProdyEcommerce
 
             C.ShowDialog();
         }
+
+        private void btnjerarquia_Click(object sender, EventArgs e)
+        {
+            Jerarquia_de_rubros J = new Jerarquia_de_rubros();
+
+            J.ShowDialog();
+        }
     }
 }

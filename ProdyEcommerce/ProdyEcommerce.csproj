@@ -25,8 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://prodytec.com/aplicaciones/prodycommerce/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -98,11 +97,23 @@
     <Compile Include="Busqueda_avanzada.Designer.cs">
       <DependentUpon>Busqueda_avanzada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Busqueda_rubros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busqueda_rubros.Designer.cs">
+      <DependentUpon>Busqueda_rubros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Configuracion.Designer.cs">
       <DependentUpon>Configuracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jerarquia_de_rubros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jerarquia_de_rubros.Designer.cs">
+      <DependentUpon>Jerarquia_de_rubros.cs</DependentUpon>
     </Compile>
     <Compile Include="Productos.cs">
       <SubType>Form</SubType>
@@ -122,8 +133,14 @@
     <EmbeddedResource Include="Busqueda_avanzada.resx">
       <DependentUpon>Busqueda_avanzada.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Busqueda_rubros.resx">
+      <DependentUpon>Busqueda_rubros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jerarquia_de_rubros.resx">
+      <DependentUpon>Jerarquia_de_rubros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
