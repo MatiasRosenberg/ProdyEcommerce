@@ -45,6 +45,7 @@ namespace ProdyEcommerce
             this.btnbuscar.TabIndex = 10;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // dgvrubros
             // 
@@ -59,6 +60,7 @@ namespace ProdyEcommerce
             this.dgvrubros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvrubros.Size = new System.Drawing.Size(961, 287);
             this.dgvrubros.TabIndex = 9;
+            this.dgvrubros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvrubros_CellClick);
             // 
             // comboboxfiltro
             // 
@@ -98,7 +100,10 @@ namespace ProdyEcommerce
             this.Controls.Add(this.lblbusqueda);
             this.Controls.Add(this.txtbusqueda);
             this.Name = "Busqueda_rubros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda_rubros";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Busqueda_rubros_FormClosed);
+            this.Load += new System.EventHandler(this.Busqueda_rubros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvrubros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,9 +113,9 @@ namespace ProdyEcommerce
         #endregion
 
         private System.Windows.Forms.Button btnbuscar;
-        private System.Windows.Forms.DataGridView dgvrubros;
         private System.Windows.Forms.ComboBox comboboxfiltro;
         private System.Windows.Forms.Label lblbusqueda;
         public System.Windows.Forms.TextBox txtbusqueda;
+        public System.Windows.Forms.DataGridView dgvrubros;
     }
 }

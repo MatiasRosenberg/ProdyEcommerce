@@ -132,8 +132,8 @@ namespace ProdyEcommerce
         private System.Windows.Forms.Label lblbusqueda;
         private System.Windows.Forms.Label lblfiltro;
         private System.Windows.Forms.ComboBox comboboxfiltro;
-        private System.Windows.Forms.DataGridView dgvarticulos;
         private System.Windows.Forms.Button btnbuscar;
         public System.Windows.Forms.TextBox txtbusqueda;
+        public DataGridView dgvarticulos;
     }
 }

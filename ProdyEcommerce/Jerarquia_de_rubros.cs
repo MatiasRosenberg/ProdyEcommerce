@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace ProdyEcommerce
 {
     public partial class Jerarquia_de_rubros : Form
     {
+        Funciones F = new Funciones();
+        SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
+
         public Jerarquia_de_rubros()
         {
             InitializeComponent();
@@ -26,6 +30,21 @@ namespace ProdyEcommerce
         private void Btnsalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtidrubro_Leave(object sender, EventArgs e)
+        {
+            F.LLenarJerarquiaderubros(checkedListBox1, txtidrubro);
+        }
+
+        private void txtidrubro_TextChanged(object sender, EventArgs e)
+        {
+            F.LLenarJerarquiaderubros(checkedListBox1, txtidrubro);
+        }
+
+        private void btngrabar_Click(object sender, EventArgs e)
+        {
+            F.Grabarjerarquia(checkedListBox1, txtidrubro);
         }
     }
 }

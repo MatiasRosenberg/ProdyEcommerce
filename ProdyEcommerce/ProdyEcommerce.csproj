@@ -25,7 +25,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://prodytec.com/aplicaciones/prodycommerce/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <ApplicationRevision>7</ApplicationRevision>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

@@ -30,6 +30,7 @@ namespace ProdyEcommerce
             txtarticulo.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocomplete();
             txtarticulo.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtarticulo.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
         }
 
         private void btnsalir_Click(object sender, EventArgs e)

@@ -36,6 +36,7 @@ namespace ProdyEcommerce
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.btngrabar = new System.Windows.Forms.Button();
             this.Btnsalir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblrubro
@@ -54,6 +55,8 @@ namespace ProdyEcommerce
             this.txtidrubro.Name = "txtidrubro";
             this.txtidrubro.Size = new System.Drawing.Size(124, 20);
             this.txtidrubro.TabIndex = 1;
+            this.txtidrubro.TextChanged += new System.EventHandler(this.txtidrubro_TextChanged);
+            this.txtidrubro.Leave += new System.EventHandler(this.txtidrubro_Leave);
             // 
             // txtnombrerubro
             // 
@@ -88,6 +91,7 @@ namespace ProdyEcommerce
             this.btngrabar.TabIndex = 5;
             this.btngrabar.Text = "Grabar";
             this.btngrabar.UseVisualStyleBackColor = true;
+            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
             // 
             // Btnsalir
             // 
@@ -99,11 +103,22 @@ namespace ProdyEcommerce
             this.Btnsalir.UseVisualStyleBackColor = true;
             this.Btnsalir.Click += new System.EventHandler(this.Btnsalir_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(25, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 16);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Rubros dependientes";
+            // 
             // Jerarquia_de_rubros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 349);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.btngrabar);
             this.Controls.Add(this.checkedListBox1);
@@ -112,6 +127,7 @@ namespace ProdyEcommerce
             this.Controls.Add(this.txtidrubro);
             this.Controls.Add(this.lblrubro);
             this.Name = "Jerarquia_de_rubros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jerarquia_de_rubros";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -121,11 +137,12 @@ namespace ProdyEcommerce
         #endregion
 
         private System.Windows.Forms.Label lblrubro;
-        private System.Windows.Forms.TextBox txtidrubro;
-        private System.Windows.Forms.TextBox txtnombrerubro;
         private System.Windows.Forms.Button btnbuscarrubro;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btngrabar;
         private System.Windows.Forms.Button Btnsalir;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtidrubro;
+        public System.Windows.Forms.TextBox txtnombrerubro;
     }
 }

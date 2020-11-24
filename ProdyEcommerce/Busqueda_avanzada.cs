@@ -30,7 +30,7 @@ namespace ProdyEcommerce
             comboboxfiltro.Items.Add("Codigo");
             comboboxfiltro.Items.Add("Nombre");
 
-            
+
 
             F.Llenardatagrid(dgvarticulos);
         }
@@ -77,6 +77,7 @@ namespace ProdyEcommerce
             }
             else
             {
+                
                 Productos P = Application.OpenForms.OfType<Productos>().SingleOrDefault();
                 P.txtarticulo.Text = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                 P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();

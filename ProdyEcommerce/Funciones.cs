@@ -138,21 +138,14 @@ namespace ProdyEcommerce
                 }
             }
 
-            
-
-
-
-
             //recorrer checklistbox
             if (read2.HasRows)
             {
                 while (read2.Read())
                 {
-
                     /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
                     for (int i = 0; i < listarubros.Items.Count; i++)
                     {
-
                         DataRowView r = (DataRowView)listarubros.Items[i];
                         string val = (r[listarubros.ValueMember]).ToString();
                         string dis = (r[listarubros.DisplayMember]).ToString();
@@ -161,10 +154,7 @@ namespace ProdyEcommerce
                         {
                             listarubros.SetItemChecked(i, true);
                         }
-
                     }
-
-
                 }
             }
             else
@@ -172,6 +162,7 @@ namespace ProdyEcommerce
                 Console.WriteLine("No rows found.");
             }
             read2.Close();
+
 
 
             //Nombre, woo_detalle
@@ -209,15 +200,15 @@ namespace ProdyEcommerce
                 Checkvariable.Checked = false;
                 agrupar.Checked = false;
             }
-
-
         }
 
         public void Llenardatagrid(DataGridView dgv)
         {
             try
             {
-                da = new SqlDataAdapter("select idarticulo as Codigo, Nombre from articulos", cnn);
+                string datagrida = "select idarticulo as Codigo, Nombre from articulos";
+
+                da = new SqlDataAdapter(datagrida, cnn);
                 dt = new DataTable();
                 da.Fill(dt);
                 dgv.DataSource = dt;
@@ -466,7 +457,115 @@ namespace ProdyEcommerce
             {
                 throw ex;
             }
-        }        
+        }  
+        
+        public void LLenardatagridr(DataGridView dgv)
+        {
+            try
+            {
+                string datagridr = "select idrubro as Codigo, Nombre from rubros";
+                da = new SqlDataAdapter(datagridr, cnn);
+                dt = new DataTable();
+                da.Fill(dt);
+                dgv.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se pudo llenar la tabla" + ex.ToString());
+            }
+        }
+
+        public void LLenarJerarquiaderubros(CheckedListBox listarubros, TextBox cajaidrubro)
+        {
+            
+
+            DataTable dt = new DataTable();
+
+            string consultarubros = "select idRubro, Nombre from rubros order by nombre asc";
+            cmd = new SqlCommand(consultarubros, cnn);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            listarubros.DataSource = dt;
+            listarubros.DisplayMember = "Nombre";
+            listarubros.ValueMember = "idRubro";
+
+
+            string Csql = "select IdRubro, idrubrofather from RUBROSJERARQUIAS where idrubrofather ='" + cajaidrubro.Text + "'";
+            cmd = new SqlCommand(Csql, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
+                    for (int i = 0; i < listarubros.Items.Count; i++)
+                    {
+                        DataRowView r = (DataRowView)listarubros.Items[i];
+                        string val = (r[listarubros.ValueMember]).ToString();
+                        string dis = (r[listarubros.DisplayMember]).ToString();
+                        r = null;
+                        if (read["IdRubro"].ToString() == val)
+                        {
+                            listarubros.SetItemChecked(i, true);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            read.Close();
+           
+        }
+
+        public void Grabarjerarquia(CheckedListBox listarubros, TextBox cajaidrubro)
+        {
+            string Csql = "select IdRubro, idrubrofather from RUBROSJERARQUIAS where idrubrofather ='" + cajaidrubro.Text + "'";
+
+            cmd = new SqlCommand(Csql, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+
+                    /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
+                    for (int i = 0; i < listarubros.Items.Count; i++)
+                    {
+
+                        DataRowView r = (DataRowView)listarubros.Items[i];
+                        string val = (r[listarubros.ValueMember]).ToString();
+                        string dis = (r[listarubros.DisplayMember]).ToString();
+                        r = null;
+                        string Csqldrubros = "delete from RUBROSJERARQUIAS where idrubrofather='" + cajaidrubro.Text + "'" + "and IdRubro='" + val + "'";
+                        if (listarubros.GetItemCheckState(i) == CheckState.Checked)
+                        {
+
+                            cmd = new SqlCommand(Csqldrubros, cnn);
+                            cmd.ExecuteNonQuery();
+                            string Csqlirubros = "insert into RUBROSJERARQUIAS (IdRubro, idrubrofather) values(" + "'" + val + "'" + "," + "'" + cajaidrubro.Text + "'" + ")";
+                            cmd = new SqlCommand(Csqlirubros, cnn);
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd = new SqlCommand(Csqldrubros, cnn);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            read.Close();
+
+        }
     }
 }
 
