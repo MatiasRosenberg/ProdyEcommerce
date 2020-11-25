@@ -237,42 +237,31 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
 
-            if (read.HasRows)
-            {
-                while (read.Read())
-                {
 
-                    /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
-                    for (int i = 0; i < listarubros.Items.Count; i++)
-                    {
+
+            /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
+            for (int i = 0; i < listarubros.Items.Count; i++)
+            {
                         
-                        DataRowView r = (DataRowView)listarubros.Items[i];
-                        string val = (r[listarubros.ValueMember]).ToString();
-                        string dis = (r[listarubros.DisplayMember]).ToString();
-                        r = null;
-                        string Csqldrubros = "delete from rubrosarticulos where idarticulo='" + idarticulo.Text + "'" + "and idrubro='" + val + "'";
-                        if (listarubros.GetItemCheckState(i) == CheckState.Checked)
-                        {
-                            
-                            cmd = new SqlCommand(Csqldrubros, cnn);
-                            cmd.ExecuteNonQuery();
-                            string Csqlirubros = "insert into rubrosarticulos (idarticulo, idrubro) values(" + "'" + idarticulo.Text + "'" + "," + "'" + val + "'" + ")";
-                            cmd = new SqlCommand(Csqlirubros, cnn);
-                            cmd.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            cmd = new SqlCommand(Csqldrubros, cnn);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
+                DataRowView r = (DataRowView)listarubros.Items[i];
+                string val = (r[listarubros.ValueMember]).ToString();
+                string dis = (r[listarubros.DisplayMember]).ToString();
+                r = null;
+                string Csqldrubros = "delete from rubrosarticulos where idarticulo='" + idarticulo.Text + "'" + "and idrubro='" + val + "'";
+                if (listarubros.GetItemCheckState(i) == CheckState.Checked)
+                {            
+                    cmd = new SqlCommand(Csqldrubros, cnn);
+                    cmd.ExecuteNonQuery();
+                    string Csqlirubros = "insert into rubrosarticulos (idarticulo, idrubro) values(" + "'" + idarticulo.Text + "'" + "," + "'" + val + "'" + ")";
+                    cmd = new SqlCommand(Csqlirubros, cnn);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    cmd = new SqlCommand(Csqldrubros, cnn);
+                    cmd.ExecuteNonQuery();
                 }
             }
-            else
-            {
-                Console.WriteLine("No rows found.");
-            }
-            read.Close();
 
 
 
@@ -491,7 +480,7 @@ namespace ProdyEcommerce
             listarubros.ValueMember = "idRubro";
 
 
-            string Csql = "select IdRubro, idrubrofather from RUBROSJERARQUIAS where idrubrofather ='" + cajaidrubro.Text + "'";
+            string Csql = "select * from RUBROSJERARQUIAS where idrubrofather ='" + cajaidrubro.Text + "'";
             cmd = new SqlCommand(Csql, cnn);
             SqlDataReader read = cmd.ExecuteReader();
 
@@ -506,7 +495,9 @@ namespace ProdyEcommerce
                         string val = (r[listarubros.ValueMember]).ToString();
                         string dis = (r[listarubros.DisplayMember]).ToString();
                         r = null;
-                        if (read["IdRubro"].ToString() == val)
+                        string idrubro = read["IdRubro"].ToString().Trim();
+
+                        if (idrubro == val)
                         {
                             listarubros.SetItemChecked(i, true);
                         }
@@ -525,46 +516,41 @@ namespace ProdyEcommerce
         {
             string Csql = "select IdRubro, idrubrofather from RUBROSJERARQUIAS where idrubrofather ='" + cajaidrubro.Text + "'";
 
-            cmd = new SqlCommand(Csql, cnn);
-            SqlDataReader read = cmd.ExecuteReader();
 
-            if (read.HasRows)
+            try
             {
-                while (read.Read())
+                cmd = new SqlCommand(Csql, cnn);
+                SqlDataReader read = cmd.ExecuteReader();
+
+                /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
+                for (int i = 0; i < listarubros.Items.Count; i++)
                 {
 
-                    /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
-                    for (int i = 0; i < listarubros.Items.Count; i++)
+                    DataRowView r = (DataRowView)listarubros.Items[i];
+                    string val = (r[listarubros.ValueMember]).ToString();
+                    string dis = (r[listarubros.DisplayMember]).ToString();
+                    r = null;
+                    string Csqldrubros = "delete from RUBROSJERARQUIAS where idrubrofather='" + cajaidrubro.Text + "'" + "and IdRubro='" + val + "'";
+                    if (listarubros.GetItemCheckState(i) == CheckState.Checked)
                     {
-
-                        DataRowView r = (DataRowView)listarubros.Items[i];
-                        string val = (r[listarubros.ValueMember]).ToString();
-                        string dis = (r[listarubros.DisplayMember]).ToString();
-                        r = null;
-                        string Csqldrubros = "delete from RUBROSJERARQUIAS where idrubrofather='" + cajaidrubro.Text + "'" + "and IdRubro='" + val + "'";
-                        if (listarubros.GetItemCheckState(i) == CheckState.Checked)
-                        {
-
-                            cmd = new SqlCommand(Csqldrubros, cnn);
-                            cmd.ExecuteNonQuery();
-                            string Csqlirubros = "insert into RUBROSJERARQUIAS (IdRubro, idrubrofather) values(" + "'" + val + "'" + "," + "'" + cajaidrubro.Text + "'" + ")";
-                            cmd = new SqlCommand(Csqlirubros, cnn);
-                            cmd.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            cmd = new SqlCommand(Csqldrubros, cnn);
-                            cmd.ExecuteNonQuery();
-                        }
+                        cmd = new SqlCommand(Csqldrubros, cnn);
+                        cmd.ExecuteNonQuery();
+                        string Csqlirubros = "insert into RUBROSJERARQUIAS (IdRubro, idrubrofather) values(" + "'" + val + "'" + "," + "'" + cajaidrubro.Text + "'" + ")";
+                        cmd = new SqlCommand(Csqlirubros, cnn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        cmd = new SqlCommand(Csqldrubros, cnn);
+                        cmd.ExecuteNonQuery();
                     }
                 }
             }
-            else
+            catch(Exception ex)
             {
-                Console.WriteLine("No rows found.");
+                MessageBox.Show("Error al grabar" + ex.ToString());
             }
-            read.Close();
-
+            MessageBox.Show("Se grabo correctamente");
         }
     }
 }

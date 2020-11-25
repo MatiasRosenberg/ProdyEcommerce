@@ -34,17 +34,27 @@ namespace ProdyEcommerce
 
         private void txtidrubro_Leave(object sender, EventArgs e)
         {
-            F.LLenarJerarquiaderubros(checkedListBox1, txtidrubro);
+            F.LLenarJerarquiaderubros(chkrubros, txtidrubro);
         }
 
         private void txtidrubro_TextChanged(object sender, EventArgs e)
         {
-            F.LLenarJerarquiaderubros(checkedListBox1, txtidrubro);
+            F.LLenarJerarquiaderubros(chkrubros, txtidrubro);
         }
 
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            F.Grabarjerarquia(checkedListBox1, txtidrubro);
+            F.Grabarjerarquia(chkrubros, txtidrubro);
+            button1_Click(null, null);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtidrubro.Text = "";
+            txtnombrerubro.Text = "";
+            chkrubros.DataSource = null;
+            chkrubros.Items.Clear();
+            txtidrubro.Focus();
         }
     }
 }

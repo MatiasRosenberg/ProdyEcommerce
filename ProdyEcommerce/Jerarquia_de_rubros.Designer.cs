@@ -33,10 +33,11 @@ namespace ProdyEcommerce
             this.txtidrubro = new System.Windows.Forms.TextBox();
             this.txtnombrerubro = new System.Windows.Forms.TextBox();
             this.btnbuscarrubro = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.btngrabar = new System.Windows.Forms.Button();
             this.Btnsalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnlimpiar = new System.Windows.Forms.Button();
+            this.chkrubros = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // lblrubro
@@ -75,14 +76,6 @@ namespace ProdyEcommerce
             this.btnbuscarrubro.UseVisualStyleBackColor = true;
             this.btnbuscarrubro.Click += new System.EventHandler(this.btnbuscarrubro_Click);
             // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(28, 110);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(217, 229);
-            this.checkedListBox1.TabIndex = 4;
-            // 
             // btngrabar
             // 
             this.btngrabar.Location = new System.Drawing.Point(444, 305);
@@ -113,15 +106,34 @@ namespace ProdyEcommerce
             this.label1.TabIndex = 7;
             this.label1.Text = "Rubros dependientes";
             // 
+            // btnlimpiar
+            // 
+            this.btnlimpiar.Location = new System.Drawing.Point(327, 303);
+            this.btnlimpiar.Name = "btnlimpiar";
+            this.btnlimpiar.Size = new System.Drawing.Size(111, 34);
+            this.btnlimpiar.TabIndex = 8;
+            this.btnlimpiar.Text = "Limpiar";
+            this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // chkrubros
+            // 
+            this.chkrubros.FormattingEnabled = true;
+            this.chkrubros.Location = new System.Drawing.Point(28, 108);
+            this.chkrubros.Name = "chkrubros";
+            this.chkrubros.Size = new System.Drawing.Size(231, 229);
+            this.chkrubros.TabIndex = 9;
+            // 
             // Jerarquia_de_rubros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 349);
+            this.Controls.Add(this.chkrubros);
+            this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.btngrabar);
-            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.btnbuscarrubro);
             this.Controls.Add(this.txtnombrerubro);
             this.Controls.Add(this.txtidrubro);
@@ -138,11 +150,12 @@ namespace ProdyEcommerce
 
         private System.Windows.Forms.Label lblrubro;
         private System.Windows.Forms.Button btnbuscarrubro;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btngrabar;
         private System.Windows.Forms.Button Btnsalir;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox txtidrubro;
         public System.Windows.Forms.TextBox txtnombrerubro;
+        private System.Windows.Forms.Button btnlimpiar;
+        private System.Windows.Forms.CheckedListBox chkrubros;
     }
 }
