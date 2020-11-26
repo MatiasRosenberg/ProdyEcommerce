@@ -23,6 +23,7 @@ namespace ProdyEcommerce
 
         private void btnbuscarrubro_Click(object sender, EventArgs e)
         {
+            button1_Click(null, null);
             Busqueda_rubros B = new Busqueda_rubros();
             B.ShowDialog();
         }

@@ -18,6 +18,7 @@ namespace ProdyEcommerce
         }
 
         Funciones F = new Funciones();
+        Contraseña C = new Contraseña();
         private void Configuracion_Load(object sender, EventArgs e)
         {
             F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
@@ -32,6 +33,11 @@ namespace ProdyEcommerce
         private void Btnsalir_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnsync_Click(object sender, EventArgs e)
+        {
+            C.ShowDialog();
         }
     }
 }

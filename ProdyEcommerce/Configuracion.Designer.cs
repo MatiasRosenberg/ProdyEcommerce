@@ -41,6 +41,7 @@
             this.txtimagen = new System.Windows.Forms.TextBox();
             this.Btngrabar = new System.Windows.Forms.Button();
             this.Btnsalir = new System.Windows.Forms.Button();
+            this.btnsync = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbllista
@@ -82,7 +83,7 @@
             // lblftp
             // 
             this.lblftp.AutoSize = true;
-            this.lblftp.Location = new System.Drawing.Point(22, 162);
+            this.lblftp.Location = new System.Drawing.Point(22, 188);
             this.lblftp.Name = "lblftp";
             this.lblftp.Size = new System.Drawing.Size(77, 13);
             this.lblftp.TabIndex = 4;
@@ -127,7 +128,7 @@
             // chbreserva
             // 
             this.chbreserva.AutoSize = true;
-            this.chbreserva.Location = new System.Drawing.Point(183, 207);
+            this.chbreserva.Location = new System.Drawing.Point(25, 157);
             this.chbreserva.Name = "chbreserva";
             this.chbreserva.Size = new System.Drawing.Size(101, 17);
             this.chbreserva.TabIndex = 9;
@@ -136,7 +137,7 @@
             // 
             // txtimagen
             // 
-            this.txtimagen.Location = new System.Drawing.Point(105, 155);
+            this.txtimagen.Location = new System.Drawing.Point(105, 185);
             this.txtimagen.MaxLength = 200;
             this.txtimagen.Name = "txtimagen";
             this.txtimagen.Size = new System.Drawing.Size(226, 20);
@@ -162,11 +163,22 @@
             this.Btnsalir.UseVisualStyleBackColor = true;
             this.Btnsalir.Click += new System.EventHandler(this.Btnsalir_Click_1);
             // 
+            // btnsync
+            // 
+            this.btnsync.Location = new System.Drawing.Point(25, 243);
+            this.btnsync.Name = "btnsync";
+            this.btnsync.Size = new System.Drawing.Size(81, 24);
+            this.btnsync.TabIndex = 15;
+            this.btnsync.Text = "Sync Masiva";
+            this.btnsync.UseVisualStyleBackColor = true;
+            this.btnsync.Click += new System.EventHandler(this.btnsync_Click);
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 277);
+            this.Controls.Add(this.btnsync);
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.Btngrabar);
             this.Controls.Add(this.txtimagen);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.TextBox txtimagen;
         private System.Windows.Forms.Button Btngrabar;
         private System.Windows.Forms.Button Btnsalir;
+        private System.Windows.Forms.Button btnsync;
     }
 }

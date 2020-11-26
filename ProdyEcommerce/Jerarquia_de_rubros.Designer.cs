@@ -44,7 +44,7 @@ namespace ProdyEcommerce
             // 
             this.lblrubro.AutoSize = true;
             this.lblrubro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblrubro.Location = new System.Drawing.Point(25, 35);
+            this.lblrubro.Location = new System.Drawing.Point(25, 32);
             this.lblrubro.Name = "lblrubro";
             this.lblrubro.Size = new System.Drawing.Size(50, 16);
             this.lblrubro.TabIndex = 0;
@@ -68,7 +68,7 @@ namespace ProdyEcommerce
             // 
             // btnbuscarrubro
             // 
-            this.btnbuscarrubro.Location = new System.Drawing.Point(574, 31);
+            this.btnbuscarrubro.Location = new System.Drawing.Point(574, 28);
             this.btnbuscarrubro.Name = "btnbuscarrubro";
             this.btnbuscarrubro.Size = new System.Drawing.Size(98, 23);
             this.btnbuscarrubro.TabIndex = 3;
@@ -78,7 +78,7 @@ namespace ProdyEcommerce
             // 
             // btngrabar
             // 
-            this.btngrabar.Location = new System.Drawing.Point(444, 305);
+            this.btngrabar.Location = new System.Drawing.Point(444, 303);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(111, 34);
             this.btngrabar.TabIndex = 5;
@@ -88,7 +88,7 @@ namespace ProdyEcommerce
             // 
             // Btnsalir
             // 
-            this.Btnsalir.Location = new System.Drawing.Point(561, 305);
+            this.Btnsalir.Location = new System.Drawing.Point(561, 303);
             this.Btnsalir.Name = "Btnsalir";
             this.Btnsalir.Size = new System.Drawing.Size(111, 34);
             this.Btnsalir.TabIndex = 6;
@@ -108,9 +108,9 @@ namespace ProdyEcommerce
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Location = new System.Drawing.Point(327, 303);
+            this.btnlimpiar.Location = new System.Drawing.Point(265, 303);
             this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(111, 34);
+            this.btnlimpiar.Size = new System.Drawing.Size(93, 34);
             this.btnlimpiar.TabIndex = 8;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.UseVisualStyleBackColor = true;

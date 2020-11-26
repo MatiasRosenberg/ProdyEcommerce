@@ -29,6 +29,7 @@ namespace ProdyEcommerce
         {
             comboboxfiltro.Items.Add("Codigo");
             comboboxfiltro.Items.Add("Nombre");
+            comboboxfiltro.SelectedIndex = 1;
 
 
 
