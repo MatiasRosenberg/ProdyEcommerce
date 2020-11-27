@@ -34,7 +34,7 @@ namespace ProdyEcommerce
                 try
                 {
                     DataSet ds = new DataSet();
-                    string Csql = "SyncProductos";
+                    string Csql = "Ecomm_Syncproductos";
                     SqlDataAdapter da = new SqlDataAdapter(Csql, cnn);
                     da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     da.Fill(ds, "Csql");
