@@ -217,7 +217,7 @@ namespace ProdyEcommerce
 
             catch (Exception ex)
             {
-                MessageBox.Show("no se pudo llenar la tabla" + ex.ToString());
+                MessageBox.Show("No se pudo llenar la tabla" + ex.ToString());
             }
         }
 

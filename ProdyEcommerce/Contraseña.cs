@@ -28,13 +28,25 @@ namespace ProdyEcommerce
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            string Csql = "SyncProductos";
+            
             if(txtcontraseña.Text == contraseña)
             {
-                SqlDataAdapter da = new SqlDataAdapter(Csql,cnn);
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                MessageBox.Show("Sincronización masiva procesada");
-                this.Close();
+                try
+                {
+                    DataSet ds = new DataSet();
+                    string Csql = "SyncProductos";
+                    SqlDataAdapter da = new SqlDataAdapter(Csql, cnn);
+                    da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    da.Fill(ds, "Csql");
+                    cnn.Close();
+                    MessageBox.Show("Sincronización masiva procesada");
+                    this.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("No se pudo ejecutar es script" + ex.ToString());
+                }
+                
             }
             else
             {
