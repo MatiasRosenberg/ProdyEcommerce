@@ -43,7 +43,6 @@ namespace ProdyEcommerce
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-           
 
             if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
             {
