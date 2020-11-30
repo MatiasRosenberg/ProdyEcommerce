@@ -27,6 +27,7 @@ namespace ProdyEcommerce
         Funciones F = new Funciones();
         private void Busqueda_avanzada_Load(object sender, EventArgs e)
         {
+            comboboxfiltro.Items.Clear();
             comboboxfiltro.Items.Add("Codigo");
             comboboxfiltro.Items.Add("Nombre");
             comboboxfiltro.SelectedIndex = 1;
@@ -84,11 +85,6 @@ namespace ProdyEcommerce
                 P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
                 this.Hide();
             }
-        }
-
-        private void Busqueda_avanzada_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            comboboxfiltro.Items.Clear();
         }
     }
 }

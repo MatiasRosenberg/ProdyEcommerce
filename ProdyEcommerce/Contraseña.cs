@@ -44,7 +44,7 @@ namespace ProdyEcommerce
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("No se pudo ejecutar es script" + ex.ToString());
+                    MessageBox.Show("NO SE ENCONTRO EL SCRIPT ECOMM_SYNCPRODUCTOS" + ex.ToString());
                 }
                 
             }
