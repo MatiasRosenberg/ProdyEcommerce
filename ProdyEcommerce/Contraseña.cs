@@ -38,7 +38,6 @@ namespace ProdyEcommerce
                     SqlDataAdapter da = new SqlDataAdapter(Csql, cnn);
                     da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     da.Fill(ds, "Csql");
-                    cnn.Close();
                     MessageBox.Show("Sincronización masiva procesada");
                     this.Close();
                 }

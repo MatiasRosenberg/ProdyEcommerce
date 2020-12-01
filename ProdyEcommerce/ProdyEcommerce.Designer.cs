@@ -41,7 +41,7 @@
             this.Btnproductos.FlatAppearance.BorderSize = 2;
             this.Btnproductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.Btnproductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btnproductos.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btnproductos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnproductos.Location = new System.Drawing.Point(12, 128);
             this.Btnproductos.Name = "Btnproductos";
             this.Btnproductos.Size = new System.Drawing.Size(183, 100);
@@ -57,7 +57,7 @@
             this.btnconfiguracion.FlatAppearance.BorderSize = 2;
             this.btnconfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnconfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnconfiguracion.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconfiguracion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnconfiguracion.Location = new System.Drawing.Point(464, 128);
             this.btnconfiguracion.Name = "btnconfiguracion";
             this.btnconfiguracion.Size = new System.Drawing.Size(183, 100);
@@ -73,7 +73,7 @@
             this.Btnsalir.FlatAppearance.BorderSize = 2;
             this.Btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btnsalir.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btnsalir.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnsalir.Location = new System.Drawing.Point(691, 128);
             this.Btnsalir.Name = "Btnsalir";
             this.Btnsalir.Size = new System.Drawing.Size(183, 100);
@@ -89,7 +89,7 @@
             this.btnjerarquia.FlatAppearance.BorderSize = 2;
             this.btnjerarquia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnjerarquia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnjerarquia.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnjerarquia.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnjerarquia.Location = new System.Drawing.Point(238, 128);
             this.btnjerarquia.Name = "btnjerarquia";
             this.btnjerarquia.Size = new System.Drawing.Size(183, 100);

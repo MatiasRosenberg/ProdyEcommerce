@@ -315,36 +315,46 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
+        public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen, TextBox sync0, TextBox sync1)
         {
             string Csqllista = "select Nombre, idLista from listas order by Nombre";
             string Csqlvendedor = "select Nombre, idVendedor from vendedores order by Nombre";
             string Csqldeposito = "select Nombre, idDeposito from depositos order by Nombre";
             string Csqlmoneda = "select Nombre, idMoneda from monedas order by Nombre";
             string Csqlconfiguracion = "select isnull(WOO_BACKORDER,0) as WOO_BACKORDER, WOO_IMAGES, SHOPPRICELIST, SHOPSELLER, SHOPSTOCKID, SHOPIDMONEDA from configuracion";
+            string Csqlsync0 = "select count(sync) sync from articulos where sync = 0";
+            string Csqlsync1 = "select count(sync) sync from articulos where sync = 1";
 
-            cmd = new SqlCommand(Csqlconfiguracion, cnn);
-            SqlDataReader Rconfiguracion = cmd.ExecuteReader();
-            //lista
-            da = new SqlDataAdapter(Csqllista, cnn);
-            DataTable lista = new DataTable();
-            da.Fill(lista);
-            //vendedor
-            da = new SqlDataAdapter(Csqlvendedor, cnn);
-            DataTable vendedor = new DataTable();
-            da.Fill(vendedor);
-            //stock
-            da = new SqlDataAdapter(Csqldeposito, cnn);
-            DataTable stock = new DataTable();
-            da.Fill(stock);
-            //moneda
-            da = new SqlDataAdapter(Csqlmoneda, cnn);
-            DataTable moneda = new DataTable();
-            da.Fill(moneda);
+            
+           
+           
 
 
             try
             {
+                
+                cmd = new SqlCommand(Csqlconfiguracion, cnn);
+                SqlDataReader Rconfiguracion = cmd.ExecuteReader();
+                //lista
+                da = new SqlDataAdapter(Csqllista, cnn);
+                DataTable lista = new DataTable();
+                da.Fill(lista);
+                //vendedor
+                da = new SqlDataAdapter(Csqlvendedor, cnn);
+                DataTable vendedor = new DataTable();
+                da.Fill(vendedor);
+                //stock
+                da = new SqlDataAdapter(Csqldeposito, cnn);
+                DataTable stock = new DataTable();
+                da.Fill(stock);
+                //moneda
+                da = new SqlDataAdapter(Csqlmoneda, cnn);
+                DataTable moneda = new DataTable();
+                da.Fill(moneda);
+                cmd = new SqlCommand(Csqlsync0, cnn);
+                SqlDataReader Sync0 = cmd.ExecuteReader();
+                cmd = new SqlCommand(Csqlsync1, cnn);
+                SqlDataReader Sync1 = cmd.ExecuteReader();
                 //Llenar listas
                 cblista.DisplayMember = "Nombre";
                 cblista.ValueMember = "idLista";
@@ -375,8 +385,15 @@ namespace ProdyEcommerce
                 {
                     Chbox.Checked = false;
                 }
-                Rconfiguracion.Close();
+                if(Sync0.Read() == true && Sync1.Read() == true)
+                {
+                    sync0.Text = Sync0["sync"].ToString();
+                    sync1.Text = Sync1["sync"].ToString();
+                }
+                else
+                {
 
+                }
             }
             catch (Exception ex)
             {

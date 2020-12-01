@@ -19,9 +19,9 @@ namespace ProdyEcommerce
 
         Funciones F = new Funciones();
         Contraseña C = new Contraseña();
-        private void Configuracion_Load(object sender, EventArgs e)
+        public void Configuracion_Load(object sender, EventArgs e)
         {
-            F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
+            F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen, txtsync1, txtsync0);
         }
 
         private void Btngrabar_Click_1(object sender, EventArgs e)
@@ -38,6 +38,7 @@ namespace ProdyEcommerce
         private void btnsync_Click(object sender, EventArgs e)
         {
             C.ShowDialog();
+            F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen, txtsync1, txtsync0);
         }
     }
 }
