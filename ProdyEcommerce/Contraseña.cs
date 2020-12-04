@@ -41,9 +41,9 @@ namespace ProdyEcommerce
                     MessageBox.Show("Sincronización masiva procesada");
                     this.Close();
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    MessageBox.Show("NO SE ENCONTRO EL SCRIPT ECOMM_SYNCPRODUCTOS" + ex.ToString());
+                    MessageBox.Show("NO SE ENCONTRO EL SCRIPT ECOMM_SYNCPRODUCTOS");
                 }
                 
             }

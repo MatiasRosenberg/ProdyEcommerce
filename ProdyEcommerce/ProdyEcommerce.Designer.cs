@@ -32,6 +32,10 @@
             this.btnconfiguracion = new System.Windows.Forms.Button();
             this.Btnsalir = new System.Windows.Forms.Button();
             this.btnjerarquia = new System.Windows.Forms.Button();
+            this.lblasinc = new System.Windows.Forms.Label();
+            this.lblsinc = new System.Windows.Forms.Label();
+            this.lblsync1 = new System.Windows.Forms.Label();
+            this.lblsync0 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Btnproductos
@@ -98,11 +102,53 @@
             this.btnjerarquia.UseVisualStyleBackColor = false;
             this.btnjerarquia.Click += new System.EventHandler(this.btnjerarquia_Click);
             // 
+            // lblasinc
+            // 
+            this.lblasinc.AutoSize = true;
+            this.lblasinc.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblasinc.Location = new System.Drawing.Point(688, 347);
+            this.lblasinc.Name = "lblasinc";
+            this.lblasinc.Size = new System.Drawing.Size(141, 14);
+            this.lblasinc.TabIndex = 19;
+            this.lblasinc.Text = "Productos a sincronizar:";
+            // 
+            // lblsinc
+            // 
+            this.lblsinc.AutoSize = true;
+            this.lblsinc.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsinc.Location = new System.Drawing.Point(688, 308);
+            this.lblsinc.Name = "lblsinc";
+            this.lblsinc.Size = new System.Drawing.Size(148, 14);
+            this.lblsinc.TabIndex = 18;
+            this.lblsinc.Text = "Productos sincronizados:";
+            // 
+            // lblsync1
+            // 
+            this.lblsync1.AutoSize = true;
+            this.lblsync1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsync1.Location = new System.Drawing.Point(843, 308);
+            this.lblsync1.Name = "lblsync1";
+            this.lblsync1.Size = new System.Drawing.Size(0, 14);
+            this.lblsync1.TabIndex = 20;
+            // 
+            // lblsync0
+            // 
+            this.lblsync0.AutoSize = true;
+            this.lblsync0.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsync0.Location = new System.Drawing.Point(843, 347);
+            this.lblsync0.Name = "lblsync0";
+            this.lblsync0.Size = new System.Drawing.Size(0, 14);
+            this.lblsync0.TabIndex = 21;
+            // 
             // Prodyecommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 384);
+            this.Controls.Add(this.lblsync0);
+            this.Controls.Add(this.lblsync1);
+            this.Controls.Add(this.lblasinc);
+            this.Controls.Add(this.lblsinc);
             this.Controls.Add(this.btnjerarquia);
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.btnconfiguracion);
@@ -110,7 +156,9 @@
             this.Name = "Prodyecommerce";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prodyecommerce Version: 1.0";
+            this.Load += new System.EventHandler(this.Prodyecommerce_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -120,5 +168,9 @@
         private System.Windows.Forms.Button btnconfiguracion;
         private System.Windows.Forms.Button Btnsalir;
         private System.Windows.Forms.Button btnjerarquia;
+        private System.Windows.Forms.Label lblasinc;
+        private System.Windows.Forms.Label lblsinc;
+        private System.Windows.Forms.Label lblsync1;
+        private System.Windows.Forms.Label lblsync0;
     }
 }

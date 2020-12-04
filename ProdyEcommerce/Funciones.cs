@@ -315,20 +315,13 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen, TextBox sync0, TextBox sync1)
+        public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
         {
             string Csqllista = "select Nombre, idLista from listas order by Nombre";
             string Csqlvendedor = "select Nombre, idVendedor from vendedores order by Nombre";
             string Csqldeposito = "select Nombre, idDeposito from depositos order by Nombre";
             string Csqlmoneda = "select Nombre, idMoneda from monedas order by Nombre";
             string Csqlconfiguracion = "select isnull(WOO_BACKORDER,0) as WOO_BACKORDER, WOO_IMAGES, SHOPPRICELIST, SHOPSELLER, SHOPSTOCKID, SHOPIDMONEDA from configuracion";
-            string Csqlsync0 = "select count(sync) sync from articulos where sync = 0";
-            string Csqlsync1 = "select count(sync) sync from articulos where sync = 1";
-
-            
-           
-           
-
 
             try
             {
@@ -351,10 +344,6 @@ namespace ProdyEcommerce
                 da = new SqlDataAdapter(Csqlmoneda, cnn);
                 DataTable moneda = new DataTable();
                 da.Fill(moneda);
-                cmd = new SqlCommand(Csqlsync0, cnn);
-                SqlDataReader Sync0 = cmd.ExecuteReader();
-                cmd = new SqlCommand(Csqlsync1, cnn);
-                SqlDataReader Sync1 = cmd.ExecuteReader();
                 //Llenar listas
                 cblista.DisplayMember = "Nombre";
                 cblista.ValueMember = "idLista";
@@ -385,15 +374,7 @@ namespace ProdyEcommerce
                 {
                     Chbox.Checked = false;
                 }
-                if(Sync0.Read() == true && Sync1.Read() == true)
-                {
-                    sync0.Text = Sync0["sync"].ToString();
-                    sync1.Text = Sync1["sync"].ToString();
-                }
-                else
-                {
-
-                }
+                Rconfiguracion.Close();
             }
             catch (Exception ex)
             {
@@ -568,6 +549,42 @@ namespace ProdyEcommerce
                 MessageBox.Show("Error al grabar" + ex.ToString());
             }
             MessageBox.Show("Se grabo correctamente");
+        }
+
+        public void sync(Label sync0, Label sync1)
+        {
+            string Csqlsync0 = "select count(idarticulo) sync from articulos a left join rubros r on r.idrubro = a.idrubro left join subrubros s on s.IdSubRubro = a.IdSubRubro where r.publicarweb = 1 and a.inhabilitado = 0 and s.PUBLICARWEB = 1 and a.PUBLICARWEB = 1 and sync = 0";
+            string Csqlsync1 = "select count(idarticulo) sync from articulos a left join rubros r on r.idrubro = a.idrubro left join subrubros s on s.IdSubRubro = a.IdSubRubro where r.publicarweb = 1 and a.inhabilitado = 0 and s.PUBLICARWEB = 1 and a.PUBLICARWEB = 1 and sync = 1";
+
+            try
+            {
+                cmd = new SqlCommand(Csqlsync0, cnn);
+                SqlDataReader Sync0 = cmd.ExecuteReader();
+                cmd = new SqlCommand(Csqlsync1, cnn);
+                SqlDataReader Sync1 = cmd.ExecuteReader();
+
+                if (Sync0.Read() == true)
+                {
+                    sync0.Text = Sync0["sync"].ToString();
+                   
+                }
+                else
+                {
+
+                }
+                if (Sync1.Read() == true)
+                {
+                    sync1.Text = Sync1["sync"].ToString();
+                }
+                else
+                {
+
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Fallo la funcion de sincronizacion");
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ProdyEcommerce
 {
     public partial class Prodyecommerce : Form
     {
+        Funciones F = new Funciones();
         public Prodyecommerce()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace ProdyEcommerce
             Configuracion C = new Configuracion();
 
             C.ShowDialog();
+            F.sync(lblsync0, lblsync1);
         }
 
         private void btnjerarquia_Click(object sender, EventArgs e)
@@ -41,6 +43,11 @@ namespace ProdyEcommerce
             Jerarquia_de_rubros J = new Jerarquia_de_rubros();
 
             J.ShowDialog();
+        }
+
+        private void Prodyecommerce_Load(object sender, EventArgs e)
+        {
+            F.sync(lblsync0, lblsync1);
         }
     }
 }

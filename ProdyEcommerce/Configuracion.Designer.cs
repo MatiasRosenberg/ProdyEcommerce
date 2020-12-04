@@ -42,10 +42,6 @@
             this.Btngrabar = new System.Windows.Forms.Button();
             this.Btnsalir = new System.Windows.Forms.Button();
             this.btnsync = new System.Windows.Forms.Button();
-            this.lblsinc = new System.Windows.Forms.Label();
-            this.lblasinc = new System.Windows.Forms.Label();
-            this.txtsync1 = new System.Windows.Forms.TextBox();
-            this.txtsync0 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbllista
@@ -149,7 +145,7 @@
             // 
             // Btngrabar
             // 
-            this.Btngrabar.Location = new System.Drawing.Point(282, 335);
+            this.Btngrabar.Location = new System.Drawing.Point(289, 241);
             this.Btngrabar.Name = "Btngrabar";
             this.Btngrabar.Size = new System.Drawing.Size(81, 24);
             this.Btngrabar.TabIndex = 13;
@@ -159,7 +155,7 @@
             // 
             // Btnsalir
             // 
-            this.Btnsalir.Location = new System.Drawing.Point(369, 335);
+            this.Btnsalir.Location = new System.Drawing.Point(376, 241);
             this.Btnsalir.Name = "Btnsalir";
             this.Btnsalir.Size = new System.Drawing.Size(81, 24);
             this.Btnsalir.TabIndex = 14;
@@ -169,7 +165,7 @@
             // 
             // btnsync
             // 
-            this.btnsync.Location = new System.Drawing.Point(25, 335);
+            this.btnsync.Location = new System.Drawing.Point(25, 241);
             this.btnsync.Name = "btnsync";
             this.btnsync.Size = new System.Drawing.Size(81, 24);
             this.btnsync.TabIndex = 15;
@@ -177,49 +173,11 @@
             this.btnsync.UseVisualStyleBackColor = true;
             this.btnsync.Click += new System.EventHandler(this.btnsync_Click);
             // 
-            // lblsinc
-            // 
-            this.lblsinc.AutoSize = true;
-            this.lblsinc.Location = new System.Drawing.Point(22, 234);
-            this.lblsinc.Name = "lblsinc";
-            this.lblsinc.Size = new System.Drawing.Size(125, 13);
-            this.lblsinc.TabIndex = 16;
-            this.lblsinc.Text = "Productos sincronizados:";
-            // 
-            // lblasinc
-            // 
-            this.lblasinc.AutoSize = true;
-            this.lblasinc.Location = new System.Drawing.Point(22, 273);
-            this.lblasinc.Name = "lblasinc";
-            this.lblasinc.Size = new System.Drawing.Size(120, 13);
-            this.lblasinc.TabIndex = 17;
-            this.lblasinc.Text = "Productos a sincronizar:";
-            // 
-            // txtsync1
-            // 
-            this.txtsync1.Location = new System.Drawing.Point(153, 231);
-            this.txtsync1.MaxLength = 200;
-            this.txtsync1.Name = "txtsync1";
-            this.txtsync1.Size = new System.Drawing.Size(113, 20);
-            this.txtsync1.TabIndex = 18;
-            // 
-            // txtsync0
-            // 
-            this.txtsync0.Location = new System.Drawing.Point(153, 270);
-            this.txtsync0.MaxLength = 200;
-            this.txtsync0.Name = "txtsync0";
-            this.txtsync0.Size = new System.Drawing.Size(113, 20);
-            this.txtsync0.TabIndex = 19;
-            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 371);
-            this.Controls.Add(this.txtsync0);
-            this.Controls.Add(this.txtsync1);
-            this.Controls.Add(this.lblasinc);
-            this.Controls.Add(this.lblsinc);
+            this.ClientSize = new System.Drawing.Size(462, 277);
             this.Controls.Add(this.btnsync);
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.Btngrabar);
@@ -253,15 +211,11 @@
         private System.Windows.Forms.Button Btngrabar;
         private System.Windows.Forms.Button Btnsalir;
         private System.Windows.Forms.Button btnsync;
-        private System.Windows.Forms.Label lblsinc;
-        private System.Windows.Forms.Label lblasinc;
         public System.Windows.Forms.ComboBox cbpublicar;
         public System.Windows.Forms.ComboBox cbvendedor;
         public System.Windows.Forms.ComboBox cbstock;
         public System.Windows.Forms.ComboBox cbmoneda;
         public System.Windows.Forms.CheckBox chbreserva;
         public System.Windows.Forms.TextBox txtimagen;
-        public System.Windows.Forms.TextBox txtsync1;
-        public System.Windows.Forms.TextBox txtsync0;
     }
 }
