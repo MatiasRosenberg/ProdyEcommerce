@@ -50,6 +50,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtlistart = new System.Windows.Forms.TextBox();
             this.lblagrupacion = new System.Windows.Forms.Label();
+            this.btnsyncp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblarticulo
@@ -275,11 +276,23 @@
             this.lblagrupacion.TabIndex = 21;
             this.lblagrupacion.Text = "Agrupacion de productos";
             // 
+            // btnsyncp
+            // 
+            this.btnsyncp.BackColor = System.Drawing.SystemColors.Control;
+            this.btnsyncp.Location = new System.Drawing.Point(457, 75);
+            this.btnsyncp.Name = "btnsyncp";
+            this.btnsyncp.Size = new System.Drawing.Size(130, 21);
+            this.btnsyncp.TabIndex = 22;
+            this.btnsyncp.Text = "Syncronizar producto";
+            this.btnsyncp.UseVisualStyleBackColor = false;
+            this.btnsyncp.Click += new System.EventHandler(this.btnsyncp_Click);
+            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 543);
+            this.Controls.Add(this.btnsyncp);
             this.Controls.Add(this.lblagrupacion);
             this.Controls.Add(this.txtlistart);
             this.Controls.Add(this.button2);
@@ -336,6 +349,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtlistart;
         private System.Windows.Forms.Label lblagrupacion;
+        private System.Windows.Forms.Button btnsyncp;
     }
 }
 

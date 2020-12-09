@@ -16,6 +16,7 @@ namespace ProdyEcommerce
 
         Funciones F = new Funciones();
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
+        SqlCommand cmd;
 
         public Productos()
         {
@@ -174,6 +175,22 @@ namespace ProdyEcommerce
             if (0 <= index)
             {
                 listBox1.SelectedIndex = index;
+            }
+        }
+
+        private void btnsyncp_Click(object sender, EventArgs e)
+        {
+            string Csqlsync = "udpate articulos set sync=0 where idarticulo='" + txtarticulo.Text + "'";
+
+            try
+            {
+                cmd = new SqlCommand(Csqlsync, cnn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Articulo sincronizado");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("No se puede sincronizar este articulo");
             }
         }
     }
